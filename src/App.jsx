@@ -1,9 +1,7 @@
-function App() {
-  return (
-    <main className="min-h-screen grid place-items-center bg-red-100 text-red-500">
-      <h1 className="text-5xl font-bold">Hello</h1>
-    </main>
-  )
-}
+import Spline from '@splinetool/react-spline';
 
-export default App
+export default function App() {
+  return (
+    <Spline scene="https://prod.spline.design/Ngb0HXH58mzrTtcC/scene.splinecode" />
+  );
+}
