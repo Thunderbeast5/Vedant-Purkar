@@ -59,7 +59,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className="flex items-center sm:hidden ml-auto">
+          <div className="flex items-center sm:hidden">
             <button onClick={() => setIsOpen(!isOpen)} className="text-black p-1">
               {isOpen ? (
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
