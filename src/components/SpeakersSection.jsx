@@ -5,6 +5,8 @@ const SpeakersSection = () => {
   const [showMore, setShowMore] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
+  const MotionDiv = motion.div;
+
   const fadeUp = {
     hidden: shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 },
     show: shouldReduceMotion
@@ -99,7 +101,7 @@ const SpeakersSection = () => {
 
       <div className="max-w-5xl mx-auto px-6 md:px-12">
         {/* Section Header */}
-        <motion.div
+        <MotionDiv
           className="mb-20"
           variants={fadeUp}
           initial="hidden"
@@ -107,16 +109,16 @@ const SpeakersSection = () => {
           viewport={{ once: true, amount: 0.35 }}
         >
           <h2 className="text-sm font-bold text-[#EB0028] uppercase tracking-[0.4em] mb-2">The Lineup</h2>
-          <h3 className="text-5xl md:text-7xl font-black text-gray-900 tracking-tight">
+          <h3 className="font-titillium text-5xl md:text-7xl font-black text-gray-900 tracking-tight">
             Our <span className="text-[#EB0028]">Speakers</span>
           </h3>
           <p className="text-gray-500 mt-4 text-xl font-light italic">Inspiring minds, one talk at a time.</p>
           <div className="w-20 h-1.5 bg-[#EB0028] mt-6 rounded-full"></div>
-        </motion.div>
+        </MotionDiv>
       </div>
 
       {/* Sliding Speakers Container - Full Width */}
-      <motion.div
+      <MotionDiv
         className="max-w-[1920px] mx-auto"
         variants={fadeUp}
         initial="hidden"
@@ -186,7 +188,7 @@ const SpeakersSection = () => {
             </div>
           </div>
         )}
-      </motion.div>
+      </MotionDiv>
 
       {/* View All Button */}
       <div className="max-w-5xl mx-auto px-6 md:px-12">
