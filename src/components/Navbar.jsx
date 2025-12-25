@@ -1,7 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // 1. Always show at the very top
+      if (currentScrollY <= 10) {
+        setIsVisible(true);
+      } 
+      // 2. Hide if scrolling down
+      else if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setIsVisible(false);
+        setIsOpen(false); // Close mobile menu if user scrolls down
+      } 
+      // 3. Show if scrolling up
+      else if (currentScrollY < lastScrollY) {
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const navLinks = [
     { name: 'ABOUT', href: '#' },
@@ -11,9 +38,12 @@ const Navbar = () => {
   ];
 
   return (
-    /* absolute top-0 z-50 places it on top of the Hero */
-    /* mt-6 adds the margin from the very top of the screen */
-    <nav className="absolute top-0 left-0 w-full z-50 bg-[#e3e3e3] font-sans  ">
+    <nav 
+      className={`
+        fixed left-0 w-full z-50 bg-transparent font-sans transition-all duration-300 ease-in-out
+        ${isVisible ? 'top-0  translate-y-0' : '-translate-y-full top-0 mt-0'}
+      `}
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-12">
           
