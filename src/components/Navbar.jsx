@@ -11,36 +11,32 @@ const Navbar = () => {
   ];
 
   return (
-    // bg-transparent and text-black applied here
-    <nav className="bg-transparent w-full font-sans py-4">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+    /* absolute top-0 z-50 places it on top of the Hero */
+    /* mt-6 adds the margin from the very top of the screen */
+    <nav className="absolute top-0 left-0 w-full z-50 bg-[#e3e3e3] font-sans  ">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="flex items-center justify-between h-12">
           
-          {/* Container for links - using justify-between for even spacing */}
           <div className="flex-1 hidden sm:flex items-center justify-between">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-black text-sm font-bold tracking-[0.2em] hover:opacity-60 transition-opacity duration-200"
+                className="text-black text-s font-bold tracking-[0.3em] hover:opacity-40 transition-all duration-200"
               >
                 {link.name}
               </a>
             ))}
           </div>
 
-          {/* Mobile menu button (Hamburger) - switched to black */}
           <div className="flex items-center sm:hidden ml-auto">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-black hover:bg-gray-100 focus:outline-none"
-            >
+            <button onClick={() => setIsOpen(!isOpen)} className="text-black p-1">
               {isOpen ? (
-                <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
@@ -49,16 +45,11 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isOpen && (
-        <div className="sm:hidden bg-white/90 backdrop-blur-sm border-t border-gray-200">
-          <div className="px-2 pt-2 pb-3 space-y-1">
+        <div className="sm:hidden bg-[#e3e3e3] border-t border-gray-300">
+          <div className="flex flex-col items-center py-4 space-y-4">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="block px-3 py-4 text-black text-sm font-bold text-center tracking-widest border-b border-gray-50"
-              >
+              <a key={link.name} href={link.href} className="text-black text-xs font-bold tracking-widest">
                 {link.name}
               </a>
             ))}
