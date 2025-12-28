@@ -1,13 +1,13 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import SpeakersSection from './components/SpeakersSection';
+import Skills from './components/Skills';
 
 function App() {
   return (
     <div className="relative">
       <Navbar />
       <Hero />
-      <SpeakersSection />
+      <Skills />
     </div>
   )
 }
