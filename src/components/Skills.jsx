@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { DiReact,DiNodejs,DiGit,DiPython  } from "react-icons/di";
-import { TbBrandCpp } from "react-icons/tb";
+import { TbBrandCpp,TbBrandReactNative } from "react-icons/tb";
 import { SiMongodb,SiFirebase,SiTailwindcss,SiCloudinary } from "react-icons/si"
 import { IoLogoFigma,IoLogoJavascript } from "react-icons/io5";
 import { FaGithub,FaDocker} from "react-icons/fa";
@@ -12,6 +12,7 @@ const SKILLS = [
     { name: "Python", icon: <DiPython size={24} /> },
     { name: "JavaScript", icon: <IoLogoJavascript size={24} /> },
   { name: "React", icon: <DiReact size={24} /> },
+  { name: "React Native", icon: <TbBrandReactNative size={24} /> },
   { name: "Tailwind", icon: <SiTailwindcss size={24} /> },
   { name: "Node.js", icon: <DiNodejs  size={24} /> },
   { name: "Firebase", icon: <SiFirebase size={24} /> },
