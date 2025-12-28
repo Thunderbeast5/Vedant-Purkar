@@ -1,21 +1,26 @@
 import React, { useRef } from 'react';
-import { ReactDark } from '@skill-icons/react';
-import { DiReact,DiNodejs  } from "react-icons/di";
+import { DiReact,DiNodejs,DiGit,DiPython  } from "react-icons/di";
+import { TbBrandCpp } from "react-icons/tb";
+import { SiMongodb,SiFirebase,SiTailwindcss,SiCloudinary } from "react-icons/si"
+import { IoLogoFigma,IoLogoJavascript } from "react-icons/io5";
+import { FaGithub,FaDocker} from "react-icons/fa";
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { 
-  Code2, Cpu, Globe, Layers, Layout, 
-  Settings, Zap, Box 
-} from 'lucide-react';
+
 
 const SKILLS = [
+    { name: "C++", icon: <TbBrandCpp size={24} /> },
+    { name: "Python", icon: <DiPython size={24} /> },
+    { name: "JavaScript", icon: <IoLogoJavascript size={24} /> },
   { name: "React", icon: <DiReact size={24} /> },
-  { name: "Tailwind", icon: <Zap size={24} /> },
-  { name: "Vite", icon: <Cpu size={24} /> },
-  { name: "Spline", icon: <Box size={24} /> },
-  { name: "Three.js", icon: <Globe size={24} /> },
+  { name: "Tailwind", icon: <SiTailwindcss size={24} /> },
   { name: "Node.js", icon: <DiNodejs  size={24} /> },
-  { name: "Framer", icon: <Layers size={24} /> },
-  { name: "JS/TS", icon: <Code2 size={24} /> },
+  { name: "Firebase", icon: <SiFirebase size={24} /> },
+  { name: "Mongo DB", icon: <SiMongodb size={24} /> },
+  { name: "Git", icon: <DiGit size={24} /> },
+  { name: "Figma", icon: <IoLogoFigma size={24} /> },
+  { name: "Github", icon: <FaGithub size={24} /> },
+  { name: "Docker", icon: <FaDocker size={24} /> },
+  { name: "Cloudinary", icon: <SiCloudinary size={24} /> },
 ];
 
 const ACHIEVEMENTS = [
