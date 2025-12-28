@@ -4,10 +4,11 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 // Mock data - Replace with your actual icons/images
 const SKILLS = ["React", "Tailwind", "Vite", "Spline", "Three.js", "Node.js", "Framer Motion", "JavaScript"];
 const ACHIEVEMENTS = [
-  "https://via.placeholder.com/300x200", // Replace with your achievement images
-  "https://via.placeholder.com/300x200",
-  "https://via.placeholder.com/300x200",
-  "https://via.placeholder.com/300x200",
+    "https://picsum.photos/200/300", // Replace with your achievement images
+    "https://picsum.photos/200/300", // Replace with your achievement images
+    "https://picsum.photos/200/300", // Replace with your achievement images
+    "https://picsum.photos/200/300", // Replace with your achievement images
+    
 ];
 
 const ScrollingRow = ({ items, baseVelocity = -5 }) => {
@@ -42,26 +43,26 @@ export default function Skills() {
 
   return (
     <section ref={containerRef} className="relative bg-[#E3E3E3] py-24 overflow-hidden">
-      <div className="mb-16 px-6">
+      {/* <div className="mb-16 px-6">
         <h2 className="text-4xl font-black uppercase tracking-tighter text-black md:text-6xl">
           Skills & <br /> Milestones
         </h2>
-      </div>
+      </div> */}
 
       {/* 1. Continuous Skills Slider */}
-      <div className="mb-12">
+      <div className="mb-10">
         <ScrollingRow items={SKILLS} baseVelocity={-20} />
       </div>
 
       {/* 2. Achievement Carousels (Tilted 2 degrees) */}
-      <div className="-rotate-2 space-y-8 scale-110">
+      <div className="-rotate-1 space-y-4 scale-110">
         {/* Row 1: Moves Left to Right on scroll */}
         <motion.div style={{ x: xLeft }} className="flex gap-6">
           {[...ACHIEVEMENTS, ...ACHIEVEMENTS].map((img, i) => (
             <img 
               key={i} 
               src={img} 
-              className="h-48 w-72 rounded-2xl object-cover shadow-2xl border-4 border-white"
+              className="h-60 w-90 rounded-2xl object-cover shadow-2xl border-2 border-white"
               alt="Achievement" 
             />
           ))}
@@ -73,7 +74,7 @@ export default function Skills() {
             <img 
               key={i} 
               src={img} 
-              className="h-48 w-72 rounded-2xl object-cover shadow-2xl border-4 border-white"
+              className="h-60 w-90 rounded-2xl object-cover shadow-2xl border-2 border-white"
               alt="Achievement" 
             />
           ))}
