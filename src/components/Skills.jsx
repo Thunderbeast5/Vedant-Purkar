@@ -1,4 +1,6 @@
 import React, { useRef } from 'react';
+import { ReactDark } from '@skill-icons/react';
+import { DiReact,DiNodejs  } from "react-icons/di";
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
   Code2, Cpu, Globe, Layers, Layout, 
@@ -6,12 +8,12 @@ import {
 } from 'lucide-react';
 
 const SKILLS = [
-  { name: "React", icon: <Layout size={24} /> },
+  { name: "React", icon: <DiReact size={24} /> },
   { name: "Tailwind", icon: <Zap size={24} /> },
   { name: "Vite", icon: <Cpu size={24} /> },
   { name: "Spline", icon: <Box size={24} /> },
   { name: "Three.js", icon: <Globe size={24} /> },
-  { name: "Node.js", icon: <Settings size={24} /> },
+  { name: "Node.js", icon: <DiNodejs  size={24} /> },
   { name: "Framer", icon: <Layers size={24} /> },
   { name: "JS/TS", icon: <Code2 size={24} /> },
 ];
