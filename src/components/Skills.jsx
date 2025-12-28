@@ -26,16 +26,23 @@ const ACHIEVEMENTS = [
 
 const ScrollingRow = ({ items, baseVelocity = -5 }) => {
   return (
-    <div className="flex overflow-hidden whitespace-nowrap">
+    /* Added py-4 to give shadows room to breathe */
+    <div className="flex overflow-hidden whitespace-nowrap py-4"> 
       <motion.div 
         className="flex gap-6 px-4"
         animate={{ x: baseVelocity > 0 ? [0, -1000] : [-1000, 0] }}
         transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
       >
         {[...items, ...items, ...items].map((skill, i) => (
-          <div key={i} className="flex items-center gap-3 rounded-full bg-white border border-gray-200 px-6 py-3 shadow-sm">
-            <span className="text-black">{skill.icon}</span>
-            <span className="text-lg font-bold text-black uppercase tracking-tight">{skill.name}</span>
+          <div 
+            key={i} 
+            /* Added shadow-xl for better visibility and ensure it doesn't clip */
+            className="flex items-center gap-3 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 px-6 py-3 shadow-lg"
+          >
+            <span className="text-black/80">{skill.icon}</span>
+            <span className="text-lg font-bold text-black/80 uppercase tracking-tight">
+              {skill.name}
+            </span>
           </div>
         ))}
       </motion.div>
@@ -58,7 +65,7 @@ export default function Skills() {
     <section ref={containerRef} className="relative bg-[#E3E3E3]  pt-15 pb-40 overflow-hidden">
       
       {/* 1. Skill Icons Slider */}
-      <div className="mb-32">
+      <div className="mb-22">
         <ScrollingRow items={SKILLS} baseVelocity={20} />
       </div>
 
