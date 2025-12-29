@@ -31,6 +31,16 @@ const services = [
 
 export default function Services() {
   const containerRef = useRef(null);
+  const headerRef = useRef(null);
+
+  // Scroll animation for header color fill
+  const { scrollYProgress } = useScroll({
+    target: headerRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Sharp transition from outline to solid black
+  const textFill = useTransform(scrollYProgress, [0.35, 0.5], [0, 1]);
 
   return (
     <section 
@@ -39,11 +49,26 @@ export default function Services() {
     >
       <div className="max-w-7xl mx-auto">
         
-        {/* Section Header */}
-        <div className="mb-20 text-center">
-           <h2 className="text-7xl md:text-[10rem] font-black uppercase tracking-tighter leading-none mb-4">
+        {/* Section Header with Scroll Animation */}
+        <div ref={headerRef} className="mb-20 text-center relative">
+          {/* Outline text */}
+          <h2 
+            className="text-7xl md:text-[10rem] font-black uppercase tracking-wide leading-none mb-4"
+            style={{ 
+              WebkitTextStroke: "2px #000000", 
+              color: "transparent" 
+            }}
+          >
             Services
           </h2>
+          
+          {/* Filled text that fades in on scroll */}
+          <motion.h2 
+            style={{ opacity: textFill }}
+            className="absolute inset-0 text-7xl md:text-[10rem] font-black uppercase tracking-wide leading-none text-black mb-4"
+          >
+            Services
+          </motion.h2>
         </div>
 
         {/* Services List */}
