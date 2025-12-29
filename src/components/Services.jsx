@@ -113,7 +113,7 @@ function ServiceItem({ service, index }) {
       />
 
       {/* Service Number */}
-      <div className="text-4xl md:text-6xl font-black opacity-20 leading-none min-w-[80px]">
+      <div className="text-6xl md:text-9xl font-black  leading-none min-w-[120px]">
         {service.id}
       </div>
 
