@@ -1,7 +1,8 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Skills from './components/Skills';
-import SpeakersSection from './components/SpeakersSection';
+// import SpeakersSection from './components/SpeakersSection';
+import About from './components/About';
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
       <Navbar />
       <Hero />
       <Skills />
-      <SpeakersSection />
+      <About />
+      {/* <SpeakersSection /> */}
     </div>
   )
 }
