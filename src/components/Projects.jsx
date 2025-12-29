@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const projectList = [
@@ -19,7 +19,27 @@ const projectList = [
   },
   {
     id: "04",
-    client: "METAFORM CREATIONS",
+    client: "AURORA DESIGNS",
+    images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
+  },
+  {
+    id: "05",
+    client: "NEXUS CREATIVE",
+    images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
+  },
+  {
+    id: "06",
+    client: "QUANTUM LABS",
+    images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
+  },
+  {
+    id: "07",
+    client: "STELLAR WORKS",
+    images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
+  },
+  {
+    id: "08",
+    client: "INFINITY STUDIOS",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   }
 ];
@@ -27,6 +47,7 @@ const projectList = [
 export default function Projects() {
   const containerRef = useRef(null);
   const headerRef = useRef(null);
+  const [showAll, setShowAll] = useState(false);
   
   // Scroll animation for header color fill
   const { scrollYProgress } = useScroll({
@@ -36,6 +57,9 @@ export default function Projects() {
 
   // Sharp transition from outline to solid black
   const textFill = useTransform(scrollYProgress, [0.35, 0.5], [0, 1]);
+
+  // Show first 4 projects initially, all projects when showAll is true
+  const visibleProjects = showAll ? projectList : projectList.slice(0, 4);
 
   return (
     <section 
@@ -63,9 +87,8 @@ export default function Projects() {
         </div>
 
         {/* --- STACKING CONTAINER --- */}
-        {/* We use a flex container with a large gap and padding to facilitate the sticky overlap */}
-        <div className="relative flex flex-col gap-[20vh] pb-[30vh]">
-          {projectList.map((project, index) => (
+        <div className={`relative flex flex-col gap-[20vh] ${showAll ? 'pb-[30vh]' : 'pb-[10vh]'}`}>
+          {visibleProjects.map((project, index) => (
             <ProjectCard 
               key={project.id} 
               project={project} 
@@ -73,6 +96,40 @@ export default function Projects() {
             />
           ))}
         </div>
+
+        {/* --- SHOW MORE BUTTON --- */}
+        {!showAll && projectList.length > 4 && (
+          <div className="flex justify-center -mt-8">
+            <motion.button
+              onClick={() => setShowAll(true)}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.05, backgroundColor: "#000", color: "#fff" }}
+              className="px-12 py-4 rounded-full border-2 border-black text-sm font-bold uppercase tracking-widest transition-all bg-white shadow-lg"
+            >
+              Show More Projects
+            </motion.button>
+          </div>
+        )}
+
+        {/* --- SHOW LESS BUTTON (Optional) --- */}
+        {showAll && (
+          <div className="flex justify-center mt-16">
+            <motion.button
+              onClick={() => {
+                setShowAll(false);
+                // Smooth scroll to top of projects section
+                containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.05, backgroundColor: "#000", color: "#fff" }}
+              className="px-12 py-4 rounded-full border-2 border-black text-sm font-bold uppercase tracking-widest transition-all bg-white shadow-lg"
+            >
+              Show Less
+            </motion.button>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -80,7 +137,6 @@ export default function Projects() {
 
 function ProjectCard({ project, index }) {
   // Each card sticks at a slightly lower position than the previous one
-  // Adjust '70' to change how much of the previous card remains visible
   const topOffset = 100 + (index * 90);
 
   return (
@@ -93,12 +149,11 @@ function ProjectCard({ project, index }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        // Added 'shadow-2xl' to create the depth separation seen in the video
         className="bg-white/90 backdrop-blur-md rounded-[3rem] p-8 md:p-12 border border-black/30 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] mb-10"
       >
         <div className="flex justify-between items-center mb-10">
           <div className="flex items-center gap-6">
-            <span className="text-3xl md:text-5xl font-black ">{project.id}</span>
+            <span className="text-3xl md:text-5xl font-black">{project.id}</span>
             <div>
               <h3 className="text-xl md:text-2xl font-black uppercase">{project.client}</h3>
             </div>
