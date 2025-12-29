@@ -105,7 +105,7 @@ export default function Projects() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               whileHover={{ scale: 1.05, backgroundColor: "#000", color: "#fff" }}
-              className="px-12 py-4 rounded-full border-2 border-black text-sm font-bold uppercase tracking-widest transition-all bg-white shadow-lg"
+              className="px-12 py-4 rounded-full border-2 border-black text-sm font-bold uppercase z-10 tracking-widest transition-all bg-white shadow-lg"
             >
               Show More Projects
             </motion.button>
@@ -114,7 +114,7 @@ export default function Projects() {
 
         {/* --- SHOW LESS BUTTON (Optional) --- */}
         {showAll && (
-          <div className="flex justify-center mt-16">
+          <div className="flex justify-center -mt-8">
             <motion.button
               onClick={() => {
                 setShowAll(false);
