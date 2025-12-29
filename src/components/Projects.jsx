@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const projectList = [
   {
@@ -16,21 +16,26 @@ const projectList = [
     id: "03",
     client: "METAFORM CREATIONS",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
+  },
+  {
+    id: "04",
+    client: "METAFORM CREATIONS",
+    images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   }
 ];
 
 export default function Projects() {
   const containerRef = useRef(null);
+  const headerRef = useRef(null);
   
-  // Header Reveal Logic (Left-to-Right Fill)
-  const { scrollYProgress: headerScroll } = useScroll({
-    target: containerRef,
-    offset: ["start end", "start center"]
+  // Scroll animation for header color fill
+  const { scrollYProgress } = useScroll({
+    target: headerRef,
+    offset: ["start end", "end start"]
   });
 
-  const smoothProgress = useSpring(headerScroll, { stiffness: 100, damping: 30 });
-  const headClip = useTransform(smoothProgress, [0.1, 0.5], ["0%", "100%"]);
-  const headMask = useTransform(headClip, (v) => `linear-gradient(to right, black ${v}, transparent ${v})`);
+  // Sharp transition from outline to solid black
+  const textFill = useTransform(scrollYProgress, [0.35, 0.5], [0, 1]);
 
   return (
     <section 
@@ -40,15 +45,17 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto">
         
         {/* --- SECTION HEADER --- */}
-        <div className="relative mb-32 text-center select-none">
+        <div ref={headerRef} className="relative mb-32 text-center select-none">
+          {/* Outline text */}
           <h2 
             className="text-7xl md:text-[10rem] font-black uppercase tracking-normal leading-none"
             style={{ WebkitTextStroke: "2px #000000", color: "transparent" }}
           >
             Projects
           </h2>
+          {/* Filled text that fades in on scroll */}
           <motion.h2 
-            style={{ WebkitMaskImage: headMask, maskImage: headMask }}
+            style={{ opacity: textFill }}
             className="absolute inset-0 text-7xl md:text-[10rem] font-black uppercase tracking-normal leading-none text-black"
           >
             Projects
@@ -74,7 +81,7 @@ export default function Projects() {
 function ProjectCard({ project, index }) {
   // Each card sticks at a slightly lower position than the previous one
   // Adjust '70' to change how much of the previous card remains visible
-  const topOffset = 100 + (index * 70);
+  const topOffset = 100 + (index * 90);
 
   return (
     <div 
@@ -87,13 +94,12 @@ function ProjectCard({ project, index }) {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
         // Added 'shadow-2xl' to create the depth separation seen in the video
-        className="bg-white/90 backdrop-blur-md rounded-[3rem] p-8 md:p-12 border border-black/10 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] mb-10"
+        className="bg-white/90 backdrop-blur-md rounded-[3rem] p-8 md:p-12 border border-black/30 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] mb-10"
       >
         <div className="flex justify-between items-center mb-10">
           <div className="flex items-center gap-6">
-            <span className="text-3xl md:text-5xl font-black opacity-20">{project.id}</span>
+            <span className="text-3xl md:text-5xl font-black ">{project.id}</span>
             <div>
-              <p className="text-xs uppercase font-bold tracking-widest opacity-50">Client</p>
               <h3 className="text-xl md:text-2xl font-black uppercase">{project.client}</h3>
             </div>
           </div>
