@@ -40,7 +40,7 @@ const Navbar = () => {
   return (
     <nav 
       className={`
-        fixed left-0 w-full z-50 bg-transparent font-sans transition-all duration-300 ease-in-out
+        fixed left-0 w-full z-50 bg-transparent transition-all duration-300 ease-in-out
         ${isVisible ? 'top-0  translate-y-0' : '-translate-y-full top-0 mt-0'}
       `}
     >
