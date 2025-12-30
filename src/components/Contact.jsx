@@ -1,8 +1,18 @@
 import React, { useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function Contact() {
   const containerRef = useRef(null);
+  const headerRef = useRef(null);
+
+  // 1. Setup Scroll Animation for the heading fill
+  const { scrollYProgress } = useScroll({
+    target: headerRef,
+    offset: ["start end", "end start"]
+  });
+
+  // 2. Maps the scroll progress to the opacity fill (0 to 1)
+  const textFill = useTransform(scrollYProgress, [0.35, 0.5], [0, 1]);
 
   return (
     <section 
@@ -11,17 +21,28 @@ export default function Contact() {
     >
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-start">
         
-        {/* --- LEFT SIDE: TEXT CONTENT --- */}
+        {/* --- LEFT SIDE: TEXT CONTENT WITH SCROLL REVEAL --- */}
         <div className="space-y-8">
-          <motion.h2 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-6xl md:text-8xl font-black uppercase leading-[0.9] tracking-tighter"
-          >
-            Let's <br /> Get In <br /> Touch
-          </motion.h2>
+          <div ref={headerRef} className="relative">
+            {/* Outline text (Base Layer) */}
+            <h2 
+              className="text-6xl md:text-8xl font-black uppercase leading-[0.9] tracking-tighter"
+              style={{ 
+                WebkitTextStroke: "2px #000000", 
+                color: "transparent" 
+              }}
+            >
+              Let's <br /> Get In <br /> Touch
+            </h2>
+
+            {/* Filled text (Animated Layer) */}
+            <motion.h2 
+              style={{ opacity: textFill }}
+              className="absolute inset-0 text-6xl md:text-8xl font-black uppercase leading-[0.9] tracking-tighter text-black"
+            >
+              Let's <br /> Get In <br /> Touch
+            </motion.h2>
+          </div>
 
           <motion.div
             initial={{ opacity: 0 }}
@@ -48,7 +69,6 @@ export default function Contact() {
         >
           <form className="space-y-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-              {/* Name Field */}
               <div className="relative border-b border-black/20 pb-2 focus-within:border-black transition-colors">
                 <label className="block text-xs uppercase font-black tracking-widest opacity-40 mb-2">Name</label>
                 <input 
@@ -57,7 +77,6 @@ export default function Contact() {
                   placeholder="Your Name"
                 />
               </div>
-              {/* Email Field */}
               <div className="relative border-b border-black/20 pb-2 focus-within:border-black transition-colors">
                 <label className="block text-xs uppercase font-black tracking-widest opacity-40 mb-2">Email</label>
                 <input 
@@ -68,7 +87,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Message Field */}
             <div className="relative border-b border-black/20 pb-2 focus-within:border-black transition-colors">
               <label className="block text-xs uppercase font-black tracking-widest opacity-40 mb-2">Message</label>
               <textarea 
@@ -78,7 +96,6 @@ export default function Contact() {
               />
             </div>
 
-            {/* Submit Button */}
             <motion.button
               whileHover={{ scale: 1.02, backgroundColor: "#000", color: "#fff" }}
               whileTap={{ scale: 0.98 }}
