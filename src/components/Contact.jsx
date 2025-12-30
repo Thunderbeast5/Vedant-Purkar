@@ -103,7 +103,7 @@ export default function Contact() {
             <motion.button
               whileHover={{ scale: 1.02, backgroundColor: "#000", color: "#fff" }}
               whileTap={{ scale: 0.98 }}
-              className="w-full py-5 rounded-full border-2 border-black text-sm font-black uppercase tracking-[0.2em] transition-all duration-300"
+              className="w-full py-5 rounded-full border-2 border-black text-xl font-black uppercase tracking-[0.2em] transition-all duration-300"
             >
               Send Message
             </motion.button>
