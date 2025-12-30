@@ -26,10 +26,10 @@ export default function Contact() {
           <div ref={headerRef} className="relative">
             {/* GAP ADJUSTMENTS:
                 - Changed 'tracking-tighter' to 'tracking-wide' (letter gap)
-                - Changed 'leading-[0.9]' to 'leading-tight' (line gap)
+                - Changed 'leading-tight' to 'leading-[0.85]' (line gap - reduced)
             */}
             <h2 
-              className="text-6xl md:text-8xl font-black uppercase leading-tight tracking-wide"
+              className="text-6xl md:text-8xl font-black uppercase leading-[0.85] tracking-wide"
               style={{ 
                 WebkitTextStroke: "2px #000000", 
                 color: "transparent" 
@@ -40,7 +40,7 @@ export default function Contact() {
 
             <motion.h2 
               style={{ opacity: textFill }}
-              className="absolute inset-0 text-6xl md:text-8xl font-black uppercase leading-tight tracking-wide text-black"
+              className="absolute inset-0 text-6xl md:text-8xl font-black uppercase leading-[0.85] tracking-wide text-black"
             >
               Let's <br /> Get In <br /> Touch
             </motion.h2>
