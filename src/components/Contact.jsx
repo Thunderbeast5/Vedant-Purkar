@@ -46,20 +46,21 @@ export default function Contact() {
             </motion.h2>
           </div>
 
-          <motion.div
-            initial={{ clipPath: "inset(0 100% 0 0)" }}
-            whileInView={{ clipPath: "inset(0 0% 0 0)" }}
-            transition={{ delay: 0.4, duration: 1, ease: "easeInOut" }}
-            viewport={{ once: true }}
-            className="pt-4" // Extra top padding for more gap
-          >
-            <a 
-              href="mailto:alex@3dturner.com" 
-              className="text-xl md:text-2xl font-bold border-b-2 border-black pb-1 hover:opacity-60 transition-opacity"
+          <div className="pt-4 border-b-2 border-black inline-block">
+            <motion.div
+              initial={{ clipPath: "inset(0 100% 0 0)" }}
+              whileInView={{ clipPath: "inset(0 0% 0 0)" }}
+              transition={{ delay: 0.4, duration: 1, ease: "easeInOut" }}
+              viewport={{ once: true }}
             >
-              alex@3dturner.com
-            </a>
-          </motion.div>
+              <a 
+                href="mailto:alex@3dturner.com" 
+                className="text-xl md:text-2xl font-bold pb-1 hover:opacity-60 transition-opacity"
+              >
+                vedant.purkar05@gmail.com
+              </a>
+            </motion.div>
+          </div>
         </div>
 
         {/* --- RIGHT SIDE: CONTACT FORM --- */}
