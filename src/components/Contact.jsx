@@ -47,9 +47,9 @@ export default function Contact() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            initial={{ clipPath: "inset(0 100% 0 0)" }}
+            whileInView={{ clipPath: "inset(0 0% 0 0)" }}
+            transition={{ delay: 0.4, duration: 1, ease: "easeInOut" }}
             viewport={{ once: true }}
             className="pt-4" // Extra top padding for more gap
           >
