@@ -5,13 +5,13 @@ export default function Contact() {
   const containerRef = useRef(null);
   const headerRef = useRef(null);
 
-  // 1. Setup Scroll Animation for the heading fill
+  // Scroll animation for header color fill
   const { scrollYProgress } = useScroll({
     target: headerRef,
     offset: ["start end", "end start"]
   });
 
-  // 2. Maps the scroll progress to the opacity fill (0 to 1)
+  // Sharp transition from outline to solid black
   const textFill = useTransform(scrollYProgress, [0.35, 0.5], [0, 1]);
 
   return (
@@ -21,12 +21,15 @@ export default function Contact() {
     >
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-start">
         
-        {/* --- LEFT SIDE: TEXT CONTENT WITH SCROLL REVEAL --- */}
-        <div className="space-y-8">
+        {/* --- LEFT SIDE: TEXT CONTENT --- */}
+        <div className="space-y-12"> {/* Increased gap between header and email */}
           <div ref={headerRef} className="relative">
-            {/* Outline text (Base Layer) */}
+            {/* GAP ADJUSTMENTS:
+                - Changed 'tracking-tighter' to 'tracking-wide' (letter gap)
+                - Changed 'leading-[0.9]' to 'leading-tight' (line gap)
+            */}
             <h2 
-              className="text-6xl md:text-8xl font-black uppercase leading-[0.9] tracking-tighter"
+              className="text-6xl md:text-8xl font-black uppercase leading-tight tracking-wide"
               style={{ 
                 WebkitTextStroke: "2px #000000", 
                 color: "transparent" 
@@ -35,10 +38,9 @@ export default function Contact() {
               Let's <br /> Get In <br /> Touch
             </h2>
 
-            {/* Filled text (Animated Layer) */}
             <motion.h2 
               style={{ opacity: textFill }}
-              className="absolute inset-0 text-6xl md:text-8xl font-black uppercase leading-[0.9] tracking-tighter text-black"
+              className="absolute inset-0 text-6xl md:text-8xl font-black uppercase leading-tight tracking-wide text-black"
             >
               Let's <br /> Get In <br /> Touch
             </motion.h2>
@@ -49,6 +51,7 @@ export default function Contact() {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
             viewport={{ once: true }}
+            className="pt-4" // Extra top padding for more gap
           >
             <a 
               href="mailto:alex@3dturner.com" 
