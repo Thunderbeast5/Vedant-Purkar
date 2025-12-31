@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="relative">
       <Navbar />
-      {/* <Hero /> */}
+      <Hero />
       <Skills />
       <About />
       <Services />
