@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
+void motion;
+
 export default function About() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -15,7 +17,8 @@ export default function About() {
   return (
     <section 
       ref={containerRef} 
-      className="relative min-h-screen bg-[#E3E3E3] text-black flex flex-col items-center justify-start px-4 sm:px-6 overflow-hidden pt-16 sm:pt-24 md:pt-32 pb-8 sm:pb-12 md:pb-20 font-titillium"
+      id="about"
+      className="relative min-h-screen bg-[#E3E3E3] text-black flex flex-col items-center justify-center px-6 overflow-hidden py-20 font-titillium scroll-mt-16"
     >
       {/* --- Floating 3D Elements --- */}
       <motion.div 

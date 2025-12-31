@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
+void motion;
+
 const projectList = [
   {
     id: "01",
@@ -63,8 +65,9 @@ export default function Projects() {
 
   return (
     <section 
+      id="projects"
       ref={containerRef} 
-      className="bg-[#E3E3E3] text-black py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 font-titillium min-h-screen"
+      className="bg-[#E3E3E3] text-black py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 font-titillium min-h-screen scroll-mt-16"
     >
       <div className="max-w-7xl mx-auto">
         

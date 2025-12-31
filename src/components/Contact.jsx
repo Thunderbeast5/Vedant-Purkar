@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
+void motion;
+
 export default function Contact() {
   const containerRef = useRef(null);
   const headerRef = useRef(null);
@@ -16,8 +18,9 @@ export default function Contact() {
 
   return (
     <section 
+      id="contact"
       ref={containerRef}
-      className="bg-[#E3E3E3] text-black pt-12 sm:pt-20 md:pt-32 pb-4 sm:pb-6 md:pb-4 px-4 sm:px-6 md:px-12 font-titillium min-h-fit md:min-h-screen flex items-center"
+      className="bg-[#E3E3E3] text-black pt-12 sm:pt-20 md:pt-32 pb-4 sm:pb-6 md:pb-4 px-4 sm:px-6 md:px-12 font-titillium min-h-fit md:min-h-screen flex items-center scroll-mt-16"
     >
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-12 md:gap-16 lg:gap-32 items-start">
         

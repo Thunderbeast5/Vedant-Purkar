@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
+void motion;
+
 const services = [
   {
     id: "01",
@@ -45,7 +47,8 @@ export default function Services() {
   return (
     <section 
       ref={containerRef} 
-      className="bg-[#E3E3E3] text-black py-8 sm:py-12 md:py-20 px-4 sm:px-6 md:px-12 font-titillium overflow-hidden"
+      id="services"
+      className="bg-[#E3E3E3] text-black py-8 sm:py-12 md:py-20 px-4 sm:px-6 md:px-12 font-titillium overflow-hidden scroll-mt-16"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header with Scroll Animation */}

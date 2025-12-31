@@ -6,6 +6,8 @@ import { IoLogoFigma, IoLogoJavascript } from "react-icons/io5";
 import { FaGithub, FaDocker } from "react-icons/fa";
 import { motion, useScroll, useTransform } from 'framer-motion';
 
+void motion;
+
 const SKILLS = [
   { name: "C++", icon: <TbBrandCpp className="size-5 md:size-6" /> },
   { name: "Python", icon: <DiPython className="size-5 md:size-6" /> },
@@ -67,7 +69,7 @@ export default function Skills() {
   const xRight = useTransform(scrollYProgress, [0, 1], [200, -200]);
 
   return (
-    <section ref={containerRef} className="relative bg-[#E3E3E3] pt-10 pb-24 md:pt-15 md:pb-40 overflow-hidden">
+    <section id="skills" ref={containerRef} className="relative bg-[#E3E3E3] pt-10 pb-24 md:pt-15 md:pb-40 overflow-hidden scroll-mt-16">
 
       <div className="mb-12 md:mb-22">
         <ScrollingRow items={SKILLS} baseVelocity={20} />

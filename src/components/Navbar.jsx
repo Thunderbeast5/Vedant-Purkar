@@ -31,10 +31,11 @@ const Navbar = () => {
   }, [lastScrollY]);
 
   const navLinks = [
-    { name: 'ABOUT', href: '#' },
-    { name: 'SKILLS', href: '#' },
-    { name: 'PROJECTS', href: '#' },
-    { name: 'CONTACT', href: '#' },
+    { name: 'ABOUT', href: '#about' },
+    { name: 'SKILLS', href: '#skills' },
+    { name: 'SERVICES', href: '#services' },
+    { name: 'PROJECTS', href: '#projects' },
+    { name: 'CONTACT', href: '#contact' },
   ];
 
   return (
@@ -52,6 +53,7 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
+                onClick={() => setIsOpen(false)}
                 className="text-black text-s font-bold tracking-[0.3em] hover:opacity-40 transition-all duration-200"
               >
                 {link.name}
@@ -79,7 +81,12 @@ const Navbar = () => {
         <div className="sm:hidden bg-[#e3e3e3] border-t border-gray-300">
           <div className="flex flex-col items-center py-4 space-y-4">
             {navLinks.map((link) => (
-              <a key={link.name} href={link.href} className="text-black text-xs font-bold tracking-widest">
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="text-black text-xs font-bold tracking-widest"
+              >
                 {link.name}
               </a>
             ))}
