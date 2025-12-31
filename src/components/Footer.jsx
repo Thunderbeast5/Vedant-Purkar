@@ -1,105 +1,113 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function Footer() {
+  const socialLinks = ["Instagram", "Facebook", "Artstation", "Deviantart"];
+  
+  const contactInfo = {
+    email: "alex@3dturner.com",
+    phone: "+1 (555) 123-4567",
+    address: "123 Creative Lane, Suite 45, Design City, CA 90210"
+  };
+
+  const shapes = [
+    { color: "#7C3AED", type: "cross" }, // Purple Cross
+    { color: "#BEF264", type: "dots" },  // Lime Dots
+    { color: "#FFFFFF", type: "arc" },   // White Arc
+    { color: "#8B5CF6", type: "circle" }, // Purple Circle
+    { color: "#FFFFFF", type: "zigzag" }, // White Zigzag
+    { color: "#F59E0B", type: "semi" },   // Orange Semicircle
+    { color: "#FFFFFF", type: "tri" },    // White Triangle
+    { color: "#EC4899", type: "ring" }    // Pink Ring
+  ];
+
   return (
-    <div className=" bg-black text-white p-8 md:p-16">
+    <footer className="bg-black text-white px-6 md:px-12 pt-20 pb-10 rounded-t-[3rem] font-titillium">
       <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-8 font-titillium">
-          {/* Name */}
-          <div>
-            <h1 className="text-6xl md:text-8xl font-black tracking-tight leading-none font-titillium">
-              <span className="text-transparent" style={{
-                WebkitTextStroke: '2px white',
-                textStroke: '2px white'
-              }}>ALEX</span>
-            </h1>
-            <h1 className="text-6xl md:text-8xl font-black tracking-tight leading-none">
-              <span className="text-transparent" style={{
-                WebkitTextStroke: '2px white',
-                textStroke: '2px white'
-              }}>TURNER</span>
-            </h1>
+        
+        {/* --- TOP SECTION: BRANDING & LINKS --- */}
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-24">
+          
+          {/* Logo / Name */}
+          <div className="select-none">
+            <h2 
+              className="text-6xl md:text-8xl font-black uppercase leading-[0.85] tracking-tighter"
+              style={{ WebkitTextStroke: "1px #ffffff", color: "transparent" }}
+            >
+              vedant<br /> purkar
+            </h2>
           </div>
 
-          {/* Contact Info */}
-          <div className="flex gap-16 text-sm">
+          <div className="flex flex-col md:flex-row gap-16 md:gap-32">
+            {/* Social Links */}
             <div>
-              <h3 className="font-bold mb-3">SOCIAL</h3>
-              <ul className="space-y-1 text-gray-400">
-                <li>Instagram</li>
-                <li>Facebook</li>
-                <li>Artstation</li>
-                <li>Deviantart</li>
+              <h4 className="text-xs uppercase font-black tracking-widest opacity-40 mb-6">Social</h4>
+              <ul className="space-y-3">
+                {socialLinks.map((link) => (
+                  <li key={link}>
+                    <motion.a 
+                      whileHover={{ x: 5 }}
+                      href={`#${link.toLowerCase()}`} 
+                      className="text-sm font-bold hover:text-gray-400 transition-colors"
+                    >
+                      {link}
+                    </motion.a>
+                  </li>
+                ))}
               </ul>
             </div>
+
+            {/* Contact Info */}
             <div>
-              <h3 className="font-bold mb-3">CONTACT</h3>
-              <ul className="space-y-1 text-gray-400">
-                <li>alex@3dturner.com</li>
-                <li>+1 (555) 123-4567</li>
-                <li>123 Creative Lane, Suite 45</li>
-                <li>Design City, CA 90210</li>
+              <h4 className="text-xs uppercase font-black tracking-widest opacity-40 mb-6">Contact</h4>
+              <ul className="space-y-4 max-w-[200px]">
+                <li>
+                  <a href={`mailto:${contactInfo.email}`} className="text-sm font-bold hover:underline">
+                    {contactInfo.email}
+                  </a>
+                </li>
+                <li className="text-sm font-bold">{contactInfo.phone}</li>
+                <li className="text-sm font-bold opacity-70 leading-relaxed">
+                  {contactInfo.address}
+                </li>
               </ul>
             </div>
           </div>
         </div>
 
-        {/* Geometric Shapes Row */}
-        <div className="flex items-center justify-between gap-4 flex-wrap">
-          {/* Purple blob shape */}
-          <div className="relative w-24 h-24 md:w-32 md:h-32">
-            <svg viewBox="0 0 100 100" className="w-full h-full">
-              <path d="M20,50 Q20,20 40,20 L60,20 Q80,20 80,40 L80,60 Q80,80 60,80 L30,80 Q20,80 20,70 Z" fill="#8b5cf6"/>
-            </svg>
-          </div>
+        {/* --- BOTTOM SECTION: GEOMETRIC SHAPES --- */}
+        <div className="flex justify-between items-center gap-2 overflow-hidden py-8 border-t border-white/10">
+          {shapes.map((shape, i) => (
+            <motion.div
+              key={i}
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="flex-1 h-16 md:h-24 flex items-center justify-center"
+            >
+              {/* Simplified Geometric Visuals */}
+              <div 
+                className="w-full h-full max-w-[80px]" 
+                style={{ 
+                  backgroundColor: shape.type === "ring" ? "transparent" : shape.color,
+                  border: shape.type === "ring" ? `12px solid ${shape.color}` : "none",
+                  borderRadius: shape.type === "circle" || shape.type === "ring" ? "999px" : 
+                                shape.type === "semi" ? "100px 100px 0 0" : 
+                                shape.type === "dots" ? "10px" : "0px",
+                  clipPath: shape.type === "tri" ? "polygon(50% 0%, 0% 100%, 100% 100%)" : 
+                            shape.type === "arc" ? "circle(50% at 100% 100%)" : "none"
+                }} 
+              />
+            </motion.div>
+          ))}
+        </div>
 
-          {/* Two lime circles */}
-          <div className="flex gap-2">
-            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-lime-400"></div>
-            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-lime-400"></div>
-          </div>
-
-          {/* White curved shape */}
-          <div className="relative w-24 h-24 md:w-32 md:h-32">
-            <svg viewBox="0 0 100 100" className="w-full h-full">
-              <path d="M30,20 Q50,20 70,40 Q90,60 70,80 L30,80 Q10,80 10,60 Q10,40 30,20 Z" fill="white"/>
-            </svg>
-          </div>
-
-          {/* Purple circle */}
-          <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-purple-600"></div>
-
-          {/* White angular shapes */}
-          <div className="flex gap-2">
-            <div className="relative w-12 h-20 md:w-16 md:h-24 bg-white transform -skew-x-12"></div>
-            <div className="relative w-12 h-20 md:w-16 md:h-24 bg-white transform skew-x-12"></div>
-          </div>
-
-          {/* Orange butterfly/bow shape */}
-          <div className="relative w-24 h-20 md:w-32 md:h-24">
-            <svg viewBox="0 0 100 80" className="w-full h-full">
-              <circle cx="25" cy="40" r="25" fill="#fb923c"/>
-              <circle cx="75" cy="40" r="25" fill="#fb923c"/>
-            </svg>
-          </div>
-
-          {/* White triangle */}
-          <div className="relative w-20 h-20 md:w-24 md:h-24">
-            <svg viewBox="0 0 100 100" className="w-full h-full">
-              <polygon points="50,20 90,80 10,80" fill="white"/>
-            </svg>
-          </div>
-
-          {/* Pink donut */}
-          <div className="relative w-24 h-24 md:w-32 md:h-32">
-            <svg viewBox="0 0 100 100" className="w-full h-full">
-              <circle cx="50" cy="50" r="40" fill="#ec4899"/>
-              <circle cx="50" cy="50" r="20" fill="black"/>
-            </svg>
-          </div>
+        <div className="mt-10 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase font-bold tracking-[0.3em] opacity-30">
+          <p>© 2025 Vedant Purkar</p>
+          <p>Built with React & Framer Motion</p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
