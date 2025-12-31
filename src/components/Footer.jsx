@@ -2,12 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function Footer() {
-  const socialLinks = ["Instagram", "Facebook", "Artstation", "Deviantart"];
+  const socialLinks = ["Linked In", "Github", "Instagram"];
   
   const contactInfo = {
-    email: "alex@3dturner.com",
-    phone: "+1 (555) 123-4567",
-    address: "123 Creative Lane, Suite 45, Design City, CA 90210"
+    email: "vedant.purkar05@gmail.com",
+    phone: "+91 84469 95092",
+    address: "Nashik, Maharashtra, India"
   };
 
   const shapes = [
@@ -31,7 +31,7 @@ export default function Footer() {
           {/* Logo / Name */}
           <div className="select-none">
             <h2 
-              className="text-6xl md:text-8xl font-black uppercase leading-[0.85] tracking-tighter"
+              className="text-6xl md:text-8xl font-black uppercase leading-[0.85] tracking-wider"
               style={{ WebkitTextStroke: "1px #ffffff", color: "transparent" }}
             >
               vedant<br /> purkar
@@ -41,14 +41,14 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row gap-16 md:gap-32">
             {/* Social Links */}
             <div>
-              <h4 className="text-xs uppercase font-black tracking-widest opacity-40 mb-6">Social</h4>
+              <h4 className=" uppercase font-black tracking-widest opacity-40 mb-6">Social</h4>
               <ul className="space-y-3">
                 {socialLinks.map((link) => (
                   <li key={link}>
                     <motion.a 
                       whileHover={{ x: 5 }}
                       href={`#${link.toLowerCase()}`} 
-                      className="text-sm font-bold hover:text-gray-400 transition-colors"
+                      className="  hover:text-gray-400 transition-colors"
                     >
                       {link}
                     </motion.a>
@@ -59,15 +59,15 @@ export default function Footer() {
 
             {/* Contact Info */}
             <div>
-              <h4 className="text-xs uppercase font-black tracking-widest opacity-40 mb-6">Contact</h4>
+              <h4 className=" uppercase font-black tracking-widest opacity-40 mb-6">Contact</h4>
               <ul className="space-y-4 max-w-[200px]">
                 <li>
-                  <a href={`mailto:${contactInfo.email}`} className="text-sm font-bold hover:underline">
+                  <a href={`mailto:${contactInfo.email}`} className=" hover:underline">
                     {contactInfo.email}
                   </a>
                 </li>
-                <li className="text-sm font-bold">{contactInfo.phone}</li>
-                <li className="text-sm font-bold opacity-70 leading-relaxed">
+                <li className="">{contactInfo.phone}</li>
+                <li className="">
                   {contactInfo.address}
                 </li>
               </ul>
