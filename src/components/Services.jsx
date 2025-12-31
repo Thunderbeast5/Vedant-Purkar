@@ -45,27 +45,26 @@ export default function Services() {
   return (
     <section 
       ref={containerRef} 
-      className="bg-[#E3E3E3] text-black py-20 px-6 md:px-12 font-titillium overflow-hidden"
+      className="bg-[#E3E3E3] text-black py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 font-titillium overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
-        
         {/* Section Header with Scroll Animation */}
-        <div ref={headerRef} className="mb-20 text-center relative">
+        <div ref={headerRef} className="mb-12 sm:mb-16 md:mb-20 text-center relative">
           {/* Outline text */}
           <h2 
-            className="text-7xl md:text-[10rem] font-black uppercase tracking-wide leading-none mb-4"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[10rem] font-black uppercase tracking-wide leading-none mb-4"
             style={{ 
-              WebkitTextStroke: "2px #000000", 
+              WebkitTextStroke: "1.5px #000000", 
               color: "transparent" 
             }}
           >
             Services
           </h2>
-          
+
           {/* Filled text that fades in on scroll */}
           <motion.h2 
             style={{ opacity: textFill }}
-            className="absolute inset-0 text-7xl md:text-[10rem] font-black uppercase tracking-wide leading-none text-black mb-4"
+            className="absolute inset-0 text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[10rem] font-black uppercase tracking-wide leading-none text-black mb-4"
           >
             Services
           </motion.h2>
@@ -104,7 +103,7 @@ function ServiceItem({ service, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="relative py-12 flex flex-col md:flex-row items-start md:items-center gap-8 border-b border-black/10"
+      className="relative py-6 sm:py-8 md:py-12 flex flex-col md:flex-row items-start md:items-center gap-4 sm:gap-6 md:gap-8 border-b border-black/10"
     >
       {/* Animated Bottom Border (Mimicking video style) */}
       <motion.div 
@@ -113,16 +112,16 @@ function ServiceItem({ service, index }) {
       />
 
       {/* Service Number */}
-      <div className="text-6xl md:text-9xl font-black  leading-none min-w-[120px]">
+      <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-9xl font-black leading-none min-w-[80px] sm:min-w-[100px] md:min-w-[120px]">
         {service.id}
       </div>
 
       {/* Service Content */}
       <div className="flex-1">
-        <h3 className="text-2xl md:text-4xl font-black uppercase mb-3">
+        <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black uppercase mb-2 sm:mb-3">
           {service.title}
         </h3>
-        <p className="text-lg md:text-xl text-black/70 max-w-2xl font-medium leading-relaxed">
+        <p className="text-base sm:text-lg md:text-xl text-black/70 max-w-2xl font-medium leading-relaxed">
           {service.description}
         </p>
       </div>
