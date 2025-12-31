@@ -64,30 +64,30 @@ export default function Projects() {
   return (
     <section 
       ref={containerRef} 
-      className="bg-[#E3E3E3] text-black py-32 px-6 md:px-12 font-titillium min-h-screen"
+      className="bg-[#E3E3E3] text-black py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 font-titillium min-h-screen"
     >
       <div className="max-w-7xl mx-auto">
         
         {/* --- SECTION HEADER --- */}
-        <div ref={headerRef} className="relative mb-32 text-center select-none">
+        <div ref={headerRef} className="relative mb-16 sm:mb-24 md:mb-32 text-center select-none">
           {/* Outline text */}
           <h2 
-            className="text-7xl md:text-[10rem] font-black uppercase tracking-normal leading-none"
-            style={{ WebkitTextStroke: "2px #000000", color: "transparent" }}
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-[10rem] font-black uppercase tracking-normal leading-none"
+            style={{ WebkitTextStroke: "1.5px #000000", color: "transparent" }}
           >
             Projects
           </h2>
           {/* Filled text that fades in on scroll */}
           <motion.h2 
             style={{ opacity: textFill }}
-            className="absolute inset-0 text-7xl md:text-[10rem] font-black uppercase tracking-normal leading-none text-black"
+            className="absolute inset-0 text-5xl sm:text-6xl md:text-7xl lg:text-[10rem] font-black uppercase tracking-normal leading-none text-black"
           >
             Projects
           </motion.h2>
         </div>
 
         {/* --- STACKING CONTAINER --- */}
-        <div className={`relative flex flex-col gap-[20vh] ${showAll ? 'pb-[30vh]' : 'pb-[10vh]'}`}>
+        <div className={`relative flex flex-col gap-8 sm:gap-12 md:gap-[20vh] ${showAll ? 'pb-12 sm:pb-20 md:pb-[30vh]' : 'pb-8 sm:pb-12 md:pb-[10vh]'}`}>
           {visibleProjects.map((project, index) => (
             <ProjectCard 
               key={project.id} 
@@ -99,22 +99,22 @@ export default function Projects() {
 
         {/* --- SHOW MORE BUTTON --- */}
         {!showAll && projectList.length > 4 && (
-          <div className="flex justify-center -mt-8">
+          <div className="flex justify-center -mt-4 sm:-mt-6 md:-mt-8">
             <motion.button
               onClick={() => setShowAll(true)}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               whileHover={{ scale: 1.05, backgroundColor: "#000", color: "#fff" }}
-              className="px-12 py-4 rounded-full border-2 border-black text-sm font-bold uppercase z-10 tracking-widest transition-all bg-white shadow-lg"
+              className="px-8 sm:px-10 md:px-12 py-3 sm:py-3.5 md:py-4 rounded-full border-2 border-black text-xs sm:text-sm font-bold uppercase z-10 tracking-widest transition-all bg-white shadow-lg"
             >
               Show More Projects
             </motion.button>
           </div>
         )}
 
-        {/* --- SHOW LESS BUTTON (Optional) --- */}
+        {/* --- SHOW LESS BUTTON --- */}
         {showAll && (
-          <div className="flex justify-center -mt-8">
+          <div className="flex justify-center -mt-4 sm:-mt-6 md:-mt-8">
             <motion.button
               onClick={() => {
                 setShowAll(false);
@@ -124,7 +124,7 @@ export default function Projects() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               whileHover={{ scale: 1.05, backgroundColor: "#000", color: "#fff" }}
-              className="px-12 py-4 rounded-full border-2 border-black text-sm font-bold uppercase tracking-widest transition-all bg-white shadow-lg"
+              className="px-8 sm:px-10 md:px-12 py-3 sm:py-3.5 md:py-4 rounded-full border-2 border-black text-xs sm:text-sm font-bold uppercase tracking-widest transition-all bg-white shadow-lg"
             >
               Show Less
             </motion.button>
@@ -137,7 +137,10 @@ export default function Projects() {
 
 function ProjectCard({ project, index }) {
   // Each card sticks at a slightly lower position than the previous one
-  const topOffset = 100 + (index * 90);
+  // Reduce offset on mobile for better visibility
+  const topOffset = typeof window !== 'undefined' && window.innerWidth < 768 
+    ? 60 + (index * 40) 
+    : 100 + (index * 90);
 
   return (
     <div 
@@ -149,31 +152,34 @@ function ProjectCard({ project, index }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="bg-white/90 backdrop-blur-md rounded-[3rem] p-8 md:p-12 border border-black/30 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] mb-10"
+        className="bg-white/90 backdrop-blur-md rounded-2xl sm:rounded-3xl md:rounded-[3rem] p-4 sm:p-6 md:p-8 lg:p-12 border border-black/30 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] mb-6 sm:mb-8 md:mb-10"
       >
-        <div className="flex justify-between items-center mb-10">
-          <div className="flex items-center gap-6">
-            <span className="text-3xl md:text-5xl font-black">{project.id}</span>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6 mb-6 sm:mb-8 md:mb-10">
+          <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
+            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black">{project.id}</span>
             <div>
-              <h3 className="text-xl md:text-2xl font-black uppercase">{project.client}</h3>
+              <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-black uppercase leading-tight">
+                {project.client}
+              </h3>
             </div>
           </div>
           
           <motion.button 
             whileHover={{ scale: 1.05, backgroundColor: "#000", color: "#fff" }}
-            className="px-6 py-2 rounded-full border border-black text-xs font-bold uppercase tracking-widest transition-all"
+            whileTap={{ scale: 0.95 }}
+            className="px-4 sm:px-5 md:px-6 py-2 rounded-full border border-black text-[10px] sm:text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap"
           >
             Live Project
           </motion.button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-64 md:h-96">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6 h-48 sm:h-56 md:h-64 lg:h-96">
           {project.images.map((img, i) => (
-            <div key={i} className="overflow-hidden rounded-[2rem]">
+            <div key={i} className="overflow-hidden rounded-xl sm:rounded-2xl md:rounded-[2rem]">
               <motion.img 
                 whileHover={{ scale: 1.05 }}
                 src={img} 
-                alt="Project Showcase" 
+                alt={`${project.client} project ${i + 1}`}
                 className="w-full h-full object-cover transition-all duration-500"
               />
             </div>
