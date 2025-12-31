@@ -11,37 +11,74 @@ export default function Footer() {
   };
 
   const shapes = [
-    { color: "#7C3AED", svg: <path d="M50 0C50 27.6 27.6 50 0 50C27.6 50 50 72.4 50 100C50 72.4 72.4 50 100 50C72.4 50 50 27.6 50 0Z" fill="currentColor" /> },
-    { color: "#BEF264", svg: <><circle cx="25" cy="25" r="15" fill="currentColor" /><circle cx="75" cy="25" r="15" fill="currentColor" /><circle cx="25" cy="75" r="15" fill="currentColor" /><circle cx="75" cy="75" r="15" fill="currentColor" /></> },
-    { color: "#FFFFFF", svg: <path d="M100 100H0C0 44.77 44.77 0 100 0V100Z" fill="currentColor" /> },
-    { color: "#8B5CF6", svg: <circle cx="50" cy="50" r="50" fill="currentColor" /> },
-    // { color: "#F59E0B", svg: <path d="M100 100A50 50 0 0 0 0 100" fill="currentColor" /> },
-    { color: "#F59E0B", svg: <path d="M50 0L100 100H0Z" fill="currentColor" /> },
-    { color: "#EC4899", svg: <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="15" /> },
     {
-    color: "#06B6D4",
-    svg: (
-      <path
-        d="M0 20L25 40L50 20L75 40L100 20V80L75 60L50 80L25 60L0 80Z"
-        fill="currentColor"
-      />
-    )
-  },
-  
-   // 4-petal flower
-  {
-    color: "#F472B6",
-    svg: (
-      <>
-        <circle cx="50" cy="25" r="18" fill="currentColor" />
-        <circle cx="75" cy="50" r="18" fill="currentColor" />
-        <circle cx="50" cy="75" r="18" fill="currentColor" />
-        <circle cx="25" cy="50" r="18" fill="currentColor" />
-        <circle cx="50" cy="50" r="10" fill="currentColor" />
-      </>
-    )
-  },
-  
+      color: "#7C3AED",
+      svg: (
+        <path
+          d="M50 0C50 27.6 27.6 50 0 50C27.6 50 50 72.4 50 100C50 72.4 72.4 50 100 50C72.4 50 50 27.6 50 0Z"
+          fill="currentColor"
+        />
+      ),
+    },
+    {
+      color: "#BEF264",
+      svg: (
+        <>
+          <circle cx="25" cy="25" r="15" fill="currentColor" />
+          <circle cx="75" cy="25" r="15" fill="currentColor" />
+          <circle cx="25" cy="75" r="15" fill="currentColor" />
+          <circle cx="75" cy="75" r="15" fill="currentColor" />
+        </>
+      ),
+    },
+    {
+      color: "#FFFFFF",
+      svg: (
+        <path d="M100 100H0C0 44.77 44.77 0 100 0V100Z" fill="currentColor" />
+      ),
+    },
+    {
+      color: "#8B5CF6",
+      svg: <circle cx="50" cy="50" r="50" fill="currentColor" />,
+    },
+    // { color: "#F59E0B", svg: <path d="M100 100A50 50 0 0 0 0 100" fill="currentColor" /> },
+    {
+      color: "#F59E0B",
+      svg: <path d="M50 0L100 100H0Z" fill="currentColor" />,
+    },
+    {
+      color: "#EC4899",
+      svg: (
+        <circle
+          cx="50"
+          cy="50"
+          r="40"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="15"
+        />
+      ),
+    },
+    {
+      color: "#06B6D4",
+      svg: (
+        <path
+          d="M0 20L25 40L50 20L75 40L100 20V80L75 60L50 80L25 60L0 80Z"
+          fill="currentColor"
+        />
+      ),
+    },
+
+    // 4-petal flower
+    {
+      color: "#F472B6",svg: (<><circle cx="50" cy="25" r="18" fill="currentColor" />
+          <circle cx="75" cy="50" r="18" fill="currentColor" />
+          <circle cx="50" cy="75" r="18" fill="currentColor" />
+          <circle cx="25" cy="50" r="18" fill="currentColor" />
+          <circle cx="50" cy="50" r="10" fill="currentColor" />
+        </>
+      ),
+    },
   ];
 
   return (
@@ -49,7 +86,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         
         {/* --- TOP SECTION --- */}
-        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-24">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
           <div className="select-none">
             <h2 
               className="text-6xl md:text-8xl font-black uppercase leading-[0.85] tracking-wider"
@@ -89,7 +126,7 @@ export default function Footer() {
         </div>
 
         {/* --- BOTTOM SECTION: UPDATED SHAPES --- */}
-        <div className="flex justify-between items-center gap-1 md:gap-2 overflow-hidden py-12 border-t border-white/10">
+        <div className="flex justify-between items-center gap-1 md:gap-2 overflow-hidden py-6 border-t border-white/10">
           {shapes.map((shape, i) => (
             <motion.div
               key={i}
