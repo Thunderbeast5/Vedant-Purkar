@@ -41,7 +41,6 @@ export default function Footer() {
       color: "#8B5CF6",
       svg: <circle cx="50" cy="50" r="50" fill="currentColor" />,
     },
-    // { color: "#F59E0B", svg: <path d="M100 100A50 50 0 0 0 0 100" fill="currentColor" /> },
     {
       color: "#F59E0B",
       svg: <path d="M50 0L100 100H0Z" fill="currentColor" />,
@@ -68,10 +67,11 @@ export default function Footer() {
         />
       ),
     },
-
-    // 4-petal flower
     {
-      color: "#F472B6",svg: (<><circle cx="50" cy="25" r="18" fill="currentColor" />
+      color: "#F472B6",
+      svg: (
+        <>
+          <circle cx="50" cy="25" r="18" fill="currentColor" />
           <circle cx="75" cy="50" r="18" fill="currentColor" />
           <circle cx="50" cy="75" r="18" fill="currentColor" />
           <circle cx="25" cy="50" r="18" fill="currentColor" />
@@ -82,30 +82,31 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black text-white px-6 md:px-12 pt-12 pb-10 rounded-t-[3rem] font-titillium">
+    <footer className="bg-black text-white px-4 sm:px-6 md:px-12 pt-8 sm:pt-10 md:pt-12 pb-6 sm:pb-8 md:pb-10 rounded-t-2xl sm:rounded-t-3xl md:rounded-t-[3rem] font-titillium">
       <div className="max-w-7xl mx-auto">
         
         {/* --- TOP SECTION --- */}
-        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-8 sm:gap-10 md:gap-12 mb-8 sm:mb-10 md:mb-12">
           <div className="select-none">
             <h2 
-              className="text-6xl md:text-8xl font-black uppercase leading-[0.85] tracking-wider"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black uppercase leading-[0.85] tracking-wider"
               style={{ WebkitTextStroke: "1px #ffffff", color: "transparent" }}
             >
               vedant<br /> purkar
             </h2>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-16 md:gap-32">
+          <div className="flex flex-col sm:flex-row gap-8 sm:gap-12 md:gap-16 lg:gap-32 w-full md:w-auto">
             <div>
-              <h4 className="uppercase font-black tracking-widest opacity-40 mb-6">Social</h4>
-              <ul className="space-y-3">
+              <h4 className="uppercase font-black tracking-widest opacity-40 mb-4 sm:mb-5 md:mb-6 text-xs sm:text-sm">Social</h4>
+              <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base">
                 {socialLinks.map((link) => (
                   <li key={link}>
                     <motion.a 
                       whileHover={{ x: 5 }}
+                      whileTap={{ scale: 0.95 }}
                       href={`#${link.toLowerCase().replace(" ", "")}`} 
-                      className="hover:text-gray-400 transition-colors"
+                      className="hover:text-gray-400 transition-colors inline-block"
                     >
                       {link}
                     </motion.a>
@@ -115,9 +116,16 @@ export default function Footer() {
             </div>
 
             <div>
-              <h4 className="uppercase font-black tracking-widest opacity-40 mb-6">Contact</h4>
-              <ul className="space-y-4 max-w-[200px]">
-                <li><a href={`mailto:${contactInfo.email}`} className="hover:underline">{contactInfo.email}</a></li>
+              <h4 className="uppercase font-black tracking-widest opacity-40 mb-4 sm:mb-5 md:mb-6 text-xs sm:text-sm">Contact</h4>
+              <ul className="space-y-3 sm:space-y-4 max-w-[280px] sm:max-w-[200px] text-sm sm:text-base">
+                <li>
+                  <a 
+                    href={`mailto:${contactInfo.email}`} 
+                    className="hover:underline break-all"
+                  >
+                    {contactInfo.email}
+                  </a>
+                </li>
                 <li>{contactInfo.phone}</li>
                 <li className="opacity-70">{contactInfo.address}</li>
               </ul>
@@ -125,22 +133,22 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* --- BOTTOM SECTION: UPDATED SHAPES --- */}
-        <div className="flex justify-between items-center gap-1 md:gap-2 overflow-hidden py-6 border-t border-white/10">
+        {/* --- BOTTOM SECTION: SHAPES --- */}
+        <div className="flex justify-between items-center gap-1 sm:gap-1.5 md:gap-2 overflow-hidden py-4 sm:py-5 md:py-6 border-t border-white/10">
           {shapes.map((shape, i) => (
             <motion.div
               key={i}
               initial={{ y: 30, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
-              // Added Hover Effect Here
               whileHover={{ 
-                scale: 1.2, 
+                scale: 1.15,
                 rotate: 5,
                 transition: { duration: 0.2 } 
               }}
+              whileTap={{ scale: 0.95 }}
               transition={{ delay: i * 0.05, duration: 0.6, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="flex-1 h-24 md:h-40 flex items-center justify-center p-1 cursor-pointer" 
+              className="flex-1 h-16 sm:h-20 md:h-32 lg:h-40 flex items-center justify-center p-1 cursor-pointer" 
               style={{ color: shape.color }}
             >
               <svg viewBox="0 0 100 100" className="w-full h-full object-contain">
@@ -150,7 +158,8 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-10 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase font-bold tracking-[0.3em] opacity-30">
+        {/* --- COPYRIGHT --- */}
+        <div className="mt-6 sm:mt-8 md:mt-10 pt-4 sm:pt-5 md:pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-[9px] sm:text-[10px] uppercase font-bold tracking-[0.25em] sm:tracking-[0.3em] opacity-30 text-center sm:text-left">
           <p>© 2025 Vedant Purkar</p>
           <p>Built with React & Framer Motion</p>
         </div>
