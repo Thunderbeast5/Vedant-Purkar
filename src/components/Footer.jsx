@@ -11,24 +11,21 @@ export default function Footer() {
   };
 
   const shapes = [
-    { color: "#7C3AED", type: "cross" }, // Purple Cross
-    { color: "#BEF264", type: "dots" },  // Lime Dots
-    { color: "#FFFFFF", type: "arc" },   // White Arc
-    { color: "#8B5CF6", type: "circle" }, // Purple Circle
-    { color: "#FFFFFF", type: "zigzag" }, // White Zigzag
-    { color: "#F59E0B", type: "semi" },   // Orange Semicircle
-    { color: "#FFFFFF", type: "tri" },    // White Triangle
-    { color: "#EC4899", type: "ring" }    // Pink Ring
+    { color: "#7C3AED", svg: <path d="M50 0C50 27.6 27.6 50 0 50C27.6 50 50 72.4 50 100C50 72.4 72.4 50 100 50C72.4 50 50 27.6 50 0Z" fill="currentColor" /> },
+    { color: "#BEF264", svg: <><circle cx="25" cy="25" r="15" fill="currentColor" /><circle cx="75" cy="25" r="15" fill="currentColor" /><circle cx="25" cy="75" r="15" fill="currentColor" /><circle cx="75" cy="75" r="15" fill="currentColor" /></> },
+    { color: "#FFFFFF", svg: <path d="M100 100H0C0 44.77 44.77 0 100 0V100Z" fill="currentColor" /> },
+    { color: "#8B5CF6", svg: <circle cx="50" cy="50" r="50" fill="currentColor" /> },
+    { color: "#F59E0B", svg: <path d="M100 100A50 50 0 0 0 0 100" fill="currentColor" /> },
+    { color: "#FFFFFF", svg: <path d="M50 0L100 100H0Z" fill="currentColor" /> },
+    { color: "#EC4899", svg: <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="15" /> }
   ];
 
   return (
     <footer className="bg-black text-white px-6 md:px-12 pt-20 pb-10 rounded-t-[3rem] font-titillium">
       <div className="max-w-7xl mx-auto">
         
-        {/* --- TOP SECTION: BRANDING & LINKS --- */}
+        {/* --- TOP SECTION --- */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-24">
-          
-          {/* Logo / Name */}
           <div className="select-none">
             <h2 
               className="text-6xl md:text-8xl font-black uppercase leading-[0.85] tracking-wider"
@@ -39,16 +36,15 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col md:flex-row gap-16 md:gap-32">
-            {/* Social Links */}
             <div>
-              <h4 className=" uppercase font-black tracking-widest opacity-40 mb-6">Social</h4>
+              <h4 className="uppercase font-black tracking-widest opacity-40 mb-6">Social</h4>
               <ul className="space-y-3">
                 {socialLinks.map((link) => (
                   <li key={link}>
                     <motion.a 
                       whileHover={{ x: 5 }}
-                      href={`#${link.toLowerCase()}`} 
-                      className="  hover:text-gray-400 transition-colors"
+                      href={`#${link.toLowerCase().replace(" ", "")}`} 
+                      className="hover:text-gray-400 transition-colors"
                     >
                       {link}
                     </motion.a>
@@ -57,48 +53,32 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Contact Info */}
             <div>
-              <h4 className=" uppercase font-black tracking-widest opacity-40 mb-6">Contact</h4>
+              <h4 className="uppercase font-black tracking-widest opacity-40 mb-6">Contact</h4>
               <ul className="space-y-4 max-w-[200px]">
-                <li>
-                  <a href={`mailto:${contactInfo.email}`} className=" hover:underline">
-                    {contactInfo.email}
-                  </a>
-                </li>
-                <li className="">{contactInfo.phone}</li>
-                <li className="">
-                  {contactInfo.address}
-                </li>
+                <li><a href={`mailto:${contactInfo.email}`} className="hover:underline">{contactInfo.email}</a></li>
+                <li>{contactInfo.phone}</li>
+                <li className="opacity-70">{contactInfo.address}</li>
               </ul>
             </div>
           </div>
         </div>
 
-        {/* --- BOTTOM SECTION: GEOMETRIC SHAPES --- */}
-        <div className="flex justify-between items-center gap-2 overflow-hidden py-8 border-t border-white/10">
+        {/* --- BOTTOM SECTION: UPDATED SHAPES --- */}
+        <div className="flex justify-between items-center gap-1 md:gap-2 overflow-hidden py-12 border-t border-white/10">
           {shapes.map((shape, i) => (
             <motion.div
               key={i}
-              initial={{ y: 20, opacity: 0 }}
+              initial={{ y: 30, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
-              transition={{ delay: i * 0.1 }}
+              transition={{ delay: i * 0.05, duration: 0.6, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="flex-1 h-16 md:h-24 flex items-center justify-center"
+              className="flex-1 h-24 md:h-40 flex items-center justify-center p-1" // Increased height to h-40
+              style={{ color: shape.color }}
             >
-              {/* Simplified Geometric Visuals */}
-              <div 
-                className="w-full h-full max-w-[80px]" 
-                style={{ 
-                  backgroundColor: shape.type === "ring" ? "transparent" : shape.color,
-                  border: shape.type === "ring" ? `12px solid ${shape.color}` : "none",
-                  borderRadius: shape.type === "circle" || shape.type === "ring" ? "999px" : 
-                                shape.type === "semi" ? "100px 100px 0 0" : 
-                                shape.type === "dots" ? "10px" : "0px",
-                  clipPath: shape.type === "tri" ? "polygon(50% 0%, 0% 100%, 100% 100%)" : 
-                            shape.type === "arc" ? "circle(50% at 100% 100%)" : "none"
-                }} 
-              />
+              <svg viewBox="0 0 100 100" className="w-full h-full object-contain">
+                {shape.svg}
+              </svg>
             </motion.div>
           ))}
         </div>
