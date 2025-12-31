@@ -132,9 +132,15 @@ export default function Footer() {
               key={i}
               initial={{ y: 30, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
+              // Added Hover Effect Here
+              whileHover={{ 
+                scale: 1.2, 
+                rotate: 5,
+                transition: { duration: 0.2 } 
+              }}
               transition={{ delay: i * 0.05, duration: 0.6, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="flex-1 h-24 md:h-40 flex items-center justify-center p-1" // Increased height to h-40
+              className="flex-1 h-24 md:h-40 flex items-center justify-center p-1 cursor-pointer" 
               style={{ color: shape.color }}
             >
               <svg viewBox="0 0 100 100" className="w-full h-full object-contain">
