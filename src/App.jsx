@@ -6,11 +6,13 @@ import Services from './components/Services';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import BackToTop from './components/BackToTop';
 
 function App() {
   return (
     <div className="relative">
       <Navbar />
+      <BackToTop />
       <Hero />
       <Skills />
       <About />
