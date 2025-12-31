@@ -15,9 +15,33 @@ export default function Footer() {
     { color: "#BEF264", svg: <><circle cx="25" cy="25" r="15" fill="currentColor" /><circle cx="75" cy="25" r="15" fill="currentColor" /><circle cx="25" cy="75" r="15" fill="currentColor" /><circle cx="75" cy="75" r="15" fill="currentColor" /></> },
     { color: "#FFFFFF", svg: <path d="M100 100H0C0 44.77 44.77 0 100 0V100Z" fill="currentColor" /> },
     { color: "#8B5CF6", svg: <circle cx="50" cy="50" r="50" fill="currentColor" /> },
-    { color: "#F59E0B", svg: <path d="M100 100A50 50 0 0 0 0 100" fill="currentColor" /> },
-    { color: "#FFFFFF", svg: <path d="M50 0L100 100H0Z" fill="currentColor" /> },
-    { color: "#EC4899", svg: <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="15" /> }
+    // { color: "#F59E0B", svg: <path d="M100 100A50 50 0 0 0 0 100" fill="currentColor" /> },
+    { color: "#F59E0B", svg: <path d="M50 0L100 100H0Z" fill="currentColor" /> },
+    { color: "#EC4899", svg: <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="15" /> },
+    {
+    color: "#06B6D4",
+    svg: (
+      <path
+        d="M0 20L25 40L50 20L75 40L100 20V80L75 60L50 80L25 60L0 80Z"
+        fill="currentColor"
+      />
+    )
+  },
+  
+   // 4-petal flower
+  {
+    color: "#F472B6",
+    svg: (
+      <>
+        <circle cx="50" cy="25" r="18" fill="currentColor" />
+        <circle cx="75" cy="50" r="18" fill="currentColor" />
+        <circle cx="50" cy="75" r="18" fill="currentColor" />
+        <circle cx="25" cy="50" r="18" fill="currentColor" />
+        <circle cx="50" cy="50" r="10" fill="currentColor" />
+      </>
+    )
+  },
+  
   ];
 
   return (
