@@ -17,7 +17,7 @@ export default function Contact() {
   return (
     <section 
       ref={containerRef}
-      className="bg-[#E3E3E3] text-black py-32 px-6 md:px-12 font-titillium min-h-screen flex items-center"
+      className="bg-[#E3E3E3] text-black pt-32 pb-4 px-6 md:px-12 font-titillium min-h-screen flex items-center"
     >
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-start">
         
