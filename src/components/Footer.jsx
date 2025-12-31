@@ -82,7 +82,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black text-white px-6 md:px-12 pt-20 pb-10 rounded-t-[3rem] font-titillium">
+    <footer className="bg-black text-white px-6 md:px-12 pt-12 pb-10 rounded-t-[3rem] font-titillium">
       <div className="max-w-7xl mx-auto">
         
         {/* --- TOP SECTION --- */}
