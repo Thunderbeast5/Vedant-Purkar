@@ -6,17 +6,17 @@ void motion;
 const projectList = [
   {
     id: "01",
-    client: "SKYLINE STUDIOS",
+    client: "BRIDGELINK",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
     id: "02",
-    client: "PIXEL FORGE",
+    client: "Sahara",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
     id: "03",
-    client: "METAFORM CREATIONS",
+    client: "Pratibhara",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
