@@ -160,7 +160,7 @@ export default function Footer() {
 
         {/* --- COPYRIGHT --- */}
         <div className="mt-6 sm:mt-8 md:mt-10 pt-4 sm:pt-5 md:pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-[9px] sm:text-[10px] uppercase font-bold tracking-[0.25em] sm:tracking-[0.3em] opacity-30 text-center sm:text-left">
-          <p>© 2025 Vedant Purkar</p>
+          <p>© 2026 Vedant Purkar</p>
           <p>Built with React & Framer Motion</p>
         </div>
       </div>
