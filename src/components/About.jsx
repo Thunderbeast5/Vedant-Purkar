@@ -67,8 +67,10 @@ export default function About() {
 
         {/* Contact Button */}
         <motion.button
+          type="button"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
           className="mt-10 sm:mt-12 md:mt-16 px-8 sm:px-10 md:px-12 py-3 sm:py-4 md:py-5 rounded-full bg-white/30 backdrop-blur-md border border-black/30 text-black font-bold uppercase tracking-widest shadow-2xl hover:bg-black hover:text-white transition-all duration-300 text-xs sm:text-sm md:text-base"
         >
           Contact Me

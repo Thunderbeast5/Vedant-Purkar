@@ -29,9 +29,6 @@ export default function Contact() {
     });
   };
 
-  // ============================================
-  // OPTION 1: EmailJS (Configured for your template)
-  // ============================================
   const handleSubmitEmailJS = async (e) => {
     e.preventDefault();
     setStatus('sending');
@@ -62,87 +59,6 @@ export default function Contact() {
     }
   };
 
-  // ============================================
-  // OPTION 2: Formspree (Easiest - No Code Backend)
-  // ============================================
-  const handleSubmitFormspree = async (e) => {
-    e.preventDefault();
-    setStatus('sending');
-
-    try {
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-
-      if (response.ok) {
-        setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setStatus('error');
-      }
-      
-      setTimeout(() => setStatus(''), 3000);
-    } catch (error) {
-      console.error('Error:', error);
-      setStatus('error');
-      setTimeout(() => setStatus(''), 3000);
-    }
-  };
-
-  // ============================================
-  // OPTION 3: Web3Forms (Free, No Signup Needed)
-  // ============================================
-  const handleSubmitWeb3Forms = async (e) => {
-    e.preventDefault();
-    setStatus('sending');
-
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          access_key: 'YOUR_ACCESS_KEY', // Get free key from web3forms.com
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          to: 'vedant.purkar05@gmail.com'
-        })
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setStatus('error');
-      }
-      
-      setTimeout(() => setStatus(''), 3000);
-    } catch (error) {
-      console.error('Error:', error);
-      setStatus('error');
-      setTimeout(() => setStatus(''), 3000);
-    }
-  };
-
-  // ============================================
-  // OPTION 4: Simple mailto (No backend needed)
-  // ============================================
-  const handleSubmitMailto = (e) => {
-    e.preventDefault();
-    const subject = encodeURIComponent(`Contact from ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
-    window.location.href = `mailto:vedant.purkar05@gmail.com?subject=${subject}&body=${body}`;
-  };
 
   // Choose which handler to use (change this to switch between options)
   const handleSubmit = handleSubmitEmailJS; // Using EmailJS with your template
