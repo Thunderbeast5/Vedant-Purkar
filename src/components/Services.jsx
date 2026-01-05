@@ -6,7 +6,7 @@ void motion;
 const services = [
   {
     id: "01",
-    title: "3D Modeling",
+    title: "Web Design & Development",
     description: "Creation of detailed objects, characters, or environments tailored to specific client needs, ideal for games, products, and visualizations."
   },
   {
