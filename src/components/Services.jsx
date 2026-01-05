@@ -7,7 +7,7 @@ const services = [
   {
     id: "01",
     title: "Web Design & Development",
-    description: "Creation of detailed objects, characters, or environments tailored to specific client needs, ideal for games, products, and visualizations."
+    description: "Creating responsive and visually appealing websites tailored to your brand and audience."
   },
   {
     id: "02",
