@@ -11,23 +11,23 @@ const services = [
   },
   {
     id: "02",
-    title: "3D Rendering",
-    description: "High-quality photorealistic renders that showcase designs with realistic lighting, textures, and shadows."
+    title: "App Design & Development",
+    description: "Designing intuitive and engaging mobile applications for both iOS and Android platforms."
   },
   {
     id: "03",
-    title: "3D Animation",
-    description: "Dynamic animations to bring characters, products, or environments to life for marketing, gaming, or storytelling."
+    title: "SEO Optimization",
+    description: "Improving website visibility and ranking on search engines through strategic SEO practices."
   },
   {
     id: "04",
-    title: "Product Design",
-    description: "Precise 3D modeling and rendering for showcasing or prototyping consumer products."
+    title: "API Integration",
+    description: "Integrating APIs to enhance functionality and provide real-time data."
   },
   {
     id: "05",
-    title: "3D Printing Models",
-    description: "Custom 3D designs prepared and optimized for 3D printing technology."
+    title: "Database and Cloud Integration",
+    description: "Integrating databases and cloud services to store and manage data."
   }
 ];
 
