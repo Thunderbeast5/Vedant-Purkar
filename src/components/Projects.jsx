@@ -7,41 +7,49 @@ const projectList = [
   {
     id: "01",
     client: "BRIDGELINK",
+    url: "https://bridgelink.in/",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
     id: "02",
     client: "Sahara",
+    url: "",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
     id: "03",
     client: "Pratibhara",
+    url: "",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
     id: "04",
     client: "AURORA DESIGNS",
+    url: "",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
     id: "05",
     client: "NEXUS CREATIVE",
+    url: "",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
     id: "06",
     client: "QUANTUM LABS",
+    url: "",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
     id: "07",
     client: "STELLAR WORKS",
+    url: "",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
     id: "08",
     client: "INFINITY STUDIOS",
+    url: "",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   }
 ];
@@ -144,6 +152,8 @@ function ProjectCard({ project, index }) {
   const topOffset = typeof window !== 'undefined' && window.innerWidth < 768 
     ? 60 + (index * 40) 
     : 100 + (index * 90);
+  
+  const hasUrl = typeof project.url === 'string' && project.url.trim().length > 0;
 
   return (
     <div 
@@ -167,13 +177,26 @@ function ProjectCard({ project, index }) {
             </div>
           </div>
           
-          <motion.button 
-            whileHover={{ scale: 1.05, backgroundColor: "#000", color: "#fff" }}
-            whileTap={{ scale: 0.95 }}
-            className="px-4 sm:px-5 md:px-6 py-2 rounded-full border border-black text-[10px] sm:text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap"
-          >
-            Live Project
-          </motion.button>
+          {hasUrl ? (
+            <motion.a
+              href={project.url}
+              target="_blank"
+              rel="noreferrer"
+              whileHover={{ scale: 1.05, backgroundColor: "#000", color: "#fff" }}
+              whileTap={{ scale: 0.95 }}
+              className="px-4 sm:px-5 md:px-6 py-2 rounded-full border border-black text-[10px] sm:text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap"
+            >
+              View Project
+            </motion.a>
+          ) : (
+            <motion.button
+              type="button"
+              disabled
+              className="px-4 sm:px-5 md:px-6 py-2 rounded-full border border-black/40 text-[10px] sm:text-xs font-bold uppercase tracking-widest whitespace-nowrap opacity-60 cursor-not-allowed"
+            >
+              Coming Soon
+            </motion.button>
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6 h-48 sm:h-56 md:h-64 lg:h-96">
