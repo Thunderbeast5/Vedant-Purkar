@@ -26,12 +26,43 @@ const SKILLS = [
 ];
 
 const ACHIEVEMENTS = [
-  { img: "https://picsum.photos/400/250?random=1", title: "Achievement One", desc: "Short description here" },
-  { img: "https://picsum.photos/400/250?random=2", title: "Achievement Two", desc: "Short description here" },
-  { img: "https://picsum.photos/400/250?random=3", title: "Achievement Three", desc: "Short description here" },
-  { img: "https://picsum.photos/400/250?random=4", title: "Achievement Four", desc: "Short description here" },
-  { img: "https://picsum.photos/400/250?random=5", title: "Achievement Five", desc: "Short description here" },
+  {
+    img: "https://picsum.photos/400/250?random=1",
+    title: "Winner – Innover National-Level Hackathon",
+    desc: "Secured first place at Innover, a national-level hackathon, for innovative problem-solving and technical implementation."
+  },
+  {
+    img: "https://picsum.photos/400/250?random=2",
+    title: "Global Finalist – NASA Space Apps Challenge 2024",
+    desc: "Selected as a Global Finalist among thousands of teams worldwide at NASA Space Apps Challenge 2024."
+  },
+  {
+    img: "https://picsum.photos/400/250?random=3",
+    title: "Runner-Up – NASA Space Apps Challenge 2024 (Local Event)",
+    desc: "Achieved runner-up position at the local-level NASA Space Apps Challenge 2024."
+  },
+  {
+    img: "https://picsum.photos/400/250?random=4",
+    title: "Winner – Python Mini Project Competition",
+    desc: "Won first place for designing and implementing a Python-based mini project."
+  },
+  {
+    img: "https://picsum.photos/400/250?random=5",
+    title: "Runner-Up – Java Mini Project Competition",
+    desc: "Secured runner-up position for a Java-based mini project demonstrating strong OOP concepts."
+  },
+  {
+    img: "https://picsum.photos/400/250?random=5",
+    title: "Runner-Up – IoT Mini Project Competition",
+    desc: "Secured runner-up position for a Java-based mini project demonstrating strong OOP concepts."
+  },
+  {
+    img: "https://picsum.photos/400/250?random=6",
+    title: "Completed Startup Course",
+    desc: "Completed a Startup & Entrepreneurship course under Sudhir Kadam, gaining practical knowledge in startups and innovation."
+  }
 ];
+
 
 const ScrollingRow = ({ items, baseVelocity = -5 }) => {
   return (

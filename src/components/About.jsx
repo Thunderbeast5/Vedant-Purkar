@@ -57,9 +57,9 @@ export default function About() {
           className="space-y-3 sm:space-y-4 text-base sm:text-lg md:text-xl lg:text-3xl font-medium text-black leading-tight px-4 sm:px-6"
         >
           <p>With a strong foundation in AI and full-stack development,</p>
-<p>I specialize in building intuitive applications that push technological boundaries.</p>
-<p>I love collaborating on projects that turn complex problems</p>
-<p>into seamless user experiences and smarter decision-making.</p>
+          <p>I specialize in building intuitive applications that push technological boundaries.</p>
+          <p>I love collaborating on projects that turn complex problems</p>
+          <p>into seamless user experiences and smarter decision-making.</p>
           <p className="text-black font-extrabold mt-6 sm:mt-7 md:mt-8">
             Let's create something amazing together!
           </p>
