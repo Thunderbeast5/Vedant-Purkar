@@ -56,10 +56,10 @@ export default function About() {
           transition={{ duration: 0.8 }}
           className="space-y-3 sm:space-y-4 text-base sm:text-lg md:text-xl lg:text-3xl font-medium text-black leading-tight px-4 sm:px-6"
         >
-          <p>With over five years of experience in design,</p>
-          <p>I specialize in branding, web design, and user experience.</p>
-          <p>I love collaborating with businesses that want to stand out</p>
-          <p>and showcase their best side.</p>
+          <p>With a strong foundation in AI and full-stack development,</p>
+<p>I specialize in building intuitive applications that push technological boundaries.</p>
+<p>I love collaborating on projects that turn complex problems</p>
+<p>into seamless user experiences and smarter decision-making.</p>
           <p className="text-black font-extrabold mt-6 sm:mt-7 md:mt-8">
             Let's create something amazing together!
           </p>
