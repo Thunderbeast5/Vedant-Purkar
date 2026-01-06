@@ -25,7 +25,7 @@ const SKILLS = [
   { name: "Cloudinary", icon: <SiCloudinary className="size-5 md:size-6" /> },
 ];
 
-const ACHIEVEMENTS = [
+const ACHIEVEMENTS_TOP = [
   {
     img: "https://picsum.photos/400/250?random=1",
     title: "Winner – Innover National-Level Hackathon",
@@ -40,7 +40,10 @@ const ACHIEVEMENTS = [
     img: "https://picsum.photos/400/250?random=3",
     title: "Runner-Up – NASA Space Apps Challenge 2024 (Local Event)",
     desc: "Achieved runner-up position at the local-level NASA Space Apps Challenge 2024."
-  },
+  }
+];
+
+const ACHIEVEMENTS_BOTTOM = [
   {
     img: "https://picsum.photos/400/250?random=4",
     title: "Winner – Python Mini Project Competition",
@@ -52,12 +55,12 @@ const ACHIEVEMENTS = [
     desc: "Secured runner-up position for a Java-based mini project demonstrating strong OOP concepts."
   },
   {
-    img: "https://picsum.photos/400/250?random=5",
+    img: "https://picsum.photos/400/250?random=6",
     title: "Runner-Up – IoT Mini Project Competition",
-    desc: "Secured runner-up position for a Java-based mini project demonstrating strong OOP concepts."
+    desc: "Secured runner-up position in an IoT mini project competition by building a functional prototype and presenting the solution."
   },
   {
-    img: "https://picsum.photos/400/250?random=6",
+    img: "https://picsum.photos/400/250?random=7",
     title: "Completed Startup Course",
     desc: "Completed a Startup & Entrepreneurship course under Sudhir Kadam, gaining practical knowledge in startups and innovation."
   }
@@ -112,39 +115,39 @@ export default function Skills() {
 
           {/* Row 1 */}
           <motion.div style={{ x: xLeft }} className="flex gap-4">
-            {[...ACHIEVEMENTS, ...ACHIEVEMENTS].map((item, i) => (
+            {[...ACHIEVEMENTS_TOP, ...ACHIEVEMENTS_TOP].map((item, i) => (
               <motion.div 
                 key={i} 
-                className="group relative flex-shrink-0 h-48 w-[300px] md:h-64 md:w-[450px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border-[2px] border-white cursor-pointer"
+                className="group relative flex-shrink-0 h-32 w-[200px] md:h-44 md:w-[320px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border-[2px] border-white cursor-pointer"
               >
                 <img src={item.img} className="h-full w-full object-cover" alt="Achievement" />
                 <motion.div 
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
-                  className="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-4 md:p-6 backdrop-blur-sm transition-opacity duration-300"
+                  className="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-3 md:p-4 backdrop-blur-sm transition-opacity duration-300"
                 >
-                  <h3 className="text-white text-lg md:text-2xl font-black uppercase mb-1 md:mb-2">{item.title}</h3>
-                  <p className="text-white/80 text-xs md:text-sm font-medium">{item.desc}</p>
+                  <h3 className="text-white text-sm md:text-lg font-black uppercase mb-1">{item.title}</h3>
+                  <p className="text-white/80 text-[10px] md:text-xs font-medium leading-snug">{item.desc}</p>
                 </motion.div>
               </motion.div>
             ))}
           </motion.div>
 
           {/* Row 2 */}
-          <motion.div style={{ x: xRight }} className="flex gap-4 md:gap-8 translate-x-[-150px] md:translate-x-[-300px]">
-            {[...ACHIEVEMENTS, ...ACHIEVEMENTS].map((item, i) => (
+          <motion.div style={{ x: xRight }} className="flex gap-4 md:gap-8 translate-x-[-90px] md:translate-x-[-160px]">
+            {[...ACHIEVEMENTS_BOTTOM, ...ACHIEVEMENTS_BOTTOM].map((item, i) => (
               <motion.div 
                 key={i} 
-                className="group relative flex-shrink-0 h-48 w-[300px] md:h-64 md:w-[450px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border-[2px] border-white cursor-pointer"
+                className="group relative flex-shrink-0 h-32 w-[200px] md:h-44 md:w-[320px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border-[2px] border-white cursor-pointer"
               >
                 <img src={item.img} className="h-full w-full object-cover" alt="Achievement" />
                 <motion.div 
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
-                  className="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-4 md:p-6 backdrop-blur-sm transition-opacity duration-300"
+                  className="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-3 md:p-4 backdrop-blur-sm transition-opacity duration-300"
                 >
-                  <h3 className="text-white text-lg md:text-2xl font-black uppercase mb-1 md:mb-2">{item.title}</h3>
-                  <p className="text-white/80 text-xs md:text-sm font-medium">{item.desc}</p>
+                  <h3 className="text-white text-sm md:text-lg font-black uppercase mb-1">{item.title}</h3>
+                  <p className="text-white/80 text-[10px] md:text-xs font-medium leading-snug">{item.desc}</p>
                 </motion.div>
               </motion.div>
             ))}
