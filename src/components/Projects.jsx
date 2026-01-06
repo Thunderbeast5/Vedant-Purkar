@@ -3,12 +3,28 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 void motion;
 
+const CLOUDINARY_CLOUD_NAME = "dh4xushgf";
+
+function getOptimizedImageUrl(input, { width } = {}) {
+  if (typeof input !== 'string') return input;
+  const trimmed = input.trim();
+  if (!trimmed) return trimmed;
+
+  if (trimmed.startsWith('cld:')) {
+    const publicId = trimmed.slice(4);
+    const w = typeof width === 'number' && width > 0 ? `,w_${Math.round(width)}` : '';
+    return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/upload/f_auto,q_auto${w}/${publicId}`;
+  }
+
+  return trimmed;
+}
+
 const projectList = [
   {
     id: "01",
     client: "BRIDGELINK",
     url: "https://bridgelink.in/",
-    images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
+    images: ["cld:Screenshot_2026-01-06_at_18.54.33_kxfd1n", "cld:Screenshot_2026-01-06_at_18.58.32_c9n74q"]
   },
   {
     id: "02",
@@ -166,6 +182,7 @@ function ProjectCard({ project, index }) {
     : 100 + (index * 90);
   
   const hasUrl = typeof project.url === 'string' && project.url.trim().length > 0;
+  const imageWidth = typeof window !== 'undefined' && window.innerWidth < 768 ? 900 : 1400;
 
   return (
     <div 
@@ -216,8 +233,10 @@ function ProjectCard({ project, index }) {
             <div key={i} className="overflow-hidden rounded-xl sm:rounded-2xl md:rounded-[2rem]">
               <motion.img 
                 whileHover={{ scale: 1.05 }}
-                src={img} 
+                src={getOptimizedImageUrl(img, { width: imageWidth })} 
                 alt={`${project.client} project ${i + 1}`}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-all duration-500"
               />
             </div>

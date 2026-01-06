@@ -8,6 +8,22 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 void motion;
 
+const CLOUDINARY_CLOUD_NAME = "dh4xushgf";
+
+function getOptimizedImageUrl(input, { width } = {}) {
+  if (typeof input !== 'string') return input;
+  const trimmed = input.trim();
+  if (!trimmed) return trimmed;
+
+  if (trimmed.startsWith('cld:')) {
+    const publicId = trimmed.slice(4);
+    const w = typeof width === 'number' && width > 0 ? `,w_${Math.round(width)}` : '';
+    return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/upload/f_auto,q_auto${w}/${publicId}`;
+  }
+
+  return trimmed;
+}
+
 const SKILLS = [
   { name: "C++", icon: <TbBrandCpp className="size-5 md:size-6" /> },
   { name: "Python", icon: <DiPython className="size-5 md:size-6" /> },
@@ -66,7 +82,6 @@ const ACHIEVEMENTS_BOTTOM = [
   }
 ];
 
-
 const ScrollingRow = ({ items, baseVelocity = -5 }) => {
   return (
     <div className="flex overflow-hidden whitespace-nowrap py-2 md:py-4">
@@ -101,6 +116,7 @@ export default function Skills() {
   // Reduced the transform distance for mobile to keep items on screen
   const xLeft = useTransform(scrollYProgress, [0, 1], [-200, 200]);
   const xRight = useTransform(scrollYProgress, [0, 1], [200, -200]);
+  const imageWidth = typeof window !== 'undefined' && window.innerWidth < 768 ? 500 : 800;
 
   return (
     <section id="skills" ref={containerRef} className="relative bg-[#E3E3E3] pt-10 pb-24 md:pt-15 md:pb-40 overflow-hidden scroll-mt-16">
@@ -120,7 +136,13 @@ export default function Skills() {
                 key={i} 
                 className="group relative flex-shrink-0 h-32 w-[200px] md:h-44 md:w-[320px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border-[2px] border-white cursor-pointer"
               >
-                <img src={item.img} className="h-full w-full object-cover" alt="Achievement" />
+                <img
+                  src={getOptimizedImageUrl(item.img, { width: imageWidth })}
+                  className="h-full w-full object-cover"
+                  alt="Achievement"
+                  loading="lazy"
+                  decoding="async"
+                />
                 <motion.div 
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
