@@ -13,45 +13,57 @@ const projectList = [
   {
     id: "02",
     client: "Sahara",
-    url: "",
+    url: "https://github.com/Thunderbeast5/Seizure",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
     id: "03",
     client: "Pratibhara",
-    url: "",
+    url: "https://ai-for-her.onrender.com/",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
     id: "04",
-    client: "AURORA DESIGNS",
-    url: "",
+    client: "Indic",
+    url: "https://indic.in.net/",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
     id: "05",
-    client: "NEXUS CREATIVE",
-    url: "",
+    client: "Chavan Jewellers",
+    url: "https://chavanjewellers.in/",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
     id: "06",
-    client: "QUANTUM LABS",
-    url: "",
+    client: "TEDx KKWIEER",
+    url: "https://tedxkkwieer.onrender.com/",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
     id: "07",
-    client: "STELLAR WORKS",
-    url: "",
+    client: "Predictor Guru",
+    url: "https://github.com/Thunderbeast5/Predictor-Guru",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
     id: "08",
-    client: "INFINITY STUDIOS",
-    url: "",
+    client: "Health Pulse",
+    url: "https://github.com/Thunderbeast5/HealthPulse",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
-  }
+  },
+  {
+    id: "09",
+    client: "DSA Visualiser",
+    url: "https://github.com/Thunderbeast5/Data-Structures-Visualiser",
+    images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
+  },
+  {
+    id: "10",
+    client: "Sorting Algorithm Visualizer",
+    url: "https://github.com/Thunderbeast5/Sorting-Algorithm-Visualizer",
+    images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
+  },
 ];
 
 export default function Projects() {
