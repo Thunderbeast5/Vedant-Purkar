@@ -43,42 +43,53 @@ const SKILLS = [
 
 const ACHIEVEMENTS_TOP = [
   {
-    img: "cld:innov_lrv7wu",
-    title: "Winner – Innover National-Level Hackathon",
-    desc: "Secured first place at Innover, a national-level hackathon, for innovative problem-solving and technical implementation."
+    img: "cld:pyhtin_mini_cikdsq",
+    title: "Winner – Python Mini Project Competition",
+    desc: "Won first place for designing and implementing a Python-based mini project."
   },
+  
   {
     img: "cld:nasa_eaccxx",
     title: "Global Finalist – NASA Space Apps Challenge 2024",
     desc: "Selected as a Global Finalist among thousands of teams worldwide at NASA Space Apps Challenge 2024."
   },
   {
-    img: "cld:nasa_eaccxx",
-    title: "Runner-Up – NASA Space Apps Challenge 2024 (Local Event)",
-    desc: "Achieved runner-up position at the local-level NASA Space Apps Challenge 2024."
+    img: "cld:innov_lrv7wu",
+    title: "Winner – Innover National-Level Hackathon",
+    desc: "Secured first place at Innover, a national-level hackathon, for innovative problem-solving and technical implementation."
+  },
+  {
+    img: "cld:kumb_qh1qyz",
+    title: "Kumbhathon Innvotion Incubation Foundation",
+    desc: "Selected for incubation at Kumbhathon Innvotion Incubation Foundation for a promising project idea."
   }
 ];
 
 const ACHIEVEMENTS_BOTTOM = [
+  
   {
-    img: "cld:pyhtin_mini_cikdsq",
-    title: "Winner – Python Mini Project Competition",
-    desc: "Won first place for designing and implementing a Python-based mini project."
+    
+    img: "cld:nasa_eaccxx",
+    title: "Runner-Up – NASA Space Apps Challenge 2024 (Local Event)",
+    desc: "Achieved runner-up position at the local-level NASA Space Apps Challenge 2024."
+  
   },
+
   {
     img: "cld:iot_i1gjlk",
-    title: "Runner-Up – IoT and Java Mini Project Competition",
-    desc: "Secured runner-up position in an IoT and Java mini project competition by developing a functional prototype."
+    title: "Runner-Up – Java and IoT Mini Project Competition",
+    desc: "Secured runner-up position in a mini project competition focused on Java and IoT technologies."
   },
-  {
-    img: "cld:osci_q6urtd",
-    title: "Open Source Contributor OSCI'25 and GSSoC'25" ,
-    desc: "Contributed to open source projects during OSCI'25 and GSSoC'25, enhancing coding skills and collaborating with global developers."
-  },
+  
   {
     img: "cld:startup_rbr7xt",
     title: "Completed Startup Course",
     desc: "Completed a Startup & Entrepreneurship course under Sudhir Kadam, gaining practical knowledge in startups and innovation."
+  },
+   {
+    img: "cld:gssoc_ucowpf",
+    title: "Open Source Contributor OSCI'25 and GSSoC'25",
+    desc: "Contributed to open source projects during OSCI'25 and GSSoC'25, enhancing coding skills and collaboration experience."
   }
 ];
 
@@ -162,7 +173,13 @@ export default function Skills() {
                 key={i} 
                 className="group relative flex-shrink-0 h-32 w-[200px] md:h-44 md:w-[320px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border-[2px] border-white cursor-pointer"
               >
-                <img src={item.img} className="h-full w-full object-cover" alt="Achievement" />
+                <img
+                  src={getOptimizedImageUrl(item.img, { width: imageWidth })}
+                  className="h-full w-full object-cover"
+                  alt="Achievement"
+                  loading="lazy"
+                  decoding="async"
+                />
                 <motion.div 
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
