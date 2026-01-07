@@ -43,7 +43,7 @@ const SKILLS = [
 
 const ACHIEVEMENTS_TOP = [
   {
-    img: "https://picsum.photos/400/250?random=1",
+    img: "cld:innov_lrv7wu",
     title: "Winner – Innover National-Level Hackathon",
     desc: "Secured first place at Innover, a national-level hackathon, for innovative problem-solving and technical implementation."
   },
