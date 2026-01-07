@@ -55,7 +55,7 @@ const projectList = [
     id: "06",
     client: "TEDx KKWIEER",
     url: "https://tedxkkwieer.onrender.com/",
-    images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
+    images: ["cld:teda_s02end", "cld:tedb_olpuqk"]
   },
   {
     id: "07",
@@ -79,7 +79,7 @@ const projectList = [
     id: "10",
     client: "Sorting Algorithm Visualizer",
     url: "https://github.com/Thunderbeast5/Sorting-Algorithm-Visualizer",
-    images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
+    images: ["cld:dsam-a_b7brfo", "cld:dsam-b_oeq1tm"]
   },
 ];
 
