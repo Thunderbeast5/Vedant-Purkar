@@ -1,8 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+void motion;
+
 export default function Footer() {
-  const socialLinks = ["Linked In", "Github", "Instagram"];
+  const socialLinks = [
+    { label: "Linked In", href: "https://www.linkedin.com/in/vedant-purkar-1b613728b/" },
+    { label: "Github", href: "https://github.com/Thunderbeast5" },
+    { label: "Instagram", href: "https://www.instagram.com/veeeedanttttt" },
+  ];
   
   const contactInfo = {
     email: "vedant.purkar05@gmail.com",
@@ -101,14 +107,16 @@ export default function Footer() {
               <h4 className="uppercase font-black tracking-widest opacity-40 mb-4 sm:mb-5 md:mb-6 text-xs sm:text-sm">Social</h4>
               <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base">
                 {socialLinks.map((link) => (
-                  <li key={link}>
+                  <li key={link.label}>
                     <motion.a 
                       whileHover={{ x: 5 }}
                       whileTap={{ scale: 0.95 }}
-                      href={`#${link.toLowerCase().replace(" ", "")}`} 
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer"
                       className="hover:text-gray-400 transition-colors inline-block"
                     >
-                      {link}
+                      {link.label}
                     </motion.a>
                   </li>
                 ))}
@@ -126,7 +134,11 @@ export default function Footer() {
                     {contactInfo.email}
                   </a>
                 </li>
-                <li>{contactInfo.phone}</li>
+                <li>
+                  <a href={`tel:${contactInfo.phone}`} className="hover:underline">
+                    {contactInfo.phone}
+                  </a>
+                </li>
                 <li className="opacity-70">{contactInfo.address}</li>
               </ul>
             </div>
