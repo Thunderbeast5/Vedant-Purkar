@@ -48,12 +48,12 @@ const ACHIEVEMENTS_TOP = [
     desc: "Secured first place at Innover, a national-level hackathon, for innovative problem-solving and technical implementation."
   },
   {
-    img: "https://picsum.photos/400/250?random=2",
+    img: "cld:nasa_eaccxx",
     title: "Global Finalist – NASA Space Apps Challenge 2024",
     desc: "Selected as a Global Finalist among thousands of teams worldwide at NASA Space Apps Challenge 2024."
   },
   {
-    img: "https://picsum.photos/400/250?random=3",
+    img: "cld:nasa_eaccxx",
     title: "Runner-Up – NASA Space Apps Challenge 2024 (Local Event)",
     desc: "Achieved runner-up position at the local-level NASA Space Apps Challenge 2024."
   }
@@ -61,22 +61,22 @@ const ACHIEVEMENTS_TOP = [
 
 const ACHIEVEMENTS_BOTTOM = [
   {
-    img: "https://picsum.photos/400/250?random=4",
+    img: "cld:pyhtin_mini_cikdsq",
     title: "Winner – Python Mini Project Competition",
     desc: "Won first place for designing and implementing a Python-based mini project."
   },
   {
-    img: "https://picsum.photos/400/250?random=5",
-    title: "Runner-Up – Java Mini Project Competition",
-    desc: "Secured runner-up position for a Java-based mini project demonstrating strong OOP concepts."
+    img: "cld:iot_i1gjlk",
+    title: "Runner-Up – IoT and Java Mini Project Competition",
+    desc: "Secured runner-up position in an IoT and Java mini project competition by developing a functional prototype."
   },
   {
-    img: "https://picsum.photos/400/250?random=6",
-    title: "Runner-Up – IoT Mini Project Competition",
-    desc: "Secured runner-up position in an IoT mini project competition by building a functional prototype and presenting the solution."
+    img: "cld:osci_q6urtd",
+    title: "Open Source Contributor OSCI'25 and GSSoC'25" ,
+    desc: "Contributed to open source projects during OSCI'25 and GSSoC'25, enhancing coding skills and collaborating with global developers."
   },
   {
-    img: "https://picsum.photos/400/250?random=7",
+    img: "cld:startup_rbr7xt",
     title: "Completed Startup Course",
     desc: "Completed a Startup & Entrepreneurship course under Sudhir Kadam, gaining practical knowledge in startups and innovation."
   }
