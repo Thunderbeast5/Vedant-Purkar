@@ -30,25 +30,26 @@ const projectList = [
     id: "02",
     client: "Sahara",
     url: "https://github.com/Thunderbeast5/Seizure",
-    images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
+    images: ["cld:sahara-a_pywz1p", "cld:sahara-b_ssazs2"]
   },
   {
     id: "03",
     client: "Pratibhara",
     url: "https://ai-for-her.onrender.com/",
-    images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
+    images: ["cld:prat-a_exd8db", "cld:prat-b_t5yaen"]
+    
   },
   {
     id: "04",
     client: "Indic",
     url: "https://indic.in.net/",
-    images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
+    images: ["cld:indic-a_uigxa9", "cld:indic-a_uigxa9"]
   },
   {
     id: "05",
     client: "Chavan Jewellers",
     url: "https://chavanjewellers.in/",
-    images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
+    images: ["cld:chavan-a_awdar2", "cld:chavan-b_n8lmm3"]
   },
   {
     id: "06",
@@ -60,7 +61,7 @@ const projectList = [
     id: "07",
     client: "Predictor Guru",
     url: "https://github.com/Thunderbeast5/Predictor-Guru",
-    images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
+    images: ["cld:pred-a_ktdsdb", "cld:pred-b_fupula"]
   },
   {
     id: "08",
