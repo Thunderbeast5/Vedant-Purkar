@@ -137,7 +137,7 @@ export default function Projects() {
     <section 
       id="projects"
       ref={containerRef} 
-      className="bg-[#E3E3E3] text-black py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 font-titillium min-h-screen scroll-mt-16"
+      className="bg-[#E3E3E3] text-black pt-16 sm:pt-24 md:pt-32 pb-8 sm:pb-12 md:pb-16 px-4 sm:px-6 md:px-12 font-titillium min-h-screen scroll-mt-16"
     >
       <div className="max-w-7xl mx-auto">
         
@@ -212,7 +212,7 @@ export default function Projects() {
         </div>
 
         {/* --- STACKING CONTAINER --- */}
-        <div className={`relative flex flex-col gap-8 sm:gap-12 md:gap-[20vh] ${showAll ? 'pb-12 sm:pb-20 md:pb-[30vh]' : 'pb-8 sm:pb-12 md:pb-[10vh]'}`}>
+        <div className={`relative flex flex-col gap-8 sm:gap-12 md:gap-[20vh] ${showAll ? 'pb-8 sm:pb-12 md:pb-16' : 'pb-4 sm:pb-6 md:pb-8'}`}>
           {/* AnimatePresence allows cards to fade in/out when sorting changes.
             mode="popLayout" ensures smooth reordering.
           */}
