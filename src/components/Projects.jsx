@@ -42,14 +42,14 @@ const projectList = [
   {
     id: "03",
     client: "Pratibhara",
-    year: 2024,
+    year: 2025,
     url: "https://ai-for-her.onrender.com/",
     images: ["cld:prat-a_exd8db", "cld:prat-b_t5yaen"]
   },
   {
     id: "04",
     client: "Indic",
-    year: 2024,
+    year: 2025,
     url: "https://indic.in.net/",
     images: ["cld:indic-a_uigxa9", "cld:indic-a_uigxa9"]
   },
@@ -77,14 +77,14 @@ const projectList = [
   {
     id: "08",
     client: "Health Pulse",
-    year: 2023,
+    year: 2024,
     url: "https://github.com/Thunderbeast5/HealthPulse",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
     id: "09",
     client: "DSA Visualiser",
-    year: 2023,
+    year: 2025,
     url: "https://github.com/Thunderbeast5/Data-Structures-Visualiser",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
