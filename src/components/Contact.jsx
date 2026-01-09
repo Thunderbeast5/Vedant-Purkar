@@ -67,7 +67,7 @@ export default function Contact() {
     <section 
       id="contact"
       ref={containerRef}
-      className="bg-[#E3E3E3] text-black pt-12 sm:pt-20 md:pt-32 pb-4 sm:pb-6 md:pb-4 px-4 sm:px-6 md:px-12 font-titillium min-h-fit md:min-h-screen flex items-center scroll-mt-16"
+      className="bg-[#E3E3E3] text-black pt-4 sm:pt-6 md:pt-8 pb-4 sm:pb-6 md:pb-4 px-4 sm:px-6 md:px-12 font-titillium min-h-fit md:min-h-screen flex items-center scroll-mt-16"
     >
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-12 md:gap-16 lg:gap-32 items-start">
         
