@@ -221,7 +221,8 @@ export default function Projects() {
               <ProjectCard 
                 key={project.id} // IMPORTANT: Key must be unique (ID) not Index for correct reordering animation
                 project={project} 
-                index={index} 
+                index={index}
+                showAll={showAll}
               />
             ))}
           </AnimatePresence>
@@ -266,7 +267,7 @@ export default function Projects() {
 
 // --- PROJECT CARD COMPONENT ---
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project, index, showAll }) {
   // Each card sticks at a slightly lower position than the previous one
   const topOffset = typeof window !== 'undefined' && window.innerWidth < 768 
     ? 60 + (index * 40) 
@@ -282,8 +283,8 @@ function ProjectCard({ project, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="sticky w-full"
-      style={{ top: `${topOffset}px`, zIndex: index }} // Ensure z-index follows order
+      className={showAll ? "w-full" : "sticky w-full"}
+      style={showAll ? { zIndex: index } : { top: `${topOffset}px`, zIndex: index }} // Ensure z-index follows order
     >
       <div 
         className="bg-white/90 backdrop-blur-md rounded-2xl sm:rounded-3xl md:rounded-[3rem] p-4 sm:p-6 md:p-8 lg:p-12 border border-black/30 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] mb-6 sm:mb-8 md:mb-10"
