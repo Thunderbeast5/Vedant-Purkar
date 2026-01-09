@@ -1,9 +1,12 @@
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useRef, useState, useMemo } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 
+// Prevent vite/webpack warnings about "void motion" if necessary
 void motion;
 
 const CLOUDINARY_CLOUD_NAME = "dh4xushgf";
+
+// --- HELPER FUNCTIONS ---
 
 function getOptimizedImageUrl(input, { width } = {}) {
   if (typeof input !== 'string') return input;
@@ -19,86 +22,116 @@ function getOptimizedImageUrl(input, { width } = {}) {
   return trimmed;
 }
 
+// --- DATA ---
+// Added 'year' property to enable time-based sorting
 const projectList = [
   {
     id: "01",
     client: "BRIDGELINK",
+    year: 2025,
     url: "https://bridgelink.in/",
     images: ["cld:Screenshot_2026-01-06_at_18.54.33_kxfd1n", "cld:Screenshot_2026-01-06_at_18.58.32_c9n74q"]
   },
   {
     id: "02",
     client: "Sahara",
+    year: 2025,
     url: "https://github.com/Thunderbeast5/Seizure",
     images: ["cld:sahara-a_pywz1p", "cld:sahara-b_ssazs2"]
   },
   {
     id: "03",
     client: "Pratibhara",
+    year: 2024,
     url: "https://ai-for-her.onrender.com/",
     images: ["cld:prat-a_exd8db", "cld:prat-b_t5yaen"]
-    
   },
   {
     id: "04",
     client: "Indic",
+    year: 2024,
     url: "https://indic.in.net/",
     images: ["cld:indic-a_uigxa9", "cld:indic-a_uigxa9"]
   },
   {
     id: "05",
     client: "Chavan Jewellers",
+    year: 2025,
     url: "https://chavanjewellers.in/",
     images: ["cld:chavan-a_awdar2", "cld:chavan-b_n8lmm3"]
   },
   {
     id: "06",
     client: "TEDx KKWIEER",
+    year: 2025,
     url: "https://tedxkkwieer.onrender.com/",
     images: ["cld:teda_s02end", "cld:tedb_olpuqk"]
   },
   {
     id: "07",
     client: "Predictor Guru",
+    year: 2024,
     url: "https://github.com/Thunderbeast5/Predictor-Guru",
     images: ["cld:pred-a_ktdsdb", "cld:pred-b_fupula"]
   },
   {
     id: "08",
     client: "Health Pulse",
+    year: 2023,
     url: "https://github.com/Thunderbeast5/HealthPulse",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
     id: "09",
     client: "DSA Visualiser",
+    year: 2023,
     url: "https://github.com/Thunderbeast5/Data-Structures-Visualiser",
     images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
   },
   {
     id: "10",
     client: "Sorting Algorithm Visualizer",
+    year: 2023,
     url: "https://github.com/Thunderbeast5/Sorting-Algorithm-Visualizer",
     images: ["cld:dsam-a_b7brfo", "cld:dsam-b_oeq1tm"]
   },
 ];
 
+// --- MAIN COMPONENT ---
+
 export default function Projects() {
   const containerRef = useRef(null);
   const headerRef = useRef(null);
-  const [showAll, setShowAll] = useState(false);
   
+  const [showAll, setShowAll] = useState(false);
+  const [sortOption, setSortOption] = useState('Best'); // Options: 'Best', 'Newest', 'Oldest'
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   // Scroll animation for header color fill
   const { scrollYProgress } = useScroll({
     target: headerRef,
     offset: ["start end", "end start"]
   });
 
-  // Sharp transition from outline to solid black
   const textFill = useTransform(scrollYProgress, [0.35, 0.5], [0, 1]);
 
-  // Show first 4 projects initially, all projects when showAll is true
-  const visibleProjects = showAll ? projectList : projectList.slice(0, 4);
+  // --- SORTING LOGIC ---
+  const sortedProjects = useMemo(() => {
+    // Create a shallow copy to avoid mutating original array
+    let sorted = [...projectList];
+
+    if (sortOption === 'Newest') {
+      sorted.sort((a, b) => b.year - a.year);
+    } else if (sortOption === 'Oldest') {
+      sorted.sort((a, b) => a.year - b.year);
+    } 
+    // If 'Best', we leave it as the original default order
+    
+    return sorted;
+  }, [sortOption]);
+
+  // Determine which projects to actually render
+  const visibleProjects = showAll ? sortedProjects : sortedProjects.slice(0, 4);
 
   return (
     <section 
@@ -109,7 +142,7 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto">
         
         {/* --- SECTION HEADER --- */}
-        <div ref={headerRef} className="relative mb-16 sm:mb-24 md:mb-32 text-center select-none">
+        <div ref={headerRef} className="relative mb-12 sm:mb-16 md:mb-20 text-center select-none">
           {/* Outline text */}
           <h2 
             className="text-5xl sm:text-6xl md:text-7xl lg:text-[10rem] font-black uppercase tracking-normal leading-none"
@@ -126,15 +159,72 @@ export default function Projects() {
           </motion.h2>
         </div>
 
+        {/* --- SORT CONTROLS --- */}
+        <div className="flex justify-end mb-8 sm:mb-12 relative z-20">
+          <div className="relative inline-block text-left">
+            <motion.button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="flex items-center gap-2 px-6 py-2 rounded-full border border-black text-xs sm:text-sm font-bold uppercase tracking-widest bg-white hover:bg-black hover:text-white transition-colors"
+              whileTap={{ scale: 0.95 }}
+            >
+              <span>Sort By: {sortOption}</span>
+              <svg 
+                className={`w-4 h-4 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </motion.button>
+
+            <AnimatePresence>
+              {isDropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute right-0 mt-2 w-48 rounded-2xl bg-white border border-black shadow-xl overflow-hidden"
+                >
+                  <div className="py-2">
+                    {['Best', 'Newest', 'Oldest'].map((option) => (
+                      <button
+                        key={option}
+                        onClick={() => {
+                          setSortOption(option);
+                          setIsDropdownOpen(false);
+                          // Optional: Reset showAll to false when resorting? 
+                          // setShowAll(false); 
+                        }}
+                        className={`block w-full text-left px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-black/5 transition-colors ${
+                          sortOption === option ? 'bg-black text-white hover:bg-black' : 'text-black'
+                        }`}
+                      >
+                        {option}
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
+
         {/* --- STACKING CONTAINER --- */}
         <div className={`relative flex flex-col gap-8 sm:gap-12 md:gap-[20vh] ${showAll ? 'pb-12 sm:pb-20 md:pb-[30vh]' : 'pb-8 sm:pb-12 md:pb-[10vh]'}`}>
-          {visibleProjects.map((project, index) => (
-            <ProjectCard 
-              key={project.id} 
-              project={project} 
-              index={index} 
-            />
-          ))}
+          {/* AnimatePresence allows cards to fade in/out when sorting changes.
+            mode="popLayout" ensures smooth reordering.
+          */}
+          <AnimatePresence mode="popLayout">
+            {visibleProjects.map((project, index) => (
+              <ProjectCard 
+                key={project.id} // IMPORTANT: Key must be unique (ID) not Index for correct reordering animation
+                project={project} 
+                index={index} 
+              />
+            ))}
+          </AnimatePresence>
         </div>
 
         {/* --- SHOW MORE BUTTON --- */}
@@ -158,7 +248,6 @@ export default function Projects() {
             <motion.button
               onClick={() => {
                 setShowAll(false);
-                // Smooth scroll to top of projects section
                 containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }}
               initial={{ opacity: 0, y: 20 }}
@@ -175,9 +264,10 @@ export default function Projects() {
   );
 }
 
+// --- PROJECT CARD COMPONENT ---
+
 function ProjectCard({ project, index }) {
   // Each card sticks at a slightly lower position than the previous one
-  // Reduce offset on mobile for better visibility
   const topOffset = typeof window !== 'undefined' && window.innerWidth < 768 
     ? 60 + (index * 40) 
     : 100 + (index * 90);
@@ -186,15 +276,16 @@ function ProjectCard({ project, index }) {
   const imageWidth = typeof window !== 'undefined' && window.innerWidth < 768 ? 900 : 1400;
 
   return (
-    <div 
-      className="sticky w-full h-full"
-      style={{ top: `${topOffset}px` }}
+    <motion.div
+      layout // Activates Framer Motion layout animations for smooth reordering
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      className="sticky w-full"
+      style={{ top: `${topOffset}px`, zIndex: index }} // Ensure z-index follows order
     >
-      <motion.div 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+      <div 
         className="bg-white/90 backdrop-blur-md rounded-2xl sm:rounded-3xl md:rounded-[3rem] p-4 sm:p-6 md:p-8 lg:p-12 border border-black/30 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] mb-6 sm:mb-8 md:mb-10"
       >
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6 mb-6 sm:mb-8 md:mb-10">
@@ -204,6 +295,8 @@ function ProjectCard({ project, index }) {
               <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-black uppercase leading-tight">
                 {project.client}
               </h3>
+              {/* Optional: Show Year */}
+              <p className="text-xs font-bold text-gray-500 mt-1">{project.year}</p>
             </div>
           </div>
           
@@ -243,7 +336,7 @@ function ProjectCard({ project, index }) {
             </div>
           ))}
         </div>
-      </motion.div>
-    </div>
+      </div>
+    </motion.div>
   );
 }
