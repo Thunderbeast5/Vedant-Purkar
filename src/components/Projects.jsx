@@ -86,7 +86,7 @@ const projectList = [
     client: "DSA Visualiser",
     year: 2025,
     url: "https://github.com/Thunderbeast5/Data-Structures-Visualiser",
-    images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
+    images: ["cld:dsam-a_b7brfo", "cld:dsam-b_oeq1tm"]
   },
   {
     id: "10",
