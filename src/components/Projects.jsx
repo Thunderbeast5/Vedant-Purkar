@@ -93,7 +93,7 @@ const projectList = [
     client: "Sorting Algorithm Visualizer",
     year: 2023,
     url: "https://github.com/Thunderbeast5/Sorting-Algorithm-Visualizer",
-    images: ["cld:dsam-a_b7brfo", "cld:dsam-b_oeq1tm"]
+    images: ["cld:py-a_hx7ipx", "cld:py-b_ndgfis"]
   },
 ];
 
