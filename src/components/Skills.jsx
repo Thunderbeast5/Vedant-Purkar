@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { DiReact, DiNodejs, DiGit, DiPython, DiJava } from "react-icons/di";
 import { TbBrandCpp, TbBrandReactNative, TbDatabase } from "react-icons/tb";
-import { SiMongodb, SiFirebase, SiTailwindcss, SiSpringboot, SiPostman, SiExpress } from "react-icons/si"
+import { SiMongodb, SiFirebase, SiTailwindcss, SiSpringboot, SiPostman, SiExpress,SiCloudinary } from "react-icons/si"
 import { IoLogoFigma, IoLogoJavascript } from "react-icons/io5";
 import { FaGithub, FaDocker } from "react-icons/fa";
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -28,10 +28,10 @@ const SKILLS = [
   { name: "JPA", icon: <TbDatabase className="size-5 md:size-6" /> },
   { name: "Postman", icon: <SiPostman className="size-5 md:size-6" /> },
   { name: "Git", icon: <DiGit className="size-5 md:size-6" /> },
-  { name: "Figma", icon: <IoLogoFigma className="size-5 md:size-6" /> },
   { name: "Github", icon: <FaGithub className="size-5 md:size-6" /> },
-  { name: "Docker", icon: <FaDocker className="size-5 md:size-6" /> },
   { name: "Cloudinary", icon: <SiCloudinary className="size-5 md:size-6" /> },
+  { name: "Figma", icon: <IoLogoFigma className="size-5 md:size-6" /> },
+  { name: "Docker", icon: <FaDocker className="size-5 md:size-6" /> },
 ];
 
 const ACHIEVEMENTS_TOP = [
