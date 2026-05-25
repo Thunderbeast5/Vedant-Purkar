@@ -1,33 +1,15 @@
 import React, { useRef } from 'react';
 import { DiReact, DiNodejs, DiGit, DiPython, DiJava } from "react-icons/di";
 import { TbBrandCpp, TbBrandReactNative, TbDatabase } from "react-icons/tb";
-import { SiMongodb, SiFirebase, SiTailwindcss, SiCloudinary, SiSpringboot, SiPostman, SiExpress } from "react-icons/si"
+import { SiMongodb, SiFirebase, SiTailwindcss, SiSpringboot, SiPostman, SiExpress } from "react-icons/si"
 import { IoLogoFigma, IoLogoJavascript } from "react-icons/io5";
 import { FaGithub, FaDocker } from "react-icons/fa";
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 void motion;
 
-const CLOUDINARY_CLOUD_NAME = "dh4xushgf";
-
-function getOptimizedImageUrl(input, { width } = {}) {
-  if (typeof input !== 'string') return input;
-  const trimmed = input.trim();
-  if (!trimmed) return trimmed;
-
-  // Local images - return as is
-  if (trimmed.startsWith('/')) {
-    return trimmed;
-  }
-
-  // Cloudinary images - legacy support
-  if (trimmed.startsWith('cld:')) {
-    const publicId = trimmed.slice(4);
-    const w = typeof width === 'number' && width > 0 ? `,w_${Math.round(width)}` : '';
-    return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/upload/f_auto,q_auto${w}/${publicId}`;
-  }
-
-  return trimmed;
+function getOptimizedImageUrl(input) {
+  return input;
 }
 
 const SKILLS = [

@@ -4,22 +4,10 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 // Prevent vite/webpack warnings about "void motion" if necessary
 void motion;
 
-const CLOUDINARY_CLOUD_NAME = "dh4xushgf";
-
 // --- HELPER FUNCTIONS ---
 
-function getOptimizedImageUrl(input, { width } = {}) {
-  if (typeof input !== 'string') return input;
-  const trimmed = input.trim();
-  if (!trimmed) return trimmed;
-
-  if (trimmed.startsWith('cld:')) {
-    const publicId = trimmed.slice(4);
-    const w = typeof width === 'number' && width > 0 ? `,w_${Math.round(width)}` : '';
-    return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/upload/f_auto,q_auto${w}/${publicId}`;
-  }
-
-  return trimmed;
+function getOptimizedImageUrl(input) {
+  return input;
 }
 
 // --- DATA ---
@@ -30,70 +18,70 @@ const projectList = [
     client: "BRIDGELINK",
     year: 2025,
     url: "https://bridgelink.in/",
-    images: ["cld:Screenshot_2026-01-06_at_18.54.33_kxfd1n", "cld:Screenshot_2026-01-06_at_18.58.32_c9n74q"]
+    images: ["/imgs/placeholder1.jpeg", "/imgs/placeholder2.jpeg"]
   },
   {
     id: "02",
     client: "Sahara",
     year: 2025,
     url: "https://github.com/Thunderbeast5/Seizure",
-    images: ["cld:sahara-a_pywz1p", "cld:sahara-b_ssazs2"]
+    images: ["/imgs/placeholder1.jpeg", "/imgs/placeholder2.jpeg"]
   },
   {
     id: "03",
     client: "Pratibhara",
     year: 2025,
     url: "https://ai-for-her.onrender.com/",
-    images: ["cld:prat-a_exd8db", "cld:prat-b_t5yaen"]
+    images: ["/imgs/placeholder1.jpeg", "/imgs/placeholder2.jpeg"]
   },
   {
     id: "04",
     client: "Indic",
     year: 2025,
     url: "https://indic.in.net/",
-    images: ["cld:indic-a_uigxa9", "cld:indic-a_uigxa9"]
+    images: ["/imgs/placeholder1.jpeg", "/imgs/placeholder2.jpeg"]
   },
   {
     id: "05",
     client: "Chavan Jewellers",
     year: 2025,
     url: "https://chavanjewellers.in/",
-    images: ["cld:chavan-a_awdar2", "cld:chavan-b_n8lmm3"]
+    images: ["/imgs/placeholder1.jpeg", "/imgs/placeholder2.jpeg"]
   },
   {
     id: "06",
     client: "TEDx KKWIEER",
     year: 2025,
     url: "https://tedxkkwieer.onrender.com/",
-    images: ["cld:teda_s02end", "cld:tedb_olpuqk"]
+    images: ["/imgs/placeholder1.jpeg", "/imgs/placeholder2.jpeg"]
   },
   {
     id: "07",
     client: "Predictor Guru",
     year: 2024,
     url: "https://github.com/Thunderbeast5/Predictor-Guru",
-    images: ["cld:pred-a_ktdsdb", "cld:pred-b_fupula"]
+    images: ["/imgs/placeholder1.jpeg", "/imgs/placeholder2.jpeg"]
   },
   {
     id: "08",
     client: "Health Pulse",
     year: 2024,
     url: "https://github.com/Thunderbeast5/HealthPulse",
-    images: ["cld:placeholder_generic", "cld:placeholder_generic"]
+    images: ["/imgs/python.jpeg", "/imgs/python.jpeg"]
   },
   {
     id: "09",
     client: "DSA Visualiser",
     year: 2025,
     url: "https://github.com/Thunderbeast5/Data-Structures-Visualiser",
-    images: ["cld:dsam-a_b7brfo", "cld:dsam-b_oeq1tm"]
+    images: ["/imgs/placeholder1.jpeg", "/imgs/placeholder2.jpeg"]
   },
   {
     id: "10",
     client: "Sorting Algorithm Visualizer",
     year: 2023,
     url: "https://github.com/Thunderbeast5/Sorting-Algorithm-Visualizer",
-    images: ["cld:py-a_hx7ipx", "cld:py-b_ndgfis"]
+    images: ["/imgs/python.jpeg", "/imgs/python.jpeg"]
   },
 ];
 
