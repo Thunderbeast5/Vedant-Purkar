@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import { DiReact, DiNodejs, DiGit, DiPython } from "react-icons/di";
-import { TbBrandCpp, TbBrandReactNative } from "react-icons/tb";
-import { SiMongodb, SiFirebase, SiTailwindcss, SiCloudinary } from "react-icons/si"
+import { DiReact, DiNodejs, DiGit, DiPython, DiJava } from "react-icons/di";
+import { TbBrandCpp, TbBrandReactNative, TbDatabase } from "react-icons/tb";
+import { SiMongodb, SiFirebase, SiTailwindcss, SiCloudinary, SiSpringboot, SiPostman, SiExpress } from "react-icons/si"
 import { IoLogoFigma, IoLogoJavascript } from "react-icons/io5";
 import { FaGithub, FaDocker } from "react-icons/fa";
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -15,6 +15,12 @@ function getOptimizedImageUrl(input, { width } = {}) {
   const trimmed = input.trim();
   if (!trimmed) return trimmed;
 
+  // Local images - return as is
+  if (trimmed.startsWith('/')) {
+    return trimmed;
+  }
+
+  // Cloudinary images - legacy support
   if (trimmed.startsWith('cld:')) {
     const publicId = trimmed.slice(4);
     const w = typeof width === 'number' && width > 0 ? `,w_${Math.round(width)}` : '';
@@ -27,13 +33,18 @@ function getOptimizedImageUrl(input, { width } = {}) {
 const SKILLS = [
   { name: "C++", icon: <TbBrandCpp className="size-5 md:size-6" /> },
   { name: "Python", icon: <DiPython className="size-5 md:size-6" /> },
+  { name: "Java", icon: <DiJava className="size-5 md:size-6" /> },
   { name: "JavaScript", icon: <IoLogoJavascript className="size-5 md:size-6" /> },
   { name: "React", icon: <DiReact className="size-5 md:size-6" /> },
   { name: "React Native", icon: <TbBrandReactNative className="size-5 md:size-6" /> },
-  { name: "Tailwind", icon: <SiTailwindcss className="size-5 md:size-6" /> },
   { name: "Node.js", icon: <DiNodejs className="size-5 md:size-6" /> },
+  { name: "Express.js", icon: <SiExpress className="size-5 md:size-6" /> },
+  { name: "Spring Boot", icon: <SiSpringboot className="size-5 md:size-6" /> },
+  { name: "Tailwind", icon: <SiTailwindcss className="size-5 md:size-6" /> },
   { name: "Firebase", icon: <SiFirebase className="size-5 md:size-6" /> },
   { name: "Mongo DB", icon: <SiMongodb className="size-5 md:size-6" /> },
+  { name: "JPA", icon: <TbDatabase className="size-5 md:size-6" /> },
+  { name: "Postman", icon: <SiPostman className="size-5 md:size-6" /> },
   { name: "Git", icon: <DiGit className="size-5 md:size-6" /> },
   { name: "Figma", icon: <IoLogoFigma className="size-5 md:size-6" /> },
   { name: "Github", icon: <FaGithub className="size-5 md:size-6" /> },
@@ -43,23 +54,23 @@ const SKILLS = [
 
 const ACHIEVEMENTS_TOP = [
   {
-    img: "cld:pyhtin_mini_cikdsq",
+    img: "/imgs/python.jpeg",
     title: "Winner – Python Mini Project Competition",
     desc: "Won first place for designing and implementing a Python-based mini project."
   },
   
   {
-    img: "cld:nasa_eaccxx",
+    img: "/imgs/nasa.jpeg",
     title: "Global Finalist – NASA Space Apps Challenge 2024",
     desc: "Selected as a Global Finalist among thousands of teams worldwide at NASA Space Apps Challenge 2024."
   },
   {
-    img: "cld:innov_lrv7wu",
+    img: "/imgs/innov.jpeg",
     title: "Winner – Innover National-Level Hackathon",
     desc: "Secured first place at Innover, a national-level hackathon, for innovative problem-solving and technical implementation."
   },
   {
-    img: "cld:kumb_qh1qyz",
+    img: "/imgs/kumbh.jpeg",
     title: "Kumbhathon Innvotion Incubation Foundation",
     desc: "Selected for incubation at Kumbhathon Innvotion Incubation Foundation for a promising project idea."
   }
@@ -69,25 +80,25 @@ const ACHIEVEMENTS_BOTTOM = [
   
   {
     
-    img: "cld:nasa_eaccxx",
+    img: "/imgs/nasa.jpeg",
     title: "Runner-Up – NASA Space Apps Challenge 2024 (Local Event)",
     desc: "Achieved runner-up position at the local-level NASA Space Apps Challenge 2024."
   
   },
 
   {
-    img: "cld:iot_i1gjlk",
+    img: "/imgs/iot.jpeg",
     title: "Runner-Up – Java and IoT Mini Project Competition",
     desc: "Secured runner-up position in a mini project competition focused on Java and IoT technologies."
   },
   
   {
-    img: "cld:startup_rbr7xt",
+    img: "/imgs/kumbh.jpeg",
     title: "Completed Startup Course",
     desc: "Completed a Startup & Entrepreneurship course under Sudhir Kadam, gaining practical knowledge in startups and innovation."
   },
    {
-    img: "cld:gssoc_ucowpf",
+    img: "/imgs/osci.jpeg",
     title: "Open Source Contributor OSCI'25 and GSSoC'25",
     desc: "Contributed to open source projects during OSCI'25 and GSSoC'25, enhancing coding skills and collaboration experience."
   }
