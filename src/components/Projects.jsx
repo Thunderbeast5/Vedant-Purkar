@@ -79,7 +79,7 @@ const projectList = [
     client: "Health Pulse",
     year: 2024,
     url: "https://github.com/Thunderbeast5/HealthPulse",
-    images: ["/api/placeholder/600/400", "/api/placeholder/600/400"]
+    images: ["cld:placeholder_generic", "cld:placeholder_generic"]
   },
   {
     id: "09",
