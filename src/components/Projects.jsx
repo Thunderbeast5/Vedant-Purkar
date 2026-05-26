@@ -716,9 +716,10 @@
 // }
 
 import { useRef, useState, useMemo } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { WaveButton } from "./WaveButton";
+import { WaveHeading } from "./WaveHeading";
 
 // Replace with your actual project list import
 // import { projectList } from "../data/projects";
@@ -851,18 +852,10 @@ const getOptimizedImageUrl = (img, _opts) => img;
 
 export default function Projects() {
   const containerRef = useRef(null);
-  const headerRef = useRef(null);
 
   const [showAll, setShowAll] = useState(false);
   const [sortOption, setSortOption] = useState("Best");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const { scrollYProgress } = useScroll({
-    target: headerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const textFill = useTransform(scrollYProgress, [0.35, 0.5], [0, 1]);
 
   const sortedProjects = useMemo(() => {
     let sorted = [...projectList];
@@ -882,39 +875,35 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto">
 
         {/* --- SECTION HEADER --- */}
-        <div ref={headerRef} className="relative mb-12 sm:mb-16 md:mb-20 text-center select-none">
-          <h2
+        <div className="mb-12 sm:mb-16 md:mb-20 text-center select-none">
+          <WaveHeading
             className="text-5xl sm:text-6xl md:text-7xl lg:text-[10rem] font-black uppercase tracking-normal leading-none"
-            style={{ WebkitTextStroke: "1.5px #000000", color: "transparent" }}
+            startOffset={0.25}
+            endOffset={0.55}
           >
             Projects
-          </h2>
-          <motion.h2
-            style={{ opacity: textFill }}
-            className="absolute inset-0 text-5xl sm:text-6xl md:text-7xl lg:text-[10rem] font-black uppercase tracking-normal leading-none text-black"
-          >
-            Projects
-          </motion.h2>
+          </WaveHeading>
         </div>
 
         {/* --- SORT CONTROLS --- */}
         <div className="flex justify-end mb-8 sm:mb-12 relative z-20">
           <div className="relative inline-block text-left">
-            <motion.button
+            <WaveButton
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="flex items-center gap-2 px-6 py-2 rounded-full border border-black text-xs sm:text-sm font-bold uppercase tracking-widest bg-white hover:bg-black hover:text-white transition-colors"
-              whileTap={{ scale: 0.95 }}
+              className="px-6 py-2 text-xs sm:text-sm"
             >
-              <span>Sort By: {sortOption}</span>
-              <svg
-                className={`w-4 h-4 transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </motion.button>
+              <span className="flex items-center gap-2">
+                <span>Sort By: {sortOption}</span>
+                <svg
+                  className={`w-4 h-4 transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </WaveButton>
 
             <AnimatePresence>
               {isDropdownOpen && (

@@ -1,15 +1,36 @@
-/**
- * Wave fill animation utilities for button hover effects
- */
+// ─── shared wave path builder ─────────────────────────────────────────────────
+// direction: "up"   → fill rises from bottom (default, used by sections)
+// direction: "left" → fill slides in from left (legacy button mode)
 
-export function buildWavePath(pct, phase, W, H) {
+export function buildWavePath(pct, phase, W, H, direction = "up") {
   if (pct <= 0) return "";
   if (pct >= 100) return `M0,0 L${W},0 L${W},${H} L0,${H} Z`;
 
-  // y position of the wave edge — starts at H (bottom), rises to 0 (top)
+  if (direction === "left") {
+    // Original left-to-right button fill
+    const x = (pct / 100) * (W + 30) - 15;
+    const amp = 5;
+    const steps = 40;
+    const pts = [];
+    for (let i = 0; i <= steps; i++) {
+      const fy = (i / steps) * H;
+      const fx = x + amp * Math.sin((2 * Math.PI / H) * fy * 2 + phase);
+      pts.push([fx, fy]);
+    }
+    let d = `M0,0 L${pts[0][0]},0 L${pts[0][0]},${pts[0][1]}`;
+    for (let i = 1; i <= steps; i++) {
+      const [cx, cy] = pts[i];
+      const [px, py] = pts[i - 1];
+      d += ` Q${px},${py} ${(px + cx) / 2},${(py + cy) / 2}`;
+    }
+    d += ` L${pts[steps][0]},${pts[steps][1]} L0,${H} Z`;
+    return d;
+  }
+
+  // "up" — bottom to top (used by buttons & sections)
   const y = H - (pct / 100) * (H + 30) + 15;
-  const amp = 5;
-  const steps = 40;
+  const amp = direction === "section" ? 18 : 5;
+  const steps = 60;
   const pts = [];
 
   for (let i = 0; i <= steps; i++) {
@@ -18,20 +39,19 @@ export function buildWavePath(pct, phase, W, H) {
     pts.push([fx, fy]);
   }
 
-  // Start bottom-left, draw wave edge left→right, close bottom-right→bottom-left
   let d = `M0,${H} L${pts[0][0]},${pts[0][1]}`;
   for (let i = 1; i <= steps; i++) {
     const [cx, cy] = pts[i];
     const [px, py] = pts[i - 1];
     d += ` Q${px},${py} ${(px + cx) / 2},${(py + cy) / 2}`;
   }
-  const last = pts[steps];
-  d += ` L${last[0]},${last[1]} L${W},${H} Z`;
+  d += ` L${pts[steps][0]},${pts[steps][1]} L${W},${H} Z`;
   return d;
 }
 
+// ─── button wave (imperative, DOM-based) ─────────────────────────────────────
 export function startWave(btn, dir) {
-  if (!btn || btn._waveDir === dir) return;
+  if (btn._waveDir === dir) return;
   btn._waveDir = dir;
 
   const svg = btn.querySelector("svg.wave-fill");
@@ -58,9 +78,8 @@ export function startWave(btn, dir) {
       svg.appendChild(pathEl);
     }
 
-    pathEl.setAttribute("d", buildWavePath(progress, phase, W, H));
+    pathEl.setAttribute("d", buildWavePath(progress, phase, W, H, "up"));
 
-    // Flip text colour at midpoint
     const label = btn.querySelector("span.wave-label");
     if (label) label.style.color = progress > 50 ? "#fff" : "#000";
 

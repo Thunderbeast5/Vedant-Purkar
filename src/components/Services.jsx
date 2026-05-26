@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'framer-motion';
+import { WaveHeading } from './WaveHeading';
 
 void motion;
 
@@ -33,16 +34,6 @@ const services = [
 
 export default function Services() {
   const containerRef = useRef(null);
-  const headerRef = useRef(null);
-
-  // Scroll animation for header color fill
-  const { scrollYProgress } = useScroll({
-    target: headerRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Sharp transition from outline to solid black
-  const textFill = useTransform(scrollYProgress, [0.35, 0.5], [0, 1]);
 
   return (
     <section 
@@ -51,26 +42,15 @@ export default function Services() {
       className="bg-[#E3E3E3] text-black py-8 sm:py-12 md:py-20 px-4 sm:px-6 md:px-12 font-titillium overflow-hidden scroll-mt-16"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Section Header with Scroll Animation */}
-        <div ref={headerRef} className="mb-8 sm:mb-12 md:mb-20 text-center relative">
-          {/* Outline text */}
-          <h2 
+        {/* Section Header with Wave Fill */}
+        <div className="mb-8 sm:mb-12 md:mb-20 text-center">
+          <WaveHeading
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[10rem] font-black uppercase tracking-wide leading-none mb-4"
-            style={{ 
-              WebkitTextStroke: "1.5px #000000", 
-              color: "transparent" 
-            }}
+            startOffset={0.25}
+            endOffset={0.55}
           >
             Services
-          </h2>
-
-          {/* Filled text that fades in on scroll */}
-          <motion.h2 
-            style={{ opacity: textFill }}
-            className="absolute inset-0 text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[10rem] font-black uppercase tracking-wide leading-none text-black mb-4"
-          >
-            Services
-          </motion.h2>
+          </WaveHeading>
         </div>
 
         {/* Services List */}

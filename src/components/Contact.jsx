@@ -1,27 +1,18 @@
 import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { WaveButton } from './WaveButton';
+import { WaveHeading } from './WaveHeading';
 
 void motion;
 
 export default function Contact() {
   const containerRef = useRef(null);
-  const headerRef = useRef(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
   const [status, setStatus] = useState(''); // 'sending', 'success', 'error'
-
-  // Scroll animation for header color fill
-  const { scrollYProgress } = useScroll({
-    target: headerRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Sharp transition from outline to solid black
-  const textFill = useTransform(scrollYProgress, [0.35, 0.5], [0, 1]);
 
   const handleChange = (e) => {
     setFormData({
@@ -74,23 +65,14 @@ export default function Contact() {
         
         {/* --- LEFT SIDE: TEXT CONTENT --- */}
         <div className="space-y-8 sm:space-y-10 md:space-y-12">
-          <div ref={headerRef} className="relative">
-            <h2 
+          <div>
+            <WaveHeading
               className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase leading-[0.85] tracking-wide"
-              style={{ 
-                WebkitTextStroke: "1.5px #000000", 
-                color: "transparent" 
-              }}
+              startOffset={0.25}
+              endOffset={0.55}
             >
               Let's <br /> Get In <br /> Touch
-            </h2>
-
-            <motion.h2 
-              style={{ opacity: textFill }}
-              className="absolute inset-0 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase leading-[0.85] tracking-wide text-black"
-            >
-              Let's <br /> Get In <br /> Touch
-            </motion.h2>
+            </WaveHeading>
           </div>
 
           <div className="pt-3 sm:pt-4 border-b-2 border-black inline-block">
