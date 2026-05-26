@@ -123,13 +123,13 @@ export default function Skills() {
   const imageWidth = typeof window !== 'undefined' && window.innerWidth < 768 ? 500 : 800;
 
   return (
-    <section id="skills" ref={containerRef} className="relative bg-[#E3E3E3] pt-10 pb-24 md:pt-15 md:pb-40 overflow-hidden scroll-mt-16">
+    <section id="skills" ref={containerRef} className="relative bg-[#E3E3E3] pt-6 pb-8 md:pt-15 md:pb-40 overflow-hidden scroll-mt-16">
 
-      <div className="mb-12 md:mb-22">
+      <div className="mb-6 md:mb-22">
         <ScrollingRow items={SKILLS} baseVelocity={20} />
       </div>
 
-      <div className="relative py-15">
+      <div className="relative py-2 md:py-15">
         {/* Adjusted rotation and scale for mobile: -rotate-1 and scale-100 on small screens */}
         <div className="-rotate-1 md:-rotate-2 space-y-4 md:space-y-8 scale-100 md:scale-110 lg:scale-125">
 

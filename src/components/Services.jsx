@@ -39,11 +39,11 @@ export default function Services() {
     <section 
       ref={containerRef} 
       id="services"
-      className="bg-[#E3E3E3] text-black py-8 sm:py-12 md:py-20 px-4 sm:px-6 md:px-12 font-titillium overflow-hidden scroll-mt-16"
+      className="bg-[#E3E3E3] text-black py-6 sm:py-10 md:py-20 px-4 sm:px-6 md:px-12 font-titillium overflow-hidden scroll-mt-16"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header with Wave Fill */}
-        <div className="mb-8 sm:mb-12 md:mb-20 text-center">
+        <div className="mb-6 sm:mb-10 md:mb-20 text-center">
           <WaveHeading
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[10rem] font-black uppercase tracking-wide leading-none mb-4"
             startOffset={0.25}

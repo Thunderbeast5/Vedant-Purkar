@@ -18,7 +18,7 @@ export default function About() {
     <section
       ref={containerRef}
       id="about"
-      className="relative min-h-screen bg-[#E3E3E3] text-black flex flex-col items-center justify-center px-6 overflow-hidden py-20 font-titillium scroll-mt-16"
+      className="relative md:min-h-screen bg-[#E3E3E3] text-black flex flex-col items-center justify-center px-6 overflow-hidden py-10 md:py-20 font-titillium scroll-mt-16"
     >
       {/* Floating blob */}
       <motion.div
@@ -29,7 +29,7 @@ export default function About() {
       <div className="relative z-10 text-center max-w-5xl w-full">
 
         {/* Wave-fill heading */}
-        <div className="mb-10 sm:mb-12 md:mb-16 px-2">
+        <div className="mb-6 sm:mb-12 md:mb-16 px-2">
           <WaveHeading
             className="text-5xl sm:text-6xl md:text-7xl lg:text-[10rem] font-black uppercase tracking-normal leading-none"
             startOffset={0.25}
@@ -60,7 +60,7 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-10 sm:mt-12 md:mt-16"
+          className="mt-6 sm:mt-12 md:mt-16"
         >
           <WaveButton
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
