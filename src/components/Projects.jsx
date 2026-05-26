@@ -15,6 +15,13 @@ function getOptimizedImageUrl(input) {
 const projectList = [
   {
     id: "01",
+    client: "Sahara",
+    year: 2025,
+    url: "https://github.com/Thunderbeast5/Seizure",
+    images: ["/projs/shara1.png", "/imgs/placeholder2.jpeg"]
+  },
+  {
+    id: "02",
     client: "BRIDGELINK",
     year: 2025,
     url: "https://bridgelink.in/",
