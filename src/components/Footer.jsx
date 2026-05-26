@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { WaveHeading } from './WaveHeading';
 
 void motion;
 
@@ -94,12 +95,15 @@ export default function Footer() {
         {/* --- TOP SECTION --- */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-8 sm:gap-10 md:gap-12 mb-8 sm:mb-10 md:mb-12">
           <div className="select-none">
-            <h2 
+            <WaveHeading
               className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black uppercase leading-[0.85] tracking-wider"
-              style={{ WebkitTextStroke: "1px #ffffff", color: "transparent" }}
+              strokeColor="#ffffff"
+              fillColor="#ffffff"
+              startOffset={0.05}
+              endOffset={0.3}
             >
               vedant<br /> purkar
-            </h2>
+            </WaveHeading>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-8 sm:gap-12 md:gap-16 lg:gap-32 w-full md:w-auto">
