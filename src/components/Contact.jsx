@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { WaveButton } from './WaveButton';
 
 void motion;
 
@@ -164,17 +165,13 @@ export default function Contact() {
               />
             </div>
 
-            <motion.button
+            <WaveButton
               type="submit"
               disabled={status === 'sending'}
-              whileHover={{ scale: status === 'sending' ? 1 : 1.02, backgroundColor: "#000", color: "#fff" }}
-              whileTap={{ scale: 0.98 }}
-              className={`w-full py-3 sm:py-4 md:py-5 rounded-full border-2 border-black text-base sm:text-lg md:text-xl font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] transition-all duration-300 ${
-                status === 'sending' ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
+              className="w-full !py-3 sm:!py-4 md:!py-5 rounded-full !border-2 text-base sm:text-lg md:text-xl font-black uppercase tracking-[0.15em] sm:tracking-[0.2em]"
             >
               {status === 'sending' ? 'Sending...' : status === 'success' ? 'Message Sent! ✓' : status === 'error' ? 'Error! Try Again' : 'Send Message'}
-            </motion.button>
+            </WaveButton>
 
             {/* Status Messages */}
             {status === 'success' && (

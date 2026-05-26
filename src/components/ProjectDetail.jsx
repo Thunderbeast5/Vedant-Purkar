@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { WaveButton } from './WaveButton';
 
 export default function ProjectDetail() {
   const location = useLocation();
@@ -17,12 +18,9 @@ export default function ProjectDetail() {
     return (
       <div className="min-h-screen bg-[#E3E3E3] text-black flex flex-col items-center justify-center font-titillium">
         <h2 className="text-2xl font-black mb-4 uppercase">Project Not Found</h2>
-        <button 
-          onClick={() => navigate('/')} 
-          className="px-6 py-2 rounded-full border border-black text-xs font-bold uppercase tracking-widest bg-white hover:bg-black hover:text-white transition-colors"
-        >
+        <WaveButton onClick={() => navigate('/')}>
           Back To Home
-        </button>
+        </WaveButton>
       </div>
     );
   }
@@ -144,16 +142,14 @@ export default function ProjectDetail() {
 
             {/* Direct Action Callout */}
             {project.url && (
-              <motion.a
+              <WaveButton
                 href={project.url}
                 target="_blank"
                 rel="noreferrer"
-                whileHover={{ scale: 1.02, backgroundColor: '#000', color: '#fff' }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full block text-center bg-white text-black border-2 border-black font-black uppercase tracking-widest py-4 rounded-2xl text-xs sm:text-sm shadow-md transition-all duration-300"
+                className="w-full text-center !px-0 py-4 rounded-2xl !border-2"
               >
                 Launch Live Interface
-              </motion.a>
+              </WaveButton>
             )}
           </div>
 

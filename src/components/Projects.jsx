@@ -715,83 +715,10 @@
 //   );
 // }
 
-import { useRef, useState, useMemo, useEffect } from "react";
+import { useRef, useState, useMemo } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-
-// ─── Wave fill utility ────────────────────────────────────────────────────────
-function buildWavePath(pct, phase, W, H) {
-  if (pct <= 0) return "";
-  if (pct >= 100) return `M0,0 L${W},0 L${W},${H} L0,${H} Z`;
- 
-  // y position of the wave edge — starts at H (bottom), rises to 0 (top)
-  const y = H - (pct / 100) * (H + 30) + 15;
-  const amp = 5;
-  const steps = 40;
-  const pts = [];
- 
-  for (let i = 0; i <= steps; i++) {
-    const fx = (i / steps) * W;
-    const fy = y + amp * Math.sin((2 * Math.PI / W) * fx * 2 + phase);
-    pts.push([fx, fy]);
-  }
- 
-  // Start bottom-left, draw wave edge left→right, close bottom-right→bottom-left
-  let d = `M0,${H} L${pts[0][0]},${pts[0][1]}`;
-  for (let i = 1; i <= steps; i++) {
-    const [cx, cy] = pts[i];
-    const [px, py] = pts[i - 1];
-    d += ` Q${px},${py} ${(px + cx) / 2},${(py + cy) / 2}`;
-  }
-  const last = pts[steps];
-  d += ` L${last[0]},${last[1]} L${W},${H} Z`;
-  return d;
-}
-
-function startWave(btn, dir) {
-  if (btn._waveDir === dir) return;
-  btn._waveDir = dir;
-
-  const svg = btn.querySelector("svg.wave-fill");
-  if (!svg) return;
-
-  let progress = btn._waveProg ?? 0;
-  let phase = btn._wavePhase ?? 0;
-
-  cancelAnimationFrame(btn._waveRaf);
-
-  function tick() {
-    phase += 0.08;
-    progress = Math.max(0, Math.min(100, progress + dir * 4));
-    btn._waveProg = progress;
-    btn._wavePhase = phase;
-
-    const W = btn.offsetWidth;
-    const H = btn.offsetHeight;
-
-    let pathEl = svg.querySelector("path");
-    if (!pathEl) {
-      pathEl = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      pathEl.setAttribute("fill", "#000");
-      svg.appendChild(pathEl);
-    }
-
-    pathEl.setAttribute("d", buildWavePath(progress, phase, W, H));
-
-    // Flip text colour at midpoint
-    const label = btn.querySelector("span.wave-label");
-    if (label) label.style.color = progress > 50 ? "#fff" : "#000";
-
-    if ((dir === 1 && progress < 100) || (dir === -1 && progress > 0)) {
-      btn._waveRaf = requestAnimationFrame(tick);
-    } else {
-      if (progress <= 0) svg.innerHTML = "";
-    }
-  }
-
-  btn._waveRaf = requestAnimationFrame(tick);
-}
-// ─────────────────────────────────────────────────────────────────────────────
+import { WaveButton } from "./WaveButton";
 
 // Replace with your actual project list import
 // import { projectList } from "../data/projects";
@@ -1041,32 +968,36 @@ export default function Projects() {
         {/* --- TOGGLE BUTTONS --- */}
         {!showAll && projectList.length > 4 && (
           <div className="flex justify-center -mt-4 sm:-mt-6 md:-mt-8">
-            <motion.button
-              onClick={() => setShowAll(true)}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.05, backgroundColor: "#000", color: "#fff" }}
-              className="px-8 sm:px-10 md:px-12 py-3 sm:py-3.5 md:py-4 rounded-full border-2 border-black text-xs sm:text-sm font-bold uppercase z-10 tracking-widest transition-all bg-white shadow-lg"
             >
-              Show More Projects
-            </motion.button>
+              <WaveButton
+                onClick={() => setShowAll(true)}
+                className="!px-8 sm:!px-10 md:!px-12 !py-3 sm:!py-3.5 md:!py-4 !border-2 text-xs sm:text-sm shadow-lg"
+              >
+                Show More Projects
+              </WaveButton>
+            </motion.div>
           </div>
         )}
 
         {showAll && (
           <div className="flex justify-center -mt-4 sm:-mt-6 md:-mt-8">
-            <motion.button
-              onClick={() => {
-                setShowAll(false);
-                containerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-              }}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.05, backgroundColor: "#000", color: "#fff" }}
-              className="px-8 sm:px-10 md:px-12 py-3 sm:py-3.5 md:py-4 rounded-full border-2 border-black text-xs sm:text-sm font-bold uppercase tracking-widest transition-all bg-white shadow-lg"
             >
-              Show Less
-            </motion.button>
+              <WaveButton
+                onClick={() => {
+                  setShowAll(false);
+                  containerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className="!px-8 sm:!px-10 md:!px-12 !py-3 sm:!py-3.5 md:!py-4 !border-2 text-xs sm:text-sm shadow-lg"
+              >
+                Show Less
+              </WaveButton>
+            </motion.div>
           </div>
         )}
       </div>
@@ -1075,69 +1006,7 @@ export default function Projects() {
 }
 
 // ─── WaveButton ───────────────────────────────────────────────────────────────
-function WaveButton({ children, className = "", onClick, href, disabled, target, rel }) {
-  const btnRef = useRef(null);
-
-  const handleEnter = () => {
-    if (disabled || !btnRef.current) return;
-    startWave(btnRef.current, 1);
-  };
-
-  const handleLeave = () => {
-    if (!btnRef.current) return;
-    startWave(btnRef.current, -1);
-  };
-
-  const baseClass = `
-    relative px-4 sm:px-5 md:px-6 py-2 rounded-full border border-black
-    text-[10px] sm:text-xs font-bold uppercase tracking-widest
-    overflow-hidden whitespace-nowrap bg-white
-  `;
-
-  const inner = (
-    <>
-      <svg
-        className="wave-fill absolute inset-0 w-full h-full pointer-events-none z-[1]"
-        style={{ borderRadius: "inherit" }}
-      />
-      <span className="wave-label relative z-[2] transition-none" style={{ color: "#000" }}>
-        {children}
-      </span>
-    </>
-  );
-
-  if (href) {
-    return (
-      <a
-        ref={btnRef}
-        href={href}
-        target={target}
-        rel={rel}
-        onMouseEnter={handleEnter}
-        onMouseLeave={handleLeave}
-        className={`${baseClass} ${className}`}
-        style={{ display: "inline-block" }}
-      >
-        {inner}
-      </a>
-    );
-  }
-
-  return (
-    <button
-      ref={btnRef}
-      onClick={onClick}
-      disabled={disabled}
-      onMouseEnter={handleEnter}
-      onMouseLeave={handleLeave}
-      className={`${baseClass} ${className} ${disabled ? "opacity-60 cursor-not-allowed border-black/40" : ""}`}
-    >
-      {inner}
-    </button>
-  );
-}
-
-// ─── ProjectCard ──────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
 function ProjectCard({ project, index, showAll }) {
   const navigate = useNavigate();
 
