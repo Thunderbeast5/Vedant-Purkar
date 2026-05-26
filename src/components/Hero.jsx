@@ -1,5 +1,7 @@
 import { Suspense, lazy, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Lottie from 'lottie-react';
+import loaderAnimation from '../utils/loading.json';
 
 const Spline = lazy(() => import('@splinetool/react-spline'));
 
@@ -40,38 +42,25 @@ export default function Hero() {
             <div className="flex flex-col items-center gap-6">
               
               {/* Loader */}
-              <div className="flex items-center gap-[6px]">
-                {[0, 1, 2, 3].map((i) => (
-                  <motion.span
-                    key={i}
-                    className="block w-3 h-3 rounded-full bg-black"
-                    animate={{
-                      y: [0, -14, 0],
-                      opacity: [0.25, 1, 0.25],
-                    }}
-                    transition={{
-                      duration: 0.9,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: i * 0.15,
-                    }}
-                  />
-                ))}
+              <div className="w-48 h-48 md:w-56 md:h-56 flex items-center justify-center">
+                <Lottie
+                  animationData={loaderAnimation}
+                  loop={true}
+                />
               </div>
 
               {/* Main Text */}
-              <motion.p
+             {/* Text */}
+<motion.div
   initial={{ opacity: 0, y: 6 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ delay: 0.2 }}
-  className="text-sm md:text-base font-bold text-black/50 font-titillium uppercase tracking-[0.3em] text-center"
+  className="-mt-6 text-center"
 >
-  Loading Experience...
-  <br />
-  <span className="text-[11px] md:text-xs font-medium tracking-wide text-black/35 normal-case">
-    Best experienced on laptop or desktop 
-  </span>
-</motion.p>
+  <p className="text-[11px] md:text-xs font-medium tracking-wide text-black/35">
+    Best viewed on laptop or desktop
+  </p>
+</motion.div>
             </div>
           </motion.div>
         )}
