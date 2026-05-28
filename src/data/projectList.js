@@ -5,13 +5,13 @@ const projectList = [
     client: "Sahara",
     year: 2025,
     url: "https://github.com/Thunderbeast5/Seizure",
-    images: ["/projs/shara1.png", "/imgs/placeholder2.jpeg"],
-    tagline: "Mobile healthcare tracking ecosystem for underserved rural communities.",
-    description: "Sahara is a dedicated healthcare management application built to monitor and track childhood health metrics in rural environments. It provides operational efficiency for field coordinates, enabling seamless logging and tracking even under constrained network environments.",
-    techStack: ["React Native", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
+    images: ["/projs/shara1.png", "/projs/shara2.png"],
+    tagline: "Digital epilepsy care ecosystem connecting rural families, doctors, and emergency support.",
+    description: "Sahara is a healthcare platform developed under the guidance of Civil Hospital Nashik to support children aged 1–14 suffering from epilepsy in rural communities. The system provides a dedicated mobile application for parents and a centralized web dashboard for doctors, enabling continuous healthcare monitoring, emergency coordination, medication adherence, and real-time communication between families and healthcare professionals.",
+    techStack: ["React Native", "React.js", "Node.js", "Express.js", "MongoDB", "Firebase", "Tailwind CSS"],
     contributors: ["Vedant Purkar (Lead Developer)"],
-    features: ["Offline-first medical logging and local data synchronization", "Dynamic health chart visualization for tracking development milestones", "Simplified community worker portal with minimalist UI layouts"]
-  },
+    features: ["Emergency ambulance alerts with instant SMS notifications to doctors", "Medication reminders, AI chatbot assistance, and educational healthcare video access for parents", "Doctor dashboard for patient management, emergency response coordination, and real-time patient communication"]
+},
   {
     id: "02",
     client: "BRIDGELINK",
