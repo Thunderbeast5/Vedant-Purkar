@@ -19,7 +19,7 @@ function App() {
           <div className="relative">
             <Navbar />
             <BackToTop />
-            <Hero />
+            {/* <Hero /> */}
             <Skills />
             <About />
             <Services />

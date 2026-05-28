@@ -4,9 +4,23 @@ import { TbBrandCpp, TbBrandReactNative, TbDatabase } from "react-icons/tb";
 import { SiMongodb, SiFirebase, SiTailwindcss, SiSpringboot, SiPostman, SiExpress,SiCloudinary } from "react-icons/si"
 import { IoLogoFigma, IoLogoJavascript } from "react-icons/io5";
 import { FaGithub, FaDocker } from "react-icons/fa";
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
 void motion;
+
+// Injected once – GPU-composited marquee, zero JS per frame
+const MARQUEE_STYLE = `
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-left 30s linear infinite;
+}
+`;
 
 function getOptimizedImageUrl(input) {
   return input;
@@ -86,27 +100,28 @@ const ACHIEVEMENTS_BOTTOM = [
   }
 ];
 
-const ScrollingRow = ({ items, baseVelocity = -5 }) => {
+const ScrollingRow = ({ items }) => {
+  // Duplicate once → CSS animates the first 50%, creating a seamless loop
+  const doubled = [...items, ...items];
   return (
-    <div className="flex overflow-hidden whitespace-nowrap py-2 md:py-4">
-      <motion.div
-        className="flex gap-4 md:gap-6 px-4"
-        animate={{ x: baseVelocity > 0 ? [0, -1500] : [-1500, 0] }} // Increased range for smoother infinite feel
-        transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-      >
-        {[...items, ...items, ...items, ...items].map((skill, i) => (
-          <div
-            key={i}
-            className="flex items-center gap-2 md:gap-3 rounded-xl md:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 px-4 py-2 md:px-6 md:py-3 shadow-lg"
-          >
-            <span className="text-black/80">{skill.icon}</span>
-            <span className="text-sm md:text-lg font-bold text-black/80 uppercase tracking-tight">
-              {skill.name}
-            </span>
-          </div>
-        ))}
-      </motion.div>
-    </div>
+    <>
+      <style>{MARQUEE_STYLE}</style>
+      <div className="overflow-hidden py-2 md:py-4">
+        <div className="marquee-track gap-4 md:gap-6 px-4">
+          {doubled.map((skill, i) => (
+            <div
+              key={i}
+              className="flex items-center gap-2 md:gap-3 rounded-xl md:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 px-4 py-2 md:px-6 md:py-3 shadow-lg flex-shrink-0 mx-2 md:mx-3"
+            >
+              <span className="text-black/80">{skill.icon}</span>
+              <span className="text-sm md:text-lg font-bold text-black/80 uppercase tracking-tight">
+                {skill.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 };
 
@@ -117,16 +132,24 @@ export default function Skills() {
     offset: ["start end", "end start"]
   });
 
-  // Reduced the transform distance for mobile to keep items on screen
-  const xLeft = useTransform(scrollYProgress, [0, 1], [-200, 200]);
-  const xRight = useTransform(scrollYProgress, [0, 1], [200, -200]);
-  const imageWidth = typeof window !== 'undefined' && window.innerWidth < 768 ? 500 : 800;
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const imageWidth = isMobile ? 500 : 800;
+  const range = isMobile ? 80 : 200;
+
+  // Raw parallax values
+  const rawLeft  = useTransform(scrollYProgress, [0, 1], [-range, range]);
+  const rawRight = useTransform(scrollYProgress, [0, 1], [range, -range]);
+
+  // Spring smoothing eliminates jank on fast/jerky scrolls
+  const springCfg = { stiffness: 60, damping: 20, mass: 0.4 };
+  const xLeft  = useSpring(rawLeft,  springCfg);
+  const xRight = useSpring(rawRight, springCfg);
 
   return (
     <section id="skills" ref={containerRef} className="relative bg-[#E3E3E3] pt-6 pb-8 md:pt-15 md:pb-40 overflow-hidden scroll-mt-16">
 
       <div className="mb-6 md:mb-22">
-        <ScrollingRow items={SKILLS} baseVelocity={20} />
+        <ScrollingRow items={SKILLS} />
       </div>
 
       <div className="relative py-2 md:py-15">
@@ -134,7 +157,7 @@ export default function Skills() {
         <div className="-rotate-1 md:-rotate-2 space-y-4 md:space-y-8 scale-100 md:scale-110 lg:scale-125">
 
           {/* Row 1 */}
-          <motion.div style={{ x: xLeft }} className="flex gap-4">
+          <motion.div style={{ x: xLeft, willChange: 'transform' }} className="flex gap-4">
             {[...ACHIEVEMENTS_TOP, ...ACHIEVEMENTS_TOP].map((item, i) => (
               <motion.div 
                 key={i} 
@@ -160,7 +183,7 @@ export default function Skills() {
           </motion.div>
 
           {/* Row 2 */}
-          <motion.div style={{ x: xRight }} className="flex gap-4 md:gap-8 translate-x-[-90px] md:translate-x-[-160px]">
+          <motion.div style={{ x: xRight, willChange: 'transform' }} className="flex gap-4 md:gap-8 translate-x-[-90px] md:translate-x-[-160px]">
             {[...ACHIEVEMENTS_BOTTOM, ...ACHIEVEMENTS_BOTTOM].map((item, i) => (
               <motion.div 
                 key={i} 
