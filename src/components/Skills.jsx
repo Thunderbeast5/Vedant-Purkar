@@ -1,212 +1,445 @@
-import React, { useRef } from 'react';
+// import React, { useRef } from 'react';
+// import { DiReact, DiNodejs, DiGit, DiPython, DiJava } from "react-icons/di";
+// import { TbBrandCpp, TbBrandReactNative, TbDatabase } from "react-icons/tb";
+// import { SiMongodb, SiFirebase, SiTailwindcss, SiSpringboot, SiPostman, SiExpress,SiCloudinary } from "react-icons/si"
+// import { IoLogoFigma, IoLogoJavascript } from "react-icons/io5";
+// import { FaGithub, FaDocker } from "react-icons/fa";
+// import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+
+// void motion;
+
+// // Injected once – GPU-composited marquee, zero JS per frame
+// const MARQUEE_STYLE = `
+// @keyframes marquee-left {
+//   from { transform: translateX(0); }
+//   to   { transform: translateX(-50%); }
+// }
+// .marquee-track {
+//   display: flex;
+//   width: max-content;
+//   will-change: transform;
+//   animation: marquee-left 30s linear infinite;
+// }
+// `;
+
+// function getOptimizedImageUrl(input) {
+//   return input;
+// }
+
+// const SKILLS = [
+//   { name: "C++", icon: <TbBrandCpp className="size-5 md:size-6" /> },
+//   { name: "Python", icon: <DiPython className="size-5 md:size-6" /> },
+//   { name: "Java", icon: <DiJava className="size-5 md:size-6" /> },
+//   { name: "JavaScript", icon: <IoLogoJavascript className="size-5 md:size-6" /> },
+//   { name: "React", icon: <DiReact className="size-5 md:size-6" /> },
+//   { name: "React Native", icon: <TbBrandReactNative className="size-5 md:size-6" /> },
+//   { name: "Node.js", icon: <DiNodejs className="size-5 md:size-6" /> },
+//   { name: "Express.js", icon: <SiExpress className="size-5 md:size-6" /> },
+//   { name: "Spring Boot", icon: <SiSpringboot className="size-5 md:size-6" /> },
+//   { name: "Tailwind", icon: <SiTailwindcss className="size-5 md:size-6" /> },
+//   { name: "Firebase", icon: <SiFirebase className="size-5 md:size-6" /> },
+//   { name: "Mongo DB", icon: <SiMongodb className="size-5 md:size-6" /> },
+//   { name: "JPA", icon: <TbDatabase className="size-5 md:size-6" /> },
+//   { name: "Postman", icon: <SiPostman className="size-5 md:size-6" /> },
+//   { name: "Git", icon: <DiGit className="size-5 md:size-6" /> },
+//   { name: "Github", icon: <FaGithub className="size-5 md:size-6" /> },
+//   { name: "Cloudinary", icon: <SiCloudinary className="size-5 md:size-6" /> },
+//   { name: "Figma", icon: <IoLogoFigma className="size-5 md:size-6" /> },
+//   { name: "Docker", icon: <FaDocker className="size-5 md:size-6" /> },
+// ];
+
+// const ACHIEVEMENTS_TOP = [
+//   {
+//     img: "/imgs/python.jpeg",
+//     title: "Winner – Python Mini Project Competition",
+//     desc: "Won first place for designing and implementing a Python-based mini project."
+//   },
+  
+//   {
+//     img: "/imgs/nasa.jpeg",
+//     title: "Global Finalist – NASA Space Apps Challenge 2024",
+//     desc: "Selected as a Global Finalist among thousands of teams worldwide at NASA Space Apps Challenge 2024."
+//   },
+//   {
+//     img: "/imgs/innov.jpeg",
+//     title: "Winner – Innover National-Level Hackathon",
+//     desc: "Secured first place at Innover, a national-level hackathon, for innovative problem-solving and technical implementation."
+//   },
+//   {
+//     img: "/imgs/kumbh.jpeg",
+//     title: "Kumbhathon Innvotion Incubation Foundation",
+//     desc: "Selected for incubation at Kumbhathon Innvotion Incubation Foundation for a promising project idea."
+//   }
+// ];
+
+// const ACHIEVEMENTS_BOTTOM = [
+  
+//   {
+    
+//     img: "/imgs/nasa.jpeg",
+//     title: "Runner-Up – NASA Space Apps Challenge 2024 (Local Event)",
+//     desc: "Achieved runner-up position at the local-level NASA Space Apps Challenge 2024."
+  
+//   },
+
+//   {
+//     img: "/imgs/iot.jpeg",
+//     title: "Runner-Up – Java and IoT Mini Project Competition",
+//     desc: "Secured runner-up position in a mini project competition focused on Java and IoT technologies."
+//   },
+  
+//   {
+//     img: "/imgs/kumbh.jpeg",
+//     title: "Completed Startup Course",
+//     desc: "Completed a Startup & Entrepreneurship course under Sudhir Kadam, gaining practical knowledge in startups and innovation."
+//   },
+//    {
+//     img: "/imgs/osci.jpeg",
+//     title: "Open Source Contributor OSCI'25 and GSSoC'25",
+//     desc: "Contributed to open source projects during OSCI'25 and GSSoC'25, enhancing coding skills and collaboration experience."
+//   }
+// ];
+
+// const ScrollingRow = ({ items }) => {
+//   // Duplicate once → CSS animates the first 50%, creating a seamless loop
+//   const doubled = [...items, ...items];
+//   return (
+//     <>
+//       <style>{MARQUEE_STYLE}</style>
+//       <div className="overflow-hidden py-2 md:py-4">
+//         <div className="marquee-track gap-4 md:gap-6 px-4">
+//           {doubled.map((skill, i) => (
+//             <div
+//               key={i}
+//               className="flex items-center gap-2 md:gap-3 rounded-xl md:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 px-4 py-2 md:px-6 md:py-3 shadow-lg flex-shrink-0 mx-2 md:mx-3"
+//             >
+//               <span className="text-black/80">{skill.icon}</span>
+//               <span className="text-sm md:text-lg font-bold text-black/80 uppercase tracking-tight">
+//                 {skill.name}
+//               </span>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
+
+// export default function Skills() {
+//   const containerRef = useRef(null);
+//   const { scrollYProgress } = useScroll({
+//     target: containerRef,
+//     offset: ["start end", "end start"]
+//   });
+
+//   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+//   const imageWidth = isMobile ? 500 : 800;
+//   const range = isMobile ? 80 : 200;
+
+//   // Raw parallax values
+//   const rawLeft  = useTransform(scrollYProgress, [0, 1], [-range, range]);
+//   const rawRight = useTransform(scrollYProgress, [0, 1], [range, -range]);
+
+//   // Spring smoothing eliminates jank on fast/jerky scrolls
+//   const springCfg = { stiffness: 60, damping: 20, mass: 0.4 };
+//   const xLeft  = useSpring(rawLeft,  springCfg);
+//   const xRight = useSpring(rawRight, springCfg);
+
+//   return (
+//     <section id="skills" ref={containerRef} className="relative bg-[#E3E3E3] pt-6 pb-8 md:pt-15 md:pb-40 overflow-hidden scroll-mt-16">
+
+//       <div className="mb-6 md:mb-22">
+//         <ScrollingRow items={SKILLS} />
+//       </div>
+
+//       <div className="relative py-2 md:py-15">
+//         {/* Adjusted rotation and scale for mobile: -rotate-1 and scale-100 on small screens */}
+//         <div className="-rotate-1 md:-rotate-2 space-y-4 md:space-y-8 scale-100 md:scale-110 lg:scale-125">
+
+//           {/* Row 1 */}
+//           <motion.div style={{ x: xLeft, willChange: 'transform' }} className="flex gap-4">
+//             {[...ACHIEVEMENTS_TOP, ...ACHIEVEMENTS_TOP].map((item, i) => (
+//               <motion.div 
+//                 key={i} 
+//                 className="group relative flex-shrink-0 h-32 w-[200px] md:h-44 md:w-[320px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border-[2px] border-white cursor-pointer"
+//               >
+//                 <img
+//                   src={getOptimizedImageUrl(item.img, { width: imageWidth })}
+//                   className="h-full w-full object-cover"
+//                   alt="Achievement"
+//                   loading="lazy"
+//                   decoding="async"
+//                 />
+//                 <motion.div 
+//                   initial={{ opacity: 0 }}
+//                   whileHover={{ opacity: 1 }}
+//                   className="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-3 md:p-4 backdrop-blur-sm transition-opacity duration-300"
+//                 >
+//                   <h3 className="text-white text-sm md:text-lg font-black uppercase mb-1">{item.title}</h3>
+//                   <p className="text-white/80 text-[10px] md:text-xs font-medium leading-snug">{item.desc}</p>
+//                 </motion.div>
+//               </motion.div>
+//             ))}
+//           </motion.div>
+
+//           {/* Row 2 */}
+//           <motion.div style={{ x: xRight, willChange: 'transform' }} className="flex gap-4 md:gap-8 translate-x-[-90px] md:translate-x-[-160px]">
+//             {[...ACHIEVEMENTS_BOTTOM, ...ACHIEVEMENTS_BOTTOM].map((item, i) => (
+//               <motion.div 
+//                 key={i} 
+//                 className="group relative flex-shrink-0 h-32 w-[200px] md:h-44 md:w-[320px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border-[2px] border-white cursor-pointer"
+//               >
+//                 <img
+//                   src={getOptimizedImageUrl(item.img, { width: imageWidth })}
+//                   className="h-full w-full object-cover"
+//                   alt="Achievement"
+//                   loading="lazy"
+//                   decoding="async"
+//                 />
+//                 <motion.div 
+//                   initial={{ opacity: 0 }}
+//                   whileHover={{ opacity: 1 }}
+//                   className="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-3 md:p-4 backdrop-blur-sm transition-opacity duration-300"
+//                 >
+//                   <h3 className="text-white text-sm md:text-lg font-black uppercase mb-1">{item.title}</h3>
+//                   <p className="text-white/80 text-[10px] md:text-xs font-medium leading-snug">{item.desc}</p>
+//                 </motion.div>
+//               </motion.div>
+//             ))}
+//           </motion.div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+import React from 'react';
 import { DiReact, DiNodejs, DiGit, DiPython, DiJava } from "react-icons/di";
 import { TbBrandCpp, TbBrandReactNative, TbDatabase } from "react-icons/tb";
-import { SiMongodb, SiFirebase, SiTailwindcss, SiSpringboot, SiPostman, SiExpress,SiCloudinary } from "react-icons/si"
+import { SiMongodb, SiFirebase, SiTailwindcss, SiSpringboot, SiPostman, SiExpress, SiCloudinary } from "react-icons/si";
 import { IoLogoFigma, IoLogoJavascript } from "react-icons/io5";
 import { FaGithub, FaDocker } from "react-icons/fa";
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-
-void motion;
-
-// Injected once – GPU-composited marquee, zero JS per frame
-const MARQUEE_STYLE = `
-@keyframes marquee-left {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-.marquee-track {
-  display: flex;
-  width: max-content;
-  will-change: transform;
-  animation: marquee-left 30s linear infinite;
-}
-`;
 
 function getOptimizedImageUrl(input) {
   return input;
 }
 
+// ─── CSS ────────────────────────────────────────────────────────────────────
+const STYLES = `
+/*
+ * translate3d forces a GPU compositor layer — animation never touches
+ * the CPU layout thread, so it stays smooth even during scroll.
+ * Both ach rows share the same --dur so they run at identical px/s.
+ */
+@keyframes slide-left {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes slide-right {
+  from { transform: translate3d(-50%, 0, 0); }
+  to   { transform: translate3d(0, 0, 0); }
+}
+
+/* Skills ticker */
+.ticker-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  backface-visibility: hidden;
+  animation: slide-left 30s linear infinite;
+}
+
+/* Achievement rows — same --dur = same pixels-per-second on both rows */
+.ach-track-left,
+.ach-track-right {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  backface-visibility: hidden;
+  --dur: 22s;
+}
+@media (min-width: 768px) {
+  .ach-track-left,
+  .ach-track-right { --dur: 38s; }
+}
+.ach-track-left  { animation: slide-left  var(--dur) linear infinite; }
+.ach-track-right { animation: slide-right var(--dur) linear infinite; }
+
+/* Pause on row hover */
+.ach-row:hover .ach-track-left,
+.ach-row:hover .ach-track-right {
+  animation-play-state: paused;
+}
+
+/*
+ * THE KEY FIX for the glitchy border-radius on hover:
+ *
+ * Never put overflow:hidden on the outer card that also has border-radius.
+ * The browser clips the child content using the border-radius, but when a
+ * CSS transform (scale/translate) is applied on a child, the clip path can
+ * "lag" a frame behind, producing a square flash.
+ *
+ * Solution: outer card has border-radius + the white border, NO overflow hidden.
+ * An inner wrapper div carries overflow:hidden + matching border-radius.
+ * The overlay sits inside that inner wrapper so it is always clipped cleanly.
+ */
+.ach-card {
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 1rem;           /* 16px = rounded-2xl */
+  border: 2px solid white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  cursor: pointer;
+  /* NO overflow: hidden here */
+}
+@media (min-width: 768px) {
+  .ach-card { border-radius: 1.5rem; } /* rounded-3xl */
+}
+
+.ach-card-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;        /* always matches parent exactly */
+  overflow: hidden;              /* clipping lives here, never on the outer card */
+  position: relative;
+}
+
+.ach-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.72);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0.75rem;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  border-radius: inherit;       /* keeps it inside the clipping wrapper */
+}
+.ach-card:hover .ach-overlay {
+  opacity: 1;
+}
+`;
+
+// ─── Data ────────────────────────────────────────────────────────────────────
 const SKILLS = [
-  { name: "C++", icon: <TbBrandCpp className="size-5 md:size-6" /> },
-  { name: "Python", icon: <DiPython className="size-5 md:size-6" /> },
-  { name: "Java", icon: <DiJava className="size-5 md:size-6" /> },
-  { name: "JavaScript", icon: <IoLogoJavascript className="size-5 md:size-6" /> },
-  { name: "React", icon: <DiReact className="size-5 md:size-6" /> },
+  { name: "C++",          icon: <TbBrandCpp className="size-5 md:size-6" /> },
+  { name: "Python",       icon: <DiPython className="size-5 md:size-6" /> },
+  { name: "Java",         icon: <DiJava className="size-5 md:size-6" /> },
+  { name: "JavaScript",   icon: <IoLogoJavascript className="size-5 md:size-6" /> },
+  { name: "React",        icon: <DiReact className="size-5 md:size-6" /> },
   { name: "React Native", icon: <TbBrandReactNative className="size-5 md:size-6" /> },
-  { name: "Node.js", icon: <DiNodejs className="size-5 md:size-6" /> },
-  { name: "Express.js", icon: <SiExpress className="size-5 md:size-6" /> },
-  { name: "Spring Boot", icon: <SiSpringboot className="size-5 md:size-6" /> },
-  { name: "Tailwind", icon: <SiTailwindcss className="size-5 md:size-6" /> },
-  { name: "Firebase", icon: <SiFirebase className="size-5 md:size-6" /> },
-  { name: "Mongo DB", icon: <SiMongodb className="size-5 md:size-6" /> },
-  { name: "JPA", icon: <TbDatabase className="size-5 md:size-6" /> },
-  { name: "Postman", icon: <SiPostman className="size-5 md:size-6" /> },
-  { name: "Git", icon: <DiGit className="size-5 md:size-6" /> },
-  { name: "Github", icon: <FaGithub className="size-5 md:size-6" /> },
-  { name: "Cloudinary", icon: <SiCloudinary className="size-5 md:size-6" /> },
-  { name: "Figma", icon: <IoLogoFigma className="size-5 md:size-6" /> },
-  { name: "Docker", icon: <FaDocker className="size-5 md:size-6" /> },
+  { name: "Node.js",      icon: <DiNodejs className="size-5 md:size-6" /> },
+  { name: "Express.js",   icon: <SiExpress className="size-5 md:size-6" /> },
+  { name: "Spring Boot",  icon: <SiSpringboot className="size-5 md:size-6" /> },
+  { name: "Tailwind",     icon: <SiTailwindcss className="size-5 md:size-6" /> },
+  { name: "Firebase",     icon: <SiFirebase className="size-5 md:size-6" /> },
+  { name: "Mongo DB",     icon: <SiMongodb className="size-5 md:size-6" /> },
+  { name: "JPA",          icon: <TbDatabase className="size-5 md:size-6" /> },
+  { name: "Postman",      icon: <SiPostman className="size-5 md:size-6" /> },
+  { name: "Git",          icon: <DiGit className="size-5 md:size-6" /> },
+  { name: "Github",       icon: <FaGithub className="size-5 md:size-6" /> },
+  { name: "Cloudinary",   icon: <SiCloudinary className="size-5 md:size-6" /> },
+  { name: "Figma",        icon: <IoLogoFigma className="size-5 md:size-6" /> },
+  { name: "Docker",       icon: <FaDocker className="size-5 md:size-6" /> },
 ];
 
 const ACHIEVEMENTS_TOP = [
-  {
-    img: "/imgs/python.jpeg",
-    title: "Winner – Python Mini Project Competition",
-    desc: "Won first place for designing and implementing a Python-based mini project."
-  },
-  
-  {
-    img: "/imgs/nasa.jpeg",
-    title: "Global Finalist – NASA Space Apps Challenge 2024",
-    desc: "Selected as a Global Finalist among thousands of teams worldwide at NASA Space Apps Challenge 2024."
-  },
-  {
-    img: "/imgs/innov.jpeg",
-    title: "Winner – Innover National-Level Hackathon",
-    desc: "Secured first place at Innover, a national-level hackathon, for innovative problem-solving and technical implementation."
-  },
-  {
-    img: "/imgs/kumbh.jpeg",
-    title: "Kumbhathon Innvotion Incubation Foundation",
-    desc: "Selected for incubation at Kumbhathon Innvotion Incubation Foundation for a promising project idea."
-  }
+  { img: "/imgs/python.jpeg", title: "Winner – Python Mini Project Competition",        desc: "Won first place for designing and implementing a Python-based mini project." },
+  { img: "/imgs/nasa.jpeg",   title: "Global Finalist – NASA Space Apps Challenge 2024", desc: "Selected as a Global Finalist among thousands of teams worldwide at NASA Space Apps Challenge 2024." },
+  { img: "/imgs/innov.jpeg",  title: "Winner – Innover National-Level Hackathon",        desc: "Secured first place at Innover, a national-level hackathon, for innovative problem-solving and technical implementation." },
+  { img: "/imgs/kumbh.jpeg",  title: "Kumbhathon Innovation Incubation Foundation",      desc: "Selected for incubation at Kumbhathon Innovation Incubation Foundation for a promising project idea." },
 ];
 
 const ACHIEVEMENTS_BOTTOM = [
-  
-  {
-    
-    img: "/imgs/nasa.jpeg",
-    title: "Runner-Up – NASA Space Apps Challenge 2024 (Local Event)",
-    desc: "Achieved runner-up position at the local-level NASA Space Apps Challenge 2024."
-  
-  },
-
-  {
-    img: "/imgs/iot.jpeg",
-    title: "Runner-Up – Java and IoT Mini Project Competition",
-    desc: "Secured runner-up position in a mini project competition focused on Java and IoT technologies."
-  },
-  
-  {
-    img: "/imgs/kumbh.jpeg",
-    title: "Completed Startup Course",
-    desc: "Completed a Startup & Entrepreneurship course under Sudhir Kadam, gaining practical knowledge in startups and innovation."
-  },
-   {
-    img: "/imgs/osci.jpeg",
-    title: "Open Source Contributor OSCI'25 and GSSoC'25",
-    desc: "Contributed to open source projects during OSCI'25 and GSSoC'25, enhancing coding skills and collaboration experience."
-  }
+  { img: "/imgs/nasa.jpeg",  title: "Runner-Up – NASA Space Apps Challenge 2024 (Local)", desc: "Achieved runner-up position at the local-level NASA Space Apps Challenge 2024." },
+  { img: "/imgs/iot.jpeg",   title: "Runner-Up – Java and IoT Mini Project Competition",   desc: "Secured runner-up position in a mini project competition focused on Java and IoT technologies." },
+  { img: "/imgs/kumbh.jpeg", title: "Completed Startup Course",                            desc: "Completed a Startup & Entrepreneurship course under Sudhir Kadam, gaining practical knowledge in startups and innovation." },
+  { img: "/imgs/osci.jpeg",  title: "Open Source Contributor OSCI'25 and GSSoC'25",        desc: "Contributed to open source projects during OSCI'25 and GSSoC'25, enhancing coding skills and collaboration experience." },
 ];
 
-const ScrollingRow = ({ items }) => {
-  // Duplicate once → CSS animates the first 50%, creating a seamless loop
+// ─── Skill ticker ────────────────────────────────────────────────────────────
+const SkillsTicker = ({ items }) => {
   const doubled = [...items, ...items];
   return (
-    <>
-      <style>{MARQUEE_STYLE}</style>
-      <div className="overflow-hidden py-2 md:py-4">
-        <div className="marquee-track gap-4 md:gap-6 px-4">
-          {doubled.map((skill, i) => (
-            <div
-              key={i}
-              className="flex items-center gap-2 md:gap-3 rounded-xl md:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 px-4 py-2 md:px-6 md:py-3 shadow-lg flex-shrink-0 mx-2 md:mx-3"
-            >
-              <span className="text-black/80">{skill.icon}</span>
-              <span className="text-sm md:text-lg font-bold text-black/80 uppercase tracking-tight">
-                {skill.name}
-              </span>
-            </div>
-          ))}
-        </div>
+    <div className="overflow-hidden py-2 md:py-4">
+      <div className="ticker-track">
+        {doubled.map((skill, i) => (
+          <div
+            key={i}
+            className="flex items-center gap-2 md:gap-3 rounded-xl md:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 px-4 py-2 md:px-6 md:py-3 shadow-lg flex-shrink-0 mx-2 md:mx-3"
+          >
+            <span className="text-black/80">{skill.icon}</span>
+            <span className="text-sm md:text-lg font-bold text-black/80 uppercase tracking-tight">
+              {skill.name}
+            </span>
+          </div>
+        ))}
       </div>
-    </>
+    </div>
   );
 };
 
-export default function Skills() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
+// ─── Achievement card ────────────────────────────────────────────────────────
+const AchCard = ({ item }) => (
+  <div className="ach-card h-32 w-[200px] md:h-44 md:w-[320px] mx-2 md:mx-3">
+    <div className="ach-card-inner">
+      <img
+        src={getOptimizedImageUrl(item.img)}
+        className="h-full w-full object-cover"
+        alt={item.title}
+        loading="lazy"
+        decoding="async"
+      />
+      <div className="ach-overlay">
+        <h3 className="text-white text-sm md:text-lg font-black uppercase mb-1 leading-tight">
+          {item.title}
+        </h3>
+        <p className="text-white/80 text-[10px] md:text-xs font-medium leading-snug">
+          {item.desc}
+        </p>
+      </div>
+    </div>
+  </div>
+);
 
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  const imageWidth = isMobile ? 500 : 800;
-  const range = isMobile ? 80 : 200;
-
-  // Raw parallax values
-  const rawLeft  = useTransform(scrollYProgress, [0, 1], [-range, range]);
-  const rawRight = useTransform(scrollYProgress, [0, 1], [range, -range]);
-
-  // Spring smoothing eliminates jank on fast/jerky scrolls
-  const springCfg = { stiffness: 60, damping: 20, mass: 0.4 };
-  const xLeft  = useSpring(rawLeft,  springCfg);
-  const xRight = useSpring(rawRight, springCfg);
-
+// ─── Achievement row ─────────────────────────────────────────────────────────
+const AchievementRow = ({ items, direction = "left", offset = "0px" }) => {
+  const doubled = [...items, ...items];
+  const trackClass = direction === "left" ? "ach-track-left" : "ach-track-right";
   return (
-    <section id="skills" ref={containerRef} className="relative bg-[#E3E3E3] pt-6 pb-8 md:pt-15 md:pb-40 overflow-hidden scroll-mt-16">
+    <div className="ach-row overflow-hidden" style={{ marginLeft: offset }}>
+      <div className={trackClass}>
+        {doubled.map((item, i) => (
+          <AchCard key={i} item={item} />
+        ))}
+      </div>
+    </div>
+  );
+};
 
+// ─── Main section ─────────────────────────────────────────────────────────────
+export default function Skills() {
+  return (
+    <section
+      id="skills"
+      className="relative bg-[#E3E3E3] pt-6 pb-8 md:pt-15 md:pb-40 overflow-hidden scroll-mt-16"
+    >
+      <style>{STYLES}</style>
+
+      {/* Skills ticker */}
       <div className="mb-6 md:mb-22">
-        <ScrollingRow items={SKILLS} />
+        <SkillsTicker items={SKILLS} />
       </div>
 
+      {/* Achievement rows */}
       <div className="relative py-2 md:py-15">
-        {/* Adjusted rotation and scale for mobile: -rotate-1 and scale-100 on small screens */}
         <div className="-rotate-1 md:-rotate-2 space-y-4 md:space-y-8 scale-100 md:scale-110 lg:scale-125">
-
-          {/* Row 1 */}
-          <motion.div style={{ x: xLeft, willChange: 'transform' }} className="flex gap-4">
-            {[...ACHIEVEMENTS_TOP, ...ACHIEVEMENTS_TOP].map((item, i) => (
-              <motion.div 
-                key={i} 
-                className="group relative flex-shrink-0 h-32 w-[200px] md:h-44 md:w-[320px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border-[2px] border-white cursor-pointer"
-              >
-                <img
-                  src={getOptimizedImageUrl(item.img, { width: imageWidth })}
-                  className="h-full w-full object-cover"
-                  alt="Achievement"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  className="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-3 md:p-4 backdrop-blur-sm transition-opacity duration-300"
-                >
-                  <h3 className="text-white text-sm md:text-lg font-black uppercase mb-1">{item.title}</h3>
-                  <p className="text-white/80 text-[10px] md:text-xs font-medium leading-snug">{item.desc}</p>
-                </motion.div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Row 2 */}
-          <motion.div style={{ x: xRight, willChange: 'transform' }} className="flex gap-4 md:gap-8 translate-x-[-90px] md:translate-x-[-160px]">
-            {[...ACHIEVEMENTS_BOTTOM, ...ACHIEVEMENTS_BOTTOM].map((item, i) => (
-              <motion.div 
-                key={i} 
-                className="group relative flex-shrink-0 h-32 w-[200px] md:h-44 md:w-[320px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border-[2px] border-white cursor-pointer"
-              >
-                <img
-                  src={getOptimizedImageUrl(item.img, { width: imageWidth })}
-                  className="h-full w-full object-cover"
-                  alt="Achievement"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  className="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-3 md:p-4 backdrop-blur-sm transition-opacity duration-300"
-                >
-                  <h3 className="text-white text-sm md:text-lg font-black uppercase mb-1">{item.title}</h3>
-                  <p className="text-white/80 text-[10px] md:text-xs font-medium leading-snug">{item.desc}</p>
-                </motion.div>
-              </motion.div>
-            ))}
-          </motion.div>
+          <AchievementRow items={ACHIEVEMENTS_TOP}    direction="left"  offset="0px" />
+          <AchievementRow items={ACHIEVEMENTS_BOTTOM} direction="right" offset="-90px" />
         </div>
       </div>
     </section>
