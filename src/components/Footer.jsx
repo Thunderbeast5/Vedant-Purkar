@@ -18,74 +18,14 @@ export default function Footer() {
   };
 
   const shapes = [
-    {
-      color: "#7C3AED",
-      svg: (
-        <path
-          d="M50 0C50 27.6 27.6 50 0 50C27.6 50 50 72.4 50 100C50 72.4 72.4 50 100 50C72.4 50 50 27.6 50 0Z"
-          fill="currentColor"
-        />
-      ),
-    },
-    {
-      color: "#BEF264",
-      svg: (
-        <>
-          <circle cx="25" cy="25" r="15" fill="currentColor" />
-          <circle cx="75" cy="25" r="15" fill="currentColor" />
-          <circle cx="25" cy="75" r="15" fill="currentColor" />
-          <circle cx="75" cy="75" r="15" fill="currentColor" />
-        </>
-      ),
-    },
-    {
-      color: "#FFFFFF",
-      svg: (
-        <path d="M100 100H0C0 44.77 44.77 0 100 0V100Z" fill="currentColor" />
-      ),
-    },
-    {
-      color: "#8B5CF6",
-      svg: <circle cx="50" cy="50" r="50" fill="currentColor" />,
-    },
-    {
-      color: "#F59E0B",
-      svg: <path d="M50 0L100 100H0Z" fill="currentColor" />,
-    },
-    {
-      color: "#EC4899",
-      svg: (
-        <circle
-          cx="50"
-          cy="50"
-          r="40"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="15"
-        />
-      ),
-    },
-    {
-      color: "#06B6D4",
-      svg: (
-        <path
-          d="M0 20L25 40L50 20L75 40L100 20V80L75 60L50 80L25 60L0 80Z"
-          fill="currentColor"
-        />
-      ),
-    },
-    {
-      color: "#F472B6",
-      svg: (
-        <>
-          <circle cx="50" cy="25" r="18" fill="currentColor" />
-          <circle cx="75" cy="50" r="18" fill="currentColor" />
-          <circle cx="50" cy="75" r="18" fill="currentColor" />
-          <circle cx="25" cy="50" r="18" fill="currentColor" />
-          <circle cx="50" cy="50" r="10" fill="currentColor" />
-        </>
-      ),
-    },
+    { src: "f1.webp", alt: "shape 1" },
+    { src: "f2.webp", alt: "shape 2" },
+    { src: "f3.webp", alt: "shape 3" },
+    { src: "f4.webp", alt: "shape 4" },
+    { src: "f5.webp", alt: "shape 5" },
+    { src: "f6.webp", alt: "shape 6" },
+    { src: "f7.webp", alt: "shape 7" },
+    { src: "f8.webp", alt: "shape 8" },
   ];
 
   return (
@@ -164,12 +104,14 @@ export default function Footer() {
               whileTap={{ scale: 0.95 }}
               transition={{ delay: i * 0.05, duration: 0.6, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="flex-1 h-16 sm:h-20 md:h-32 lg:h-40 flex items-center justify-center p-1 cursor-pointer" 
-              style={{ color: shape.color }}
+              className="flex-1 h-16 sm:h-20 md:h-32 lg:h-40 flex items-center justify-center p-1 cursor-pointer"
             >
-              <svg viewBox="0 0 100 100" className="w-full h-full object-contain">
-                {shape.svg}
-              </svg>
+              <img
+                src={`/footer/${shape.src}`}
+                alt={shape.alt}
+                className="w-full h-full object-contain"
+                loading="lazy"
+              />
             </motion.div>
           ))}
         </div>
