@@ -318,7 +318,7 @@
 //           )}
 //         </div>
 
-//         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6 h-48 sm:h-56 md:h-64 lg:h-96">
+//         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
 //           {project.images.map((img, i) => (
 //             <div key={i} className="overflow-hidden rounded-xl sm:rounded-2xl md:rounded-[2rem]">
 //               <motion.img 
@@ -696,7 +696,7 @@
 //           </div>
 //         </div>
 
-//         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6 h-48 sm:h-56 md:h-64 lg:h-96">
+//         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
 //           {project.images.map((img, i) => (
 //             <div key={i} className="overflow-hidden rounded-xl sm:rounded-2xl md:rounded-[2rem]">
 //               <motion.img 
@@ -887,7 +887,7 @@ function ProjectCard({ project, index, showAll }) {
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
       className={showAll ? "w-full" : "sticky w-full"}
-      style={showAll ? { zIndex: index } : { top: `${topOffset}px`, zIndex: index }}
+      style={showAll ? { zIndex: index, willChange: "transform" } : { top: `${topOffset}px`, zIndex: index, willChange: "transform" }}
     >
       <div className="bg-white/90 backdrop-blur-md rounded-2xl sm:rounded-3xl md:rounded-[3rem] p-4 sm:p-6 md:p-8 lg:p-12 border border-black/30 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] mb-6 sm:mb-8 md:mb-10">
 
@@ -923,16 +923,15 @@ function ProjectCard({ project, index, showAll }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6 h-48 sm:h-56 md:h-64 lg:h-96">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
           {project.images.map((img, i) => (
-            <div key={i} className="overflow-hidden rounded-xl sm:rounded-2xl md:rounded-[2rem]">
-              <motion.img
-                whileHover={{ scale: 1.05 }}
+            <div key={i} className="rounded-xl sm:rounded-2xl md:rounded-[2rem] border border-black/20 overflow-hidden">
+              <img
                 src={getOptimizedImageUrl(img, { width: imageWidth })}
                 alt={`${project.client} project ${i + 1}`}
                 loading="lazy"
                 decoding="async"
-                className="w-full h-full object-cover transition-all duration-500"
+                className="w-full h-auto object-contain block"
               />
             </div>
           ))}
