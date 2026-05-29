@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect } from "react";
+import Lottie from "lottie-react";
+import robAnimation from "../utils/rob.json";
 
 // ── Markdown-lite renderer ────────────────────────────────────────────────
 function FormattedMessage({ content }) {
@@ -314,7 +316,7 @@ export default function PortfolioChatbot() {
       <button
         onClick={() => setIsOpen((v) => !v)}
         aria-label={isOpen ? "Close chat" : "Open chat"}
-        className="fixed bottom-24 right-6 z-50 w-14 h-14 bg-black text-[#E3E3E3] rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 font-titillium"
+        className="fixed bottom-24 right-6 z-50 w-11 h-11 bg-black text-[#E3E3E3] rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 font-titillium"
         style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.18)" }}
       >
         {isOpen ? (
