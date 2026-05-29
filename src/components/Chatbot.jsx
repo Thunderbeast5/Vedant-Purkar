@@ -316,17 +316,15 @@ export default function PortfolioChatbot() {
       <button
         onClick={() => setIsOpen((v) => !v)}
         aria-label={isOpen ? "Close chat" : "Open chat"}
-        className="fixed bottom-24 right-6 z-50 w-11 h-11 bg-black text-[#E3E3E3] rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 font-titillium"
-        style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.18)" }}
+        className="fixed bottom-24 right-6 z-50 flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 font-titillium border-none bg-transparent p-0 shadow-none"
+        style={{ background: "transparent", border: "none", padding: 0 }}
       >
         {isOpen ? (
-          <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+          <svg width="44" height="44" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" className="bg-black rounded-full p-2 text-[#E3E3E3] shadow-lg">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         ) : (
-          <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-          </svg>
+          <img src="/bot1.png" alt="Chat with Thunderbeast" className="w-11 h-11 object-contain" />
         )}
       </button>
 
@@ -349,9 +347,7 @@ export default function PortfolioChatbot() {
           {/* Header */}
           <div className="px-5 pt-4 pb-3 border-b border-black/10 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="w-7 h-7 rounded-full bg-black flex items-center justify-center flex-shrink-0">
-                <span className="text-[#E3E3E3] text-[9px] font-black tracking-widest">TB</span>
-              </div>
+              {/* <img src="/bot1.png" alt="Thunderbeast Bot" className="w-7 h-7 rounded-full flex-shrink-0 object-cover" /> */}
               <span className="text-sm font-black uppercase tracking-[0.2em] text-black">Thunderbeast</span>
             </div>
             <button
