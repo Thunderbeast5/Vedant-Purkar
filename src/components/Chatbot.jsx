@@ -233,6 +233,8 @@ async function fetchGroqReply(conversationMessages) {
 // ── Main component ─────────────────────────────────────────────────────────
 export default function PortfolioChatbot() {
   const [isOpen, setIsOpen] = useState(false);
+  const [greetingText, setGreetingText] = useState("");
+  const [greetingVisible, setGreetingVisible] = useState(true);
   const [messages, setMessages] = useState([
     {
       role: "assistant",
@@ -246,8 +248,38 @@ export default function PortfolioChatbot() {
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
+  const GREETING = "Say Hi to Thunderbeast!";
   useEffect(() => {
-    if (isOpen) setTimeout(() => inputRef.current?.focus(), 300);
+    if (!greetingVisible) return;
+    let i = 0;
+    let erasing = false;
+    let timer;
+
+    function tick() {
+      if (!erasing) {
+        i++;
+        setGreetingText(GREETING.slice(0, i));
+        if (i >= GREETING.length) {
+          // pause 2s then start erasing
+          timer = setTimeout(() => { erasing = true; tick(); }, 2000);
+          return;
+        }
+      } else {
+        i--;
+        setGreetingText(GREETING.slice(0, i));
+        if (i <= 0) {
+          setGreetingVisible(false);
+          return;
+        }
+      }
+      timer = setTimeout(tick, erasing ? 35 : 55);
+    }
+
+    timer = setTimeout(tick, 400);
+    return () => clearTimeout(timer);
+  }, [greetingVisible]);
+
+  useEffect(() => {
   }, [isOpen]);
 
   useEffect(() => {
@@ -313,24 +345,57 @@ export default function PortfolioChatbot() {
   return (
     <>
       {/* ── Floating trigger button ── */}
-      <button
-        onClick={() => setIsOpen((v) => !v)}
-        aria-label={isOpen ? "Close chat" : "Open chat"}
-        className="fixed bottom-6 right-6 z-50 flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 font-titillium border-none bg-transparent p-0 shadow-none"
-        style={{ background: "transparent", border: "none", padding: 0 }}
-      >
-        {isOpen ? (
-          <svg width="56" height="56" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" className="bg-black rounded-full p-2 text-[#E3E3E3] shadow-lg">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        ) : (
-          <img src="/bot1.png" alt="Chat with Thunderbeast" className="w-14 h-14 object-contain" />
+      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+
+        {/* Greeting typewriter label — transparent background */}
+        {greetingVisible && (
+          <div
+            onClick={() => { setIsOpen(true); setGreetingVisible(false); }}
+            className="cursor-pointer font-titillium"
+            style={{
+              fontSize: "14px",
+              fontWeight: 700,
+              letterSpacing: "0.02em",
+              color: "#000",
+              whiteSpace: "nowrap",
+              userSelect: "none",
+            }}
+          >
+            {greetingText}
+            <span
+              style={{
+                display: "inline-block",
+                width: "2px",
+                height: "14px",
+                background: "#000",
+                marginLeft: "2px",
+                verticalAlign: "text-bottom",
+                animation: "tbBlink 0.65s infinite",
+              }}
+            />
+          </div>
         )}
-      </button>
+
+        {/* Bot icon button */}
+        <button
+          onClick={() => { setIsOpen((v) => !v); setGreetingVisible(false); }}
+          aria-label={isOpen ? "Close chat" : "Open chat"}
+          className="flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 font-titillium border-none bg-transparent p-0 shadow-none"
+          style={{ background: "transparent", border: "none", padding: 0 }}
+        >
+          {isOpen ? (
+            <svg width="56" height="56" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" className="bg-black rounded-full p-2 text-[#E3E3E3] shadow-lg">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <img src="/bot1.png" alt="Chat with Thunderbeast" className="w-14 h-14 object-contain" />
+          )}
+        </button>
+      </div>
 
       {/* ── Chat panel ── */}
       <div
-        className="fixed bottom-44 right-6 z-50 font-titillium"
+        className="fixed bottom-25 right-6 z-50 font-titillium"
         style={{
           width: "min(380px, calc(100vw - 2rem))",
           transform: isOpen ? "translateY(0) scale(1)" : "translateY(16px) scale(0.97)",
@@ -467,6 +532,10 @@ export default function PortfolioChatbot() {
         @keyframes tbBlink {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
+        }
+        @keyframes tbSlideIn {
+          from { opacity: 0; transform: translateX(12px); }
+          to   { opacity: 1; transform: translateX(0); }
         }
       `}</style>
     </>
