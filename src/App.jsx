@@ -21,7 +21,7 @@ function App() {
             <Navbar />
             <ProjectChatbot />
             {/* <BackToTop /> */}
-            {/* <Hero /> */}
+            <Hero />
             <Skills />
             <About />
             <Services />
@@ -31,7 +31,7 @@ function App() {
           </div>
         }
       />
-      <Route path="/project/:id" element={<ProjectDetail />} />
+      <Route path="/project/:id" element={<><ProjectChatbot /><ProjectDetail /></>} />
     </Routes>
   );
 }
