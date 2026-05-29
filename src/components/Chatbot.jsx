@@ -316,15 +316,15 @@ export default function PortfolioChatbot() {
       <button
         onClick={() => setIsOpen((v) => !v)}
         aria-label={isOpen ? "Close chat" : "Open chat"}
-        className="fixed bottom-24 right-6 z-50 flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 font-titillium border-none bg-transparent p-0 shadow-none"
+        className="fixed bottom-6 right-6 z-50 flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 font-titillium border-none bg-transparent p-0 shadow-none"
         style={{ background: "transparent", border: "none", padding: 0 }}
       >
         {isOpen ? (
-          <svg width="44" height="44" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" className="bg-black rounded-full p-2 text-[#E3E3E3] shadow-lg">
+          <svg width="56" height="56" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" className="bg-black rounded-full p-2 text-[#E3E3E3] shadow-lg">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         ) : (
-          <img src="/bot1.png" alt="Chat with Thunderbeast" className="w-11 h-11 object-contain" />
+          <img src="/bot1.png" alt="Chat with Thunderbeast" className="w-14 h-14 object-contain" />
         )}
       </button>
 

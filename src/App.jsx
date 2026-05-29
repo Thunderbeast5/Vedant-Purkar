@@ -20,7 +20,7 @@ function App() {
           <div className="relative">
             <Navbar />
             <ProjectChatbot />
-            <BackToTop />
+            {/* <BackToTop /> */}
             {/* <Hero /> */}
             <Skills />
             <About />
