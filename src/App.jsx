@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import ProjectChatbot from './components/Chatbot';
 import Hero from './components/Hero';
 import Skills from './components/Skills';
 import About from './components/About';
@@ -18,8 +19,9 @@ function App() {
         element={
           <div className="relative">
             <Navbar />
+            <ProjectChatbot />
             <BackToTop />
-            <Hero />
+            {/* <Hero /> */}
             <Skills />
             <About />
             <Services />
