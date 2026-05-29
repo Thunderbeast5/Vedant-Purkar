@@ -21,7 +21,7 @@ function App() {
             <Navbar />
             <ProjectChatbot />
             <BackToTop />
-            {/* <Hero /> */}
+            <Hero />
             <Skills />
             <About />
             <Services />
